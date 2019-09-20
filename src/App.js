@@ -21,7 +21,9 @@ function App() {
     const classes = useStyles();
     const currentUrl = history.location.pathname;
     const isHomepage = !currentUrl || currentUrl === '/';
-    const currentLayout = layouts.find(({ url, homepage }) => (isHomepage && homepage) || url === currentUrl);
+    const currentLayout = layouts
+        .filter(({ buttonName, visible }) => buttonName && visible)
+        .find(({ url, homepage }) => (isHomepage && homepage) || url === currentUrl);
     const defaultAppBarTitle = currentLayout ? currentLayout.name : '';
     const [appBarTitle, setAppBarTitle] = useState(defaultAppBarTitle);
     return (
@@ -33,7 +35,7 @@ function App() {
                     </Typography>
                     <nav>
                         {layouts
-                            .filter(({ buttonName }) => buttonName)
+                            .filter(({ buttonName, visible }) => buttonName && visible)
                             .map(({ id, name, buttonName, url }) => {
                                 return (
                                     <Link
@@ -56,11 +58,13 @@ function App() {
             </AppBar>
             <Router history={history}>
                 <Switch>
-                    {layouts.map(({ id, component, homepage, notFoundPage, url }) => {
-                        if (homepage) return <Route key={id} path={`(${url}|/)`} component={component} />;
-                        if (notFoundPage) return <Route key={id} component={component} />;
-                        return <Route key={id} exact path={url} component={component} />;
-                    })}
+                    {layouts
+                        .filter(({ visible }) => visible)
+                        .map(({ id, component, homepage, notFoundPage, url }) => {
+                            if (homepage) return <Route key={id} path={`(${url}|/)`} component={component} />;
+                            if (notFoundPage) return <Route key={id} component={component} />;
+                            return <Route key={id} exact path={url} component={component} />;
+                        })}
                 </Switch>
             </Router>
         </React.Fragment>
