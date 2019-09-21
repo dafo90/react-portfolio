@@ -1,9 +1,9 @@
 import uuid from 'uuid/v4';
-import NotFound from './layouts/404';
-import AboutMe from './layouts/aboutme';
-import Contact from './layouts/contact';
-import Projects from './layouts/projects';
-import Resume from './layouts/resume';
+import AboutMe from './aboutme/AboutMe';
+import Contact from './contact/Contact';
+import NotFound from './notfound/NotFound';
+import Projects from './projects/Projects';
+import Resume from './resume/Resume';
 
 export default [
     { id: uuid(), name: 'About Me', component: AboutMe, url: '/aboutme', buttonName: 'About Me', notFoundPage: false, homepage: true, visible: true },
