@@ -1,10 +1,16 @@
 import { AppBar, Link, Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState } from 'react';
-import history from '../utils/history';
-import layouts from './layouts/layoutConstants';
+import history from '../../utils/history';
+import layouts from '../layouts/layoutConstants';
 
 const useStyles = makeStyles(theme => ({
+    appBar: {
+        borderBottom: `1px solid ${theme.palette.divider}`
+    },
+    toolbar: {
+        flexWrap: 'wrap'
+    },
     toolbarTitle: {
         flexGrow: 1
     },
@@ -23,7 +29,7 @@ function PortfolioAppBar() {
     const defaultAppBarTitle = currentLayout ? currentLayout.name : '';
     const [appBarTitle, setAppBarTitle] = useState(defaultAppBarTitle);
     return (
-        <AppBar position="static" color="default">
+        <AppBar position="static" color="default" className={classes.appBar}>
             <Toolbar className={classes.toolbar}>
                 <Typography variant="h6" color="inherit" noWrap className={classes.toolbarTitle}>
                     {appBarTitle}

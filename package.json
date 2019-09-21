@@ -2,6 +2,8 @@
   "name": "react-portfolio",
   "version": "0.1.0",
   "private": true,
+  "author": "dafo90",
+  "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.4.2",
     "@material-ui/icons": "^4.4.1",

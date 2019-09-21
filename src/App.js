@@ -1,12 +1,14 @@
 import React from 'react';
-import PortfolioAppBar from './components/PortfolioAppBar';
-import PortfolioMainLayout from './components/PortfolioMainLayout';
+import MainLayout from './components/MainLayout';
+import Footer from './components/utils/Footer';
+import Header from './components/utils/Header';
 
 function App() {
     return (
         <React.Fragment>
-            <PortfolioAppBar />
-            <PortfolioMainLayout />
+            <Header />
+            <MainLayout />
+            <Footer />
         </React.Fragment>
     );
 }
