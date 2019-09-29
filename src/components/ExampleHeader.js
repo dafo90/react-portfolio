@@ -1,8 +1,8 @@
+// Only as example!
 import { AppBar, Link, Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React, { useState } from 'react';
-import history from '../../utils/history';
-import layouts from '../layouts/layoutConstants';
+import history from '../utils/history';
 
 const useStyles = makeStyles(theme => ({
     appBar: {
@@ -23,6 +23,7 @@ function PortfolioAppBar() {
     const classes = useStyles();
     const currentUrl = history.location.pathname;
     const isHomepage = !currentUrl || currentUrl === '/';
+    const layouts = [];
     const currentLayout = layouts
         .filter(({ buttonName, visible }) => buttonName && visible)
         .find(({ url, homepage }) => (isHomepage && homepage) || url === currentUrl);

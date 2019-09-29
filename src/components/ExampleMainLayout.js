@@ -1,8 +1,9 @@
+// Only as example!!!
+
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import history from '../utils/history';
-import layouts from './layouts/layoutConstants';
 
 const useStyles = makeStyles(() => ({
     root: {
@@ -12,6 +13,7 @@ const useStyles = makeStyles(() => ({
 
 function PortfolioMainLayout() {
     const classes = useStyles();
+    const layouts = undefined;
     return (
         <div className={classes.root}>
             <Router history={history}>
