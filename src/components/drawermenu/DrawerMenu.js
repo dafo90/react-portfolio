@@ -1,7 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { List, Divider, ListItem, ListItemIcon, ListItemText, Typography, Grid, Avatar, Link } from '@material-ui/core';
+import { Divider, ListItem, Typography, Avatar } from '@material-ui/core';
 import SocialButtonsBar from '../common/SocialButtonsBar';
+import DrawerButtonsMenu from './DrawerButtonsMenu';
 
 const useStyles = makeStyles(theme => ({
     name: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function LeftMenu() {
+function DrawerMenu() {
     const classes = useStyles();
     const name = 'Name Surname';
     const profileImage = 'https://............';
@@ -28,6 +29,7 @@ function LeftMenu() {
         { name: 'Facebook', url: 'https://facebook.com', iconName: 'facebook' },
         { name: 'Instagram', url: 'https://instagram.com', iconName: 'instagram' }
     ];
+    const buttons = [{ name: 'About me', iconName: 'aboutme', url: '/aboutme' }];
 
     return (
         <div>
@@ -42,27 +44,10 @@ function LeftMenu() {
                 </Typography>
             )}
             <SocialButtonsBar socials={socials} />
-            {/*
             <Divider />
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
-            <Divider />
-            <List>
-                {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-                </List> */}
+            <DrawerButtonsMenu buttons={buttons} />
         </div>
     );
 }
 
-export default LeftMenu;
+export default DrawerMenu;

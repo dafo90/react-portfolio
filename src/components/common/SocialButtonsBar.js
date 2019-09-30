@@ -1,25 +1,33 @@
 import React from 'react';
 import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
 import SocialButton from './SocialButton';
 
-function SocialButtonBar({ socials }) {
+const useStyles = makeStyles(theme => ({
+    root: {
+        padding: theme.spacing(2)
+    }
+}));
+
+function SocialButtonsBar({ socials }) {
+    const classes = useStyles();
     if (!socials || socials.length === 0) {
         return undefined;
     }
     return (
-        <React.Fragment>
+        <div className={classes.root}>
             <Grid container justify="center" variant="body2" alignItems="center">
                 {socials.map(({ url, iconName, name: socialName }) => (
                     <SocialButton key={socialName} socialName={socialName} url={url} iconName={iconName} />
                 ))}
             </Grid>
-        </React.Fragment>
+        </div>
     );
 }
 
-SocialButtonBar.propTypes = {
+SocialButtonsBar.propTypes = {
     socials: PropTypes.array.isRequired
 };
 
-export default SocialButtonBar;
+export default SocialButtonsBar;

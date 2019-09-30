@@ -4,14 +4,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Copyright from './Copyright';
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        padding: theme.spacing(1)
+    },
     footer: {
         borderTop: `1px solid ${theme.palette.divider}`,
         marginTop: theme.spacing(1),
         paddingTop: theme.spacing(1),
         paddingBottom: theme.spacing(1),
         [theme.breakpoints.up('sm')]: {
-            paddingTop: theme.spacing(1),
-            paddingBottom: theme.spacing(1)
+            paddingTop: theme.spacing(0.5),
+            paddingBottom: theme.spacing(0.5)
         }
     }
 }));
@@ -19,11 +22,13 @@ const useStyles = makeStyles(theme => ({
 function PortfolioFooter() {
     const classes = useStyles();
     return (
-        <Container maxWidth="sm" component="footer" className={classes.footer}>
-            <Box mt={5}>
-                <Copyright />
-            </Box>
-        </Container>
+        <div className={classes.root}>
+            <Container maxWidth="sm" component="footer" className={classes.footer}>
+                <Box mt={5}>
+                    <Copyright />
+                </Box>
+            </Container>
+        </div>
     );
 }
 
