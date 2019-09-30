@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Divider, ListItem, Typography, Avatar } from '@material-ui/core';
 import SocialButtonsBar from '../common/SocialButtonsBar';
-import DrawerButtonsMenu from './DrawerButtonsMenu';
+import DrawerButtonsMenu from './DrawerMenuButtons';
+import layouts from '../layouts/indexLayouts';
 
 const useStyles = makeStyles(theme => ({
     name: {
@@ -29,7 +30,14 @@ function DrawerMenu() {
         { name: 'Facebook', url: 'https://facebook.com', iconName: 'facebook' },
         { name: 'Instagram', url: 'https://instagram.com', iconName: 'instagram' }
     ];
-    const buttons = [{ name: 'About me', iconName: 'aboutme', url: '/aboutme' }];
+    const menuButtons = layouts
+        .filter(({ urls, active }) => urls && active === true)
+        .map(({ id, buttonLabel: label, icon, urls }) => ({
+            id,
+            label,
+            icon,
+            urls
+        }));
 
     return (
         <div>
@@ -45,7 +53,7 @@ function DrawerMenu() {
             )}
             <SocialButtonsBar socials={socials} />
             <Divider />
-            <DrawerButtonsMenu buttons={buttons} />
+            <DrawerButtonsMenu buttons={menuButtons} />
         </div>
     );
 }

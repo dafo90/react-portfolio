@@ -4,6 +4,8 @@ import { Drawer, Typography, Hidden, AppBar, Toolbar, IconButton } from '@materi
 import { Menu as MenuIcon } from '@material-ui/icons/';
 import DrawerMenu from './components/drawermenu/DrawerMenu';
 import Footer from './components/footer/Footer';
+import MainLayout from './components/MainLayout';
+import layouts from './components/layouts/indexLayouts';
 
 const drawerWidth = 280;
 
@@ -99,6 +101,7 @@ function App() {
             </nav>
             <main className={classes.content}>
                 <div className={classes.toolbar} />
+                <MainLayout layouts={layouts} />
                 <Typography paragraph>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in
