@@ -10,24 +10,29 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function SocialButtonsBar({ socials }) {
+function SocialButtonsBar({ socials, iconSize }) {
     const classes = useStyles();
-    if (!socials || socials.length === 0) {
-        return undefined;
-    }
+    const visibleSocials = socials.filter(({ enabled }) => enabled);
     return (
-        <div className={classes.root}>
-            <Grid container justify="center" variant="body2" alignItems="center">
-                {socials.map(({ url, iconName, name: socialName }) => (
-                    <SocialButton key={socialName} socialName={socialName} url={url} iconName={iconName} />
-                ))}
-            </Grid>
-        </div>
+        visibleSocials.length && (
+            <div className={classes.root}>
+                <Grid container justify="center" variant="body2" alignItems="center">
+                    {visibleSocials.map(({ url, iconName, name: socialName }) => (
+                        <SocialButton key={socialName} socialName={socialName} url={url} iconName={iconName} iconSize={iconSize} />
+                    ))}
+                </Grid>
+            </div>
+        )
     );
 }
 
 SocialButtonsBar.propTypes = {
-    socials: PropTypes.array.isRequired
+    socials: PropTypes.array.isRequired,
+    iconSize: PropTypes.number
+};
+
+SocialButtonsBar.defaultProps = {
+    iconSize: 32
 };
 
 export default SocialButtonsBar;

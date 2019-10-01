@@ -1,11 +1,11 @@
 import React from 'react';
 import uuid from 'uuid/v4';
 import { Person, FolderShared, Email, DeveloperMode } from '@material-ui/icons';
-import AboutMe from './aboutme/AboutMe';
-import Contact from './contact/Contact';
-import NotFound from './notfound/NotFound';
-import Projects from './projects/Projects';
-import Resume from './resume/Resume';
+import AboutMe from '../components/layouts/aboutme/AboutMe';
+import Contact from '../components/layouts/contact/Contact';
+import NotFound from '../components/layouts/notfound/NotFound';
+import Projects from '../components/layouts/projects/Projects';
+import Resume from '../components/layouts/resume/Resume';
 
 export default [
     {
@@ -15,9 +15,9 @@ export default [
         urls: ['/', '/aboutme'],
         buttonLabel: 'About Me',
         icon: <Person />,
-        active: true
+        enabled: true
     },
-    { id: uuid(), label: 'Resume', component: Resume, urls: ['/resume'], buttonLabel: 'Resume', icon: <FolderShared />, active: true },
+    { id: uuid(), label: 'Resume', component: Resume, urls: ['/resume'], buttonLabel: 'Resume', icon: <FolderShared />, enabled: true },
     {
         id: uuid(),
         label: 'Projects',
@@ -25,7 +25,7 @@ export default [
         urls: ['/projects'],
         buttonLabel: 'Projects',
         icon: <DeveloperMode />,
-        active: true
+        enabled: true
     },
     {
         id: uuid(),
@@ -34,7 +34,7 @@ export default [
         urls: ['/contact'],
         buttonLabel: 'Contact',
         icon: <Email />,
-        active: true
+        enabled: true
     },
-    { id: uuid(), label: 'Page not found', component: NotFound, active: true }
+    { id: uuid(), label: 'Page not found', component: NotFound, enabled: true }
 ];

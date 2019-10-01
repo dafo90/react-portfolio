@@ -20,10 +20,10 @@ import {
 } from 'react-icons/ti';
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles(theme => ({ socialCircle: { width: 32, height: 32, margin: theme.spacing(0.5) } }));
+const useStyles = makeStyles(theme => ({ socialCircle: ({ iconSize }) => ({ width: iconSize, height: iconSize, margin: theme.spacing(0.5) }) }));
 
-function SocialButton({ socialName, url, iconName }) {
-    const classes = useStyles();
+function SocialButton({ socialName, url, iconName, iconSize }) {
+    const classes = useStyles({ iconSize });
 
     const findIconComponent = socialIconName => {
         switch (socialIconName.toLowerCase()) {
@@ -70,7 +70,12 @@ function SocialButton({ socialName, url, iconName }) {
 SocialButton.propTypes = {
     socialName: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
-    iconName: PropTypes.string.isRequired
+    iconName: PropTypes.string.isRequired,
+    iconSize: PropTypes.number
+};
+
+SocialButton.defaultProps = {
+    iconSize: 32
 };
 
 export default SocialButton;
