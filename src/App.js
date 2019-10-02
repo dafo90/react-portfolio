@@ -38,7 +38,7 @@ function App() {
     return (
         <div className={classes.root}>
             {/* Mobile App bar */}
-            <MobileAppBar onMenuClick={() => setMobileOpen(true)} />
+            <MobileAppBar title="Portfolio" onMenuClick={() => setMobileOpen(true)} />
 
             {/* Drawer Menu */}
             <nav className={classes.drawer} aria-label="mailbox folders">

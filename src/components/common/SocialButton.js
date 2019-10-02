@@ -75,7 +75,7 @@ SocialButton.propTypes = {
 };
 
 SocialButton.defaultProps = {
-    iconSize: 32
+    iconSize: '32px'
 };
 
 export default SocialButton;

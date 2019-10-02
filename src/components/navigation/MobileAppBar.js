@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function MobileAppBar({ onMenuClick }) {
+function MobileAppBar({ title, onMenuClick }) {
     const classes = useStyles();
     return (
         <AppBar position="fixed" className={classes.root} color="inherit">
@@ -20,16 +20,23 @@ function MobileAppBar({ onMenuClick }) {
                 <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={onMenuClick} className={classes.menuButton}>
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h6" noWrap>
-                    Responsive drawer
-                </Typography>
+                {title && (
+                    <Typography variant="h6" noWrap>
+                        {title}
+                    </Typography>
+                )}
             </Toolbar>
         </AppBar>
     );
 }
 
 MobileAppBar.propTypes = {
+    title: PropTypes.string,
     onMenuClick: PropTypes.func.isRequired
+};
+
+MobileAppBar.defaultProps = {
+    title: undefined
 };
 
 export default MobileAppBar;

@@ -6,13 +6,13 @@ import SocialButton from './SocialButton';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        padding: theme.spacing(2)
+        padding: theme.spacing(1)
     }
 }));
 
 function SocialButtonsBar({ socials, iconSize }) {
     const classes = useStyles();
-    const visibleSocials = socials.filter(({ enabled }) => enabled);
+    const visibleSocials = socials ? socials.filter(({ enabled }) => enabled) : [];
     return (
         visibleSocials.length && (
             <div className={classes.root}>
@@ -28,11 +28,11 @@ function SocialButtonsBar({ socials, iconSize }) {
 
 SocialButtonsBar.propTypes = {
     socials: PropTypes.array.isRequired,
-    iconSize: PropTypes.number
+    iconSize: PropTypes.string
 };
 
 SocialButtonsBar.defaultProps = {
-    iconSize: 32
+    iconSize: '32px'
 };
 
 export default SocialButtonsBar;

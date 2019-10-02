@@ -24,7 +24,7 @@ function PortfolioFooter() {
     return (
         <div className={classes.root}>
             <Container maxWidth="sm" component="footer" className={classes.footer}>
-                <Box mt={5}>
+                <Box mt={3}>
                     <Copyright />
                 </Box>
             </Container>

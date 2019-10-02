@@ -38,7 +38,7 @@ function DrawerHeader() {
                 </Typography>
             )}
             {socials && <SocialButtonsBar socials={socials} />}
-            {address && <Address address={address} />}
+            {address && <Address address={address} iconSize="30px" />}
         </div>
     );
 }
