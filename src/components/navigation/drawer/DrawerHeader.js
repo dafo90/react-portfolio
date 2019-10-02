@@ -8,7 +8,9 @@ import socials from '../../../constants/socials';
 
 const useStyles = makeStyles(theme => ({
     name: {
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
+        fontSize: 30,
+        fontWeight: 450
     },
     avatar: {
         margin: 'auto',
@@ -18,7 +20,8 @@ const useStyles = makeStyles(theme => ({
         marginBottom: theme.spacing(2)
     },
     shortBio: {
-        margin: theme.spacing(1)
+        margin: theme.spacing(1),
+        fontSize: 15
     }
 }));
 

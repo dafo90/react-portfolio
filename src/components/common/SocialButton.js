@@ -71,7 +71,7 @@ SocialButton.propTypes = {
     socialName: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     iconName: PropTypes.string.isRequired,
-    iconSize: PropTypes.number
+    iconSize: PropTypes.string
 };
 
 SocialButton.defaultProps = {

@@ -3,7 +3,6 @@ import uuid from 'uuid/v4';
 import { Person, FolderShared, Email, DeveloperMode } from '@material-ui/icons';
 import AboutMe from '../components/layouts/aboutme/AboutMe';
 import Contact from '../components/layouts/contact/Contact';
-import NotFound from '../components/layouts/notfound/NotFound';
 import Projects from '../components/layouts/projects/Projects';
 import Resume from '../components/layouts/resume/Resume';
 
@@ -35,6 +34,5 @@ export default [
         buttonLabel: 'Contact',
         icon: <Email />,
         enabled: true
-    },
-    { id: uuid(), label: 'Page not found', component: NotFound, enabled: true }
+    }
 ];
