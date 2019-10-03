@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
     })
 }));
 
-function MobileDrawer({ width, maxWidth, closeDrawer, open }) {
+function MobileDrawer({ width, maxWidth, selectMenu, closeDrawer, open }) {
     const classes = useStyles({ width, maxWidth });
     const theme = useTheme();
     return (
@@ -28,7 +28,7 @@ function MobileDrawer({ width, maxWidth, closeDrawer, open }) {
                 keepMounted: true
             }}
         >
-            <DrawerMenu closeDrawer={closeDrawer} />
+            <DrawerMenu selectMenu={selectMenu} closeDrawer={closeDrawer} />
         </Drawer>
     );
 }
@@ -36,12 +36,14 @@ function MobileDrawer({ width, maxWidth, closeDrawer, open }) {
 MobileDrawer.propTypes = {
     width: PropTypes.string,
     maxWidth: PropTypes.string.isRequired,
+    selectMenu: PropTypes.func,
     closeDrawer: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired
 };
 
 MobileDrawer.defaultProps = {
-    width: '90vw'
+    width: '90vw',
+    selectMenu: () => {}
 };
 
 export default MobileDrawer;

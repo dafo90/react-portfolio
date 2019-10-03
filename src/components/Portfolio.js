@@ -14,14 +14,14 @@ const useStyles = makeStyles(theme => ({
         display: 'flex'
     },
     drawer: {
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             width: drawerWidth,
             flexShrink: 0
         }
     },
     toolbar: {
         ...theme.mixins.toolbar,
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             display: 'none'
         }
     },
@@ -33,20 +33,26 @@ const useStyles = makeStyles(theme => ({
 function Portfolio() {
     const classes = useStyles();
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [appBarTitle, setAppBarTitle] = React.useState('');
     return (
         <div className={classes.root}>
             {/* Mobile App bar */}
-            <MobileAppBar title="Portfolio" onMenuClick={() => setMobileOpen(true)} />
+            <MobileAppBar title={appBarTitle} onMenuClick={() => setMobileOpen(true)} />
 
             {/* Drawer Menu */}
             <nav className={classes.drawer} aria-label="mailbox folders">
                 {/* Drawer Mobile View */}
-                <Hidden smUp implementation="css">
-                    <MobileDrawer closeDrawer={() => setMobileOpen(false)} open={mobileOpen} maxWidth={drawerWidth} />
+                <Hidden mdUp implementation="css">
+                    <MobileDrawer
+                        selectMenu={label => setAppBarTitle(label)}
+                        closeDrawer={() => setMobileOpen(false)}
+                        open={mobileOpen}
+                        maxWidth={drawerWidth}
+                    />
                 </Hidden>
                 {/* Drawer Desktop View */}
-                <Hidden xsDown implementation="css">
-                    <DesktopDrawer closeDrawer={() => setMobileOpen(false)} width={drawerWidth} />
+                <Hidden smDown implementation="css">
+                    <DesktopDrawer selectMenu={label => setAppBarTitle(label)} closeDrawer={() => setMobileOpen(false)} width={drawerWidth} />
                 </Hidden>
             </nav>
 

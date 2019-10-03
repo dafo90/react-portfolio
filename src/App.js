@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
-import layouts from './constants/layoutConstants';
+import layouts from './configurations/layouts';
 import history from './utils/history';
 import Portfolio from './components/Portfolio';
 import NotFound from './components/NotFound';

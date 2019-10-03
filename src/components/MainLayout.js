@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import history from '../utils/history';
-import layouts from '../constants/layoutConstants';
+import layouts from '../configurations/layouts';
 
 function MainLayout() {
     return (

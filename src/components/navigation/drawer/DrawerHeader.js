@@ -3,14 +3,16 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ListItem, Typography, Avatar } from '@material-ui/core';
 import SocialButtonsBar from '../../common/SocialButtonsBar';
 import Address from '../../common/Address';
-import personalData from '../../../constants/personalData';
-import socials from '../../../constants/socials';
+import personalData from '../../../configurations/personalData';
+import socials from '../../../configurations/socials';
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        height: 450
+    },
     name: {
         padding: theme.spacing(2),
-        fontSize: 30,
-        fontWeight: 450
+        fontWeight: 425
     },
     avatar: {
         margin: 'auto',
@@ -29,7 +31,7 @@ function DrawerHeader() {
     const classes = useStyles();
     const { name, profileImage, shortBio, address } = personalData;
     return (
-        <div>
+        <div className={classes.root}>
             <ListItem button key="headerName" />
             <Typography className={classes.name} variant="h5" align="center">
                 {name}

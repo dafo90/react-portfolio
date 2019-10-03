@@ -1,5 +1,4 @@
 import React from 'react';
-import uuid from 'uuid/v4';
 import { Person, FolderShared, Email, DeveloperMode } from '@material-ui/icons';
 import AboutMe from '../components/layouts/aboutme/AboutMe';
 import Contact from '../components/layouts/contact/Contact';
@@ -8,7 +7,7 @@ import Resume from '../components/layouts/resume/Resume';
 
 export default [
     {
-        id: uuid(),
+        id: 'aboutme',
         label: 'About Me',
         component: AboutMe,
         urls: ['/', '/aboutme'],
@@ -16,9 +15,9 @@ export default [
         icon: <Person />,
         enabled: true
     },
-    { id: uuid(), label: 'Resume', component: Resume, urls: ['/resume'], buttonLabel: 'Resume', icon: <FolderShared />, enabled: true },
+    { id: 'resume', label: 'Resume', component: Resume, urls: ['/resume'], buttonLabel: 'Resume', icon: <FolderShared />, enabled: true },
     {
-        id: uuid(),
+        id: 'projects',
         label: 'Projects',
         component: Projects,
         urls: ['/projects'],
@@ -27,7 +26,7 @@ export default [
         enabled: true
     },
     {
-        id: uuid(),
+        id: 'contact',
         label: 'Contact',
         component: Contact,
         urls: ['/contact'],

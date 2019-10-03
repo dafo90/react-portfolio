@@ -6,9 +6,12 @@ import PropTypes from 'prop-types';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        [theme.breakpoints.up('sm')]: {
+        [theme.breakpoints.up('md')]: {
             display: 'none'
         }
+    },
+    title: {
+        width: '100%'
     }
 }));
 
@@ -21,7 +24,7 @@ function MobileAppBar({ title, onMenuClick }) {
                     <MenuIcon />
                 </IconButton>
                 {title && (
-                    <Typography variant="h6" noWrap>
+                    <Typography variant="h6" noWrap align="center" className={classes.title}>
                         {title}
                     </Typography>
                 )}

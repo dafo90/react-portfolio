@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     })
 }));
 
-function DesktopDrawer({ width, closeDrawer }) {
+function DesktopDrawer({ width, selectMenu, closeDrawer }) {
     const classes = useStyles({ width });
     return (
         <Drawer
@@ -20,14 +20,19 @@ function DesktopDrawer({ width, closeDrawer }) {
             variant="permanent"
             open
         >
-            <DrawerMenu closeDrawer={closeDrawer} />
+            <DrawerMenu selectMenu={selectMenu} closeDrawer={closeDrawer} />
         </Drawer>
     );
 }
 
 DesktopDrawer.propTypes = {
     width: PropTypes.string.isRequired,
+    selectMenu: PropTypes.func,
     closeDrawer: PropTypes.func.isRequired
+};
+
+DesktopDrawer.defaultProps = {
+    selectMenu: () => {}
 };
 
 export default DesktopDrawer;
