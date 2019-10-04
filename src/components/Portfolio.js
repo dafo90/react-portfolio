@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Hidden } from '@material-ui/core';
 import Footer from './footer/Footer';
@@ -7,18 +8,16 @@ import MobileAppBar from './navigation/MobileAppBar';
 import MobileDrawer from './navigation/drawer/MobileDrawer';
 import DesktopDrawer from './navigation/drawer/DesktopDrawer';
 
-const drawerWidth = '280px';
-
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex'
     },
-    drawer: {
+    drawer: ({ drawerWidth }) => ({
         [theme.breakpoints.up('md')]: {
             width: drawerWidth,
             flexShrink: 0
         }
-    },
+    }),
     toolbar: {
         ...theme.mixins.toolbar,
         [theme.breakpoints.up('md')]: {
@@ -31,28 +30,22 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Portfolio() {
-    const classes = useStyles();
-    const [mobileOpen, setMobileOpen] = React.useState(false);
-    const [appBarTitle, setAppBarTitle] = React.useState('');
+    const drawerWidth = useSelector(state => state.drawerWidth);
+    const classes = useStyles({ drawerWidth });
     return (
         <div className={classes.root}>
             {/* Mobile App bar */}
-            <MobileAppBar title={appBarTitle} onMenuClick={() => setMobileOpen(true)} />
+            <MobileAppBar />
 
             {/* Drawer Menu */}
             <nav className={classes.drawer} aria-label="mailbox folders">
                 {/* Drawer Mobile View */}
                 <Hidden mdUp implementation="css">
-                    <MobileDrawer
-                        selectMenu={label => setAppBarTitle(label)}
-                        closeDrawer={() => setMobileOpen(false)}
-                        open={mobileOpen}
-                        maxWidth={drawerWidth}
-                    />
+                    <MobileDrawer maxWidth={drawerWidth} />
                 </Hidden>
                 {/* Drawer Desktop View */}
                 <Hidden smDown implementation="css">
-                    <DesktopDrawer selectMenu={label => setAppBarTitle(label)} closeDrawer={() => setMobileOpen(false)} width={drawerWidth} />
+                    <DesktopDrawer width={drawerWidth} />
                 </Hidden>
             </nav>
 
