@@ -17,8 +17,8 @@ function SocialButtonsBar({ socials, iconSize }) {
         visibleSocials.length && (
             <div className={classes.root}>
                 <Grid container justify="center" variant="body2" alignItems="center">
-                    {visibleSocials.map(({ url, iconName, name: socialName }) => (
-                        <SocialButton key={socialName} socialName={socialName} url={url} iconName={iconName} iconSize={iconSize} />
+                    {visibleSocials.map(({ url, iconName, name: socialName, id }) => (
+                        <SocialButton key={id} socialName={socialName} url={url} iconName={iconName} iconSize={iconSize} />
                     ))}
                 </Grid>
             </div>
