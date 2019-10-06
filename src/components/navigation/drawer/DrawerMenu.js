@@ -1,4 +1,5 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import layouts from '../../../configurations/layouts';
@@ -17,7 +18,7 @@ function DrawerMenu() {
     return (
         <React.Fragment>
             <DrawerHeader />
-            <Divider />
+            <Divider variant="middle" />
             <List>
                 {layouts
                     .filter(({ urls, enabled }) => urls && enabled)

@@ -20,7 +20,20 @@ import {
 } from 'react-icons/ti';
 import PropTypes from 'prop-types';
 
-const useStyles = makeStyles(theme => ({ socialCircle: ({ iconSize }) => ({ width: iconSize, height: iconSize, margin: theme.spacing(0.5) }) }));
+const useStyles = makeStyles(theme => ({
+    socialCircle: ({ iconSize }) => ({
+        width: iconSize,
+        height: iconSize,
+        margin: theme.spacing(0.5),
+        background: theme.palette.secondary.light,
+        fontSize: `${Number(iconSize.replace(/\D+/g, '')) / 1.6}px`,
+        transition: '0.15s',
+        '&:hover': {
+            background: theme.palette.secondary.main,
+            fontSize: `${Number(iconSize.replace(/\D+/g, '')) / 1.4}px`
+        }
+    })
+}));
 
 function SocialButton({ socialName, url, iconName, iconSize }) {
     const classes = useStyles({ iconSize });
@@ -59,7 +72,6 @@ function SocialButton({ socialName, url, iconName, iconSize }) {
                 return <NotInterested />;
         }
     };
-
     return (
         <Avatar component="a" alt={socialName} href={url} target="_blank" rel="noreferrer" className={classes.socialCircle}>
             {findIconComponent(iconName)}

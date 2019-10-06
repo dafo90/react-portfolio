@@ -8,7 +8,7 @@ import socials from '../../../configurations/socials';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        height: 450
+        paddingBottom: theme.spacing(5)
     },
     name: {
         padding: theme.spacing(2),

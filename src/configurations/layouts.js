@@ -14,9 +14,10 @@ export default [
         urls: ['/', '/aboutme'],
         buttonLabel: 'About Me',
         icon: <Person />,
-        enabled: true
+        enabled: true,
+        content: {}
     },
-    { id: uuid(), label: 'Resume', component: Resume, urls: ['/resume'], buttonLabel: 'Resume', icon: <FolderShared />, enabled: true },
+    { id: uuid(), label: 'Resume', component: Resume, urls: ['/resume'], buttonLabel: 'Resume', icon: <FolderShared />, enabled: true, content: {} },
     {
         id: uuid(),
         label: 'Projects',
@@ -24,7 +25,8 @@ export default [
         urls: ['/projects'],
         buttonLabel: 'Projects',
         icon: <DeveloperMode />,
-        enabled: true
+        enabled: true,
+        content: {}
     },
     {
         id: uuid(),
@@ -33,6 +35,7 @@ export default [
         urls: ['/contact'],
         buttonLabel: 'Contact',
         icon: <Email />,
-        enabled: true
+        enabled: true,
+        content: {}
     }
 ];

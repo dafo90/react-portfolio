@@ -10,6 +10,9 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.up('md')]: {
             display: 'none'
         }
+    },
+    title: {
+        paddingLeft: theme.spacing(1)
     }
 }));
 
@@ -24,7 +27,7 @@ function MobileAppBar() {
                     <MenuIcon />
                 </IconButton>
                 {title && (
-                    <Typography variant="h6" noWrap align="right">
+                    <Typography variant="h6" noWrap className={classes.title}>
                         {title}
                     </Typography>
                 )}
