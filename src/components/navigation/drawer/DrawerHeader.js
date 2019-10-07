@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
     },
     name: {
         padding: theme.spacing(2),
-        fontWeight: 425
+        fontWeight: 450
     },
     avatar: {
         margin: 'auto',

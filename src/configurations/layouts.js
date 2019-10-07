@@ -1,4 +1,3 @@
-import React from 'react';
 import { Person, FolderShared, Email, DeveloperMode } from '@material-ui/icons';
 import uuid from 'uuid/v4';
 import AboutMe from '../components/layouts/aboutme/AboutMe';
@@ -13,18 +12,30 @@ export default [
         component: AboutMe,
         urls: ['/', '/aboutme'],
         buttonLabel: 'About Me',
-        icon: <Person />,
+        icon: Person,
+        homepage: true,
         enabled: true,
         content: {}
     },
-    { id: uuid(), label: 'Resume', component: Resume, urls: ['/resume'], buttonLabel: 'Resume', icon: <FolderShared />, enabled: true, content: {} },
+    {
+        id: uuid(),
+        label: 'Resume',
+        component: Resume,
+        urls: ['/resume'],
+        buttonLabel: 'Resume',
+        icon: FolderShared,
+        homepage: false,
+        enabled: true,
+        content: {}
+    },
     {
         id: uuid(),
         label: 'Projects',
         component: Projects,
         urls: ['/projects'],
         buttonLabel: 'Projects',
-        icon: <DeveloperMode />,
+        icon: DeveloperMode,
+        homepage: false,
         enabled: true,
         content: {}
     },
@@ -34,7 +45,8 @@ export default [
         component: Contact,
         urls: ['/contact'],
         buttonLabel: 'Contact',
-        icon: <Email />,
+        icon: Email,
+        homepage: false,
         enabled: true,
         content: {}
     }

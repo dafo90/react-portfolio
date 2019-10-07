@@ -1,18 +1,32 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { Grid, Paper, Box, Typography } from '@material-ui/core';
+import { Grid, Box, Typography, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import personalData from '../../../configurations/personalData';
+import { setLayout } from '../../../actions/actions';
 
 const useStyles = makeStyles(theme => ({
     header: {
         background: theme.palette.secondary[50]
     },
     basicInformationPanel: {
-        padding: theme.spacing(3),
-        [theme.breakpoints.up('md')]: {
-            paddingLeft: theme.spacing(9),
-            paddingRight: theme.spacing(9)
+        padding: theme.spacing(6),
+        margin: 'auto',
+        [theme.breakpoints.only('xs')]: {
+            width: '100%'
+        },
+        [theme.breakpoints.only('sm')]: {
+            maxWidth: '760px'
+        },
+        [theme.breakpoints.only('md')]: {
+            maxWidth: '900px'
+        },
+        [theme.breakpoints.only('lg')]: {
+            maxWidth: '1250px'
+        },
+        [theme.breakpoints.only('xl')]: {
+            maxWidth: '1700px'
         }
     },
     name: {
@@ -43,7 +57,7 @@ const useStyles = makeStyles(theme => ({
             width: '100%'
         },
         [theme.breakpoints.only('sm')]: {
-            maxWidth: '400px'
+            maxWidth: '500px'
         },
         [theme.breakpoints.only('md')]: {
             objectFit: 'cover',
@@ -55,12 +69,20 @@ const useStyles = makeStyles(theme => ({
             objectPosition: 'center',
             maxWidth: '400px'
         }
+    },
+    buttonsBar: {
+        paddingTop: theme.spacing(3)
+    },
+    button: {
+        margin: theme.spacing(1)
     }
 }));
 
-function AboutMe({ content }) {
-    const { bioImage, name, title, longBio } = personalData;
+function AboutMe({ content, layouts }) {
+    const dispatch = useDispatch();
     const classes = useStyles();
+    const { bioImage, name, title, longBio } = personalData;
+    const links = layouts.filter(({ homepage }) => !homepage);
     return (
         <React.Fragment>
             <div className={classes.header}>
@@ -76,6 +98,26 @@ function AboutMe({ content }) {
                                 </Typography>
                             )}
                             {longBio && <div className={classes.longBio}>{longBio}</div>}
+                            {links.length && (
+                                <Grid container className={classes.buttonsBar} justify="center" variant="body2" alignItems="center">
+                                    {links.map(layout => {
+                                        const { id, buttonLabel, icon: Icon } = layout;
+                                        return (
+                                            <Button
+                                                key={id}
+                                                className={classes.button}
+                                                variant="contained"
+                                                size="medium"
+                                                color="secondary"
+                                                onClick={() => dispatch(setLayout(layout))}
+                                            >
+                                                <Icon />
+                                                {buttonLabel}
+                                            </Button>
+                                        );
+                                    })}
+                                </Grid>
+                            )}
                         </Grid>
                         <Grid item xs={12} md="auto">
                             <div className={classes.bioImageBox}>
@@ -90,7 +132,8 @@ function AboutMe({ content }) {
 }
 
 AboutMe.propTypes = {
-    content: PropTypes.object.isRequired
+    content: PropTypes.object.isRequired,
+    layouts: PropTypes.array.isRequired
 };
 
 export default AboutMe;

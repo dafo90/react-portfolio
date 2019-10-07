@@ -1,9 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Paper, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useDispatch } from 'react-redux';
-import history from '../utils/history';
 import { setLayout } from '../actions/actions';
 import layouts from '../configurations/layouts';
 
@@ -39,11 +37,7 @@ const useStyles = makeStyles(theme => ({
 const NotFound = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const handleOnMenuClick = () => {
-        const layout = layouts.find(({ urls }) => urls && urls.find(url => url === '/'));
-        history.push(layout.urls[0]);
-        dispatch(setLayout(layout));
-    };
+    const layout = layouts.find(({ homepage }) => homepage);
     return (
         <div className={classes.root}>
             <Paper classes={{ root: classes.container }}>
@@ -53,10 +47,8 @@ const NotFound = () => {
                 <Typography variant="button" color="textSecondary" align="center" className={classes.errorMessage}>
                     404 - Page not found
                 </Typography>
-                <Button variant="contained" component={Link} to="/" size="large" onClick={() => handleOnMenuClick()}>
-                    <Typography variant="button" align="center">
-                        Go to homepage
-                    </Typography>
+                <Button variant="contained" to="/" size="large" onClick={() => dispatch(setLayout(layout))}>
+                    Go to homepage
                 </Button>
             </Paper>
         </div>

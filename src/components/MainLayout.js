@@ -9,13 +9,9 @@ function MainLayout() {
             <Switch>
                 {layouts
                     .filter(({ enabled }) => enabled)
-                    .map(({ label, component: Component, urls, content }) => {
-                        // More than one url for this page
-                        if (urls.length) return <Route key={label} path={`(${urls.join('|')})`} render={() => <Component content={content} />} />;
-
-                        // Url to page
-                        return <Route key={label} exact path={urls[0]} render={() => <Component content={content} />} />;
-                    })}
+                    .map(({ id, component: Component, urls, content }) => (
+                        <Route key={id} exact path={`(${urls.join('|')})`} render={() => <Component content={content} layouts={layouts} />} />
+                    ))}
             </Switch>
         </Router>
     );
