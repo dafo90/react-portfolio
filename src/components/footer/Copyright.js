@@ -5,7 +5,7 @@ import packageJson from '../../package.alias.json';
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            {'Copyright © '}
+            Copyright ©
             <Link color="inherit" href={packageJson.homepage}>
                 {packageJson.author}
             </Link>
