@@ -1,4 +1,4 @@
-import { Container, Box, Divider } from '@material-ui/core';
+import { Container, Box } from '@material-ui/core';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Copyright from './Copyright';
@@ -9,6 +9,12 @@ const useStyles = makeStyles(theme => ({
         paddingLeft: theme.spacing(2),
         paddingRight: theme.spacing(2)
     },
+    divider: {
+        borderTop: `1px solid ${theme.palette.divider}`,
+        margin: 'auto',
+        width: '60%',
+        minWidth: '250px'
+    },
     footer: {
         paddingBottom: theme.spacing(1)
     }
@@ -18,7 +24,7 @@ function PortfolioFooter() {
     const classes = useStyles();
     return (
         <div className={classes.root}>
-            <Divider variant="middle" />
+            <div className={classes.divider} />
             <Container maxWidth="sm" component="footer" className={classes.footer}>
                 <Box mt={3}>
                     <Copyright />
