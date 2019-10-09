@@ -24,10 +24,9 @@ const useStyles = makeStyles(theme => ({
     socialCircle: ({ iconSize }) => ({
         width: iconSize,
         height: iconSize,
-        margin: theme.spacing(0.5),
         background: theme.palette.secondary.light,
         fontSize: `${Number(iconSize.replace(/\D+/g, '')) / 1.6}px`,
-        transition: '0.15s',
+        transition: '.2s ease',
         '&:hover': {
             background: theme.palette.secondary.main,
             fontSize: `${Number(iconSize.replace(/\D+/g, '')) / 1.4}px`

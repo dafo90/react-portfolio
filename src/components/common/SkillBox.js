@@ -1,7 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, Link } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -12,9 +12,22 @@ const useStyles = makeStyles(theme => ({
         paddingRight: theme.spacing(2),
         height: '100%'
     },
+    logoHoverZoom: {
+        maxWidth: '60px',
+        overflow: 'hidden',
+        borderRadius: '5px',
+        background: theme.palette.background.paper
+    },
     logo: {
         maxWidth: '60px',
-        verticalAlign: 'middle'
+        objectPosition: 'center',
+        objectFit: 'cover',
+        verticalAlign: 'middle',
+        borderRadius: '5px',
+        transition: 'transform .5s ease',
+        '&:hover': {
+            transform: 'scale(1.2)'
+        }
     },
     name: {
         paddingBottom: theme.spacing(1)
@@ -24,7 +37,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function SkillBox({ iconUrl, name, description }) {
+function SkillBox({ iconUrl, name, description, url }) {
     const classes = useStyles();
     return (
         <Paper className={classes.root}>
@@ -36,7 +49,11 @@ function SkillBox({ iconUrl, name, description }) {
                     <tr>
                         {iconUrl && (
                             <td className={classes.logoColumn}>
-                                <img className={classes.logo} src={iconUrl} alt={name} />
+                                <Link href={url} component="a" target="_blank" rel="noreferrer">
+                                    <div className={classes.logoHoverZoom}>
+                                        <img className={classes.logo} src={iconUrl} alt={name} />
+                                    </div>
+                                </Link>
                             </td>
                         )}
                         <td>
@@ -54,11 +71,13 @@ function SkillBox({ iconUrl, name, description }) {
 SkillBox.propTypes = {
     iconUrl: PropTypes.elementType,
     name: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired,
+    url: PropTypes.string
 };
 
 SkillBox.defaultProps = {
-    iconUrl: undefined
+    iconUrl: undefined,
+    url: undefined
 };
 
 export default SkillBox;

@@ -1,32 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { Grid, Box, Typography, Button } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import personalData from '../../../configurations/personalData';
 import { setLayout } from '../../../actions/actions';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        padding: theme.spacing(6),
-        margin: 'auto',
-        [theme.breakpoints.only('xs')]: {
-            padding: theme.spacing(3),
-            width: '100%'
-        },
-        [theme.breakpoints.only('sm')]: {
-            maxWidth: '760px'
-        },
-        [theme.breakpoints.only('md')]: {
-            maxWidth: '900px'
-        },
-        [theme.breakpoints.only('lg')]: {
-            maxWidth: '1250px'
-        },
-        [theme.breakpoints.only('xl')]: {
-            maxWidth: '1700px'
-        }
-    },
     name: {
         fontWeight: 550
     },
@@ -85,46 +65,44 @@ function BasicInformationPanel({ layouts }) {
     const { bioImage, name, title, longBio } = personalData;
     const links = layouts.filter(({ homepage }) => !homepage);
     return (
-        <Box className={classes.root}>
-            <Grid container spacing={4}>
-                <Grid item xs={12} md>
-                    <Typography className={classes.name} variant="h3" align="left">
-                        {name}
+        <Grid container spacing={4}>
+            <Grid item xs={12} md>
+                <Typography className={classes.name} variant="h3" align="left">
+                    {name}
+                </Typography>
+                {title && (
+                    <Typography className={classes.title} variant="h5" align="left">
+                        {title}
                     </Typography>
-                    {title && (
-                        <Typography className={classes.title} variant="h5" align="left">
-                            {title}
-                        </Typography>
-                    )}
-                    {longBio && <div className={classes.longBio}>{longBio}</div>}
-                    {links.length && (
-                        <Grid container className={classes.buttonsBar} justify="center" variant="body2" alignItems="center">
-                            {links.map(layout => {
-                                const { id, buttonLabel, icon: Icon } = layout;
-                                return (
-                                    <Button
-                                        key={id}
-                                        className={classes.button}
-                                        variant="contained"
-                                        size="medium"
-                                        color="secondary"
-                                        onClick={() => dispatch(setLayout(layout))}
-                                    >
-                                        <Icon className={classes.buttonIcon} />
-                                        {buttonLabel}
-                                    </Button>
-                                );
-                            })}
-                        </Grid>
-                    )}
-                </Grid>
-                <Grid item xs={12} md="auto">
-                    <div className={classes.bioImageBox}>
-                        <img alt={name} src={bioImage} className={classes.bioImage} />
-                    </div>
-                </Grid>
+                )}
+                {longBio && <div className={classes.longBio}>{longBio}</div>}
+                {links.length && (
+                    <Grid container className={classes.buttonsBar} justify="center" variant="body2" alignItems="center">
+                        {links.map(layout => {
+                            const { id, buttonLabel, icon: Icon } = layout;
+                            return (
+                                <Button
+                                    key={id}
+                                    className={classes.button}
+                                    variant="contained"
+                                    size="medium"
+                                    color="secondary"
+                                    onClick={() => dispatch(setLayout(layout))}
+                                >
+                                    <Icon className={classes.buttonIcon} />
+                                    {buttonLabel}
+                                </Button>
+                            );
+                        })}
+                    </Grid>
+                )}
             </Grid>
-        </Box>
+            <Grid item xs={12} md="auto">
+                <div className={classes.bioImageBox}>
+                    <img alt={name} src={bioImage} className={classes.bioImage} />
+                </div>
+            </Grid>
+        </Grid>
     );
 }
 
