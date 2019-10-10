@@ -2,8 +2,12 @@ import { Typography } from '@material-ui/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import classNames from 'classnames';
 
 const useStyles = makeStyles(theme => ({
+    root: {
+        paddingTop: theme.spacing(2)
+    },
     bar: {
         borderLeft: `7px solid ${theme.palette.divider}`
     },
@@ -14,8 +18,9 @@ const useStyles = makeStyles(theme => ({
 
 function Section({ className, title, subtitle }) {
     const classes = useStyles();
+    const rootClassName = classNames(classes.root, { [`${className}`]: className });
     return (
-        <div className={className}>
+        <div className={rootClassName}>
             <div className={classes.bar}>
                 <Typography className={classes.title} variant="h4">
                     {title}
@@ -37,7 +42,7 @@ Section.propTypes = {
 };
 
 Section.defaultProps = {
-    className: '',
+    className: undefined,
     subtitle: undefined
 };
 

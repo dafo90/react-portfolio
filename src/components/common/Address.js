@@ -24,7 +24,7 @@ Address.propTypes = {
 };
 
 Address.defaultProps = {
-    className: ''
+    className: undefined
 };
 
 export default Address;

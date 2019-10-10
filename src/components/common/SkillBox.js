@@ -2,6 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Typography, Link } from '@material-ui/core';
+import grey from '@material-ui/core/colors/grey';
+
+const logoRadius = '3px';
+const logoWidth = '60px';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -13,17 +17,18 @@ const useStyles = makeStyles(theme => ({
         height: '100%'
     },
     logoHoverZoom: {
-        maxWidth: '60px',
+        background: grey[300],
+        border: `1px solid ${theme.palette.divider}`,
+        maxWidth: logoWidth,
         overflow: 'hidden',
-        borderRadius: '5px',
-        background: theme.palette.background.paper
+        borderRadius: logoRadius
     },
     logo: {
-        maxWidth: '60px',
+        maxWidth: logoWidth,
         objectPosition: 'center',
         objectFit: 'cover',
         verticalAlign: 'middle',
-        borderRadius: '5px',
+        borderRadius: logoRadius,
         transition: 'transform .5s ease',
         '&:hover': {
             transform: 'scale(1.2)'

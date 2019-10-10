@@ -60,7 +60,7 @@ DrawerHeader.propTypes = {
 };
 
 DrawerHeader.defaultProps = {
-    className: ''
+    className: undefined
 };
 
 export default DrawerHeader;

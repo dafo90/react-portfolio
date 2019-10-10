@@ -25,7 +25,7 @@ function AboutMe({ content, layouts }) {
                 {skills && (
                     <React.Fragment>
                         <Section className={classes.skillsSection} title="Skills" subtitle="A brief overview of my skills" />
-                        <SkillsSection className={classes.skills} skills={skills} />
+                        <SkillsSection className={classes.skills} skills={skills} onlyMainSkills />
                     </React.Fragment>
                 )}
             </LayoutBody>

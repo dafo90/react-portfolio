@@ -23,7 +23,7 @@ SkillsSection.propTypes = {
 };
 
 SkillsSection.defaultProps = {
-    className: '',
+    className: undefined,
     onlyMainSkills: false
 };
 

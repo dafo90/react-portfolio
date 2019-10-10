@@ -41,7 +41,7 @@ Layout.propTypes = {
 
 Layout.defaultProps = {
     children: undefined,
-    className: ''
+    className: undefined
 };
 
 export default Layout;

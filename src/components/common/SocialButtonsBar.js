@@ -23,7 +23,7 @@ SocialButtonsBar.propTypes = {
 };
 
 SocialButtonsBar.defaultProps = {
-    className: '',
+    className: undefined,
     iconSize: '32px'
 };
 
