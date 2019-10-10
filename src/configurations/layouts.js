@@ -8,6 +8,7 @@ import Resume from '../components/layouts/resume/Resume';
 export default [
     {
         id: uuid(),
+        code: 'aboutme',
         label: 'About Me',
         component: AboutMe,
         urls: ['/', '/aboutme'],
@@ -20,7 +21,8 @@ export default [
                 {
                     id: uuid(),
                     enabled: true,
-                    mainSkill: true,
+                    main: true,
+                    level: 5,
                     iconUrl: '/logos/js.svg',
                     url: 'https://www.javascript.com',
                     name: 'JavaScript',
@@ -30,7 +32,8 @@ export default [
                 {
                     id: uuid(),
                     enabled: true,
-                    mainSkill: true,
+                    main: true,
+                    level: 6,
                     iconUrl: '/logos/java.svg',
                     url: 'https://www.javascript.com',
                     name: 'Java EE',
@@ -39,7 +42,8 @@ export default [
                 {
                     id: uuid(),
                     enabled: true,
-                    mainSkill: true,
+                    main: true,
+                    level: 5,
                     iconUrl: '/logos/spring.svg',
                     url: 'https://spring.io',
                     name: 'Spring & Spring Boot',
@@ -50,6 +54,7 @@ export default [
     },
     {
         id: uuid(),
+        code: 'resume',
         label: 'Resume',
         component: Resume,
         urls: ['/resume'],
@@ -61,6 +66,7 @@ export default [
     },
     {
         id: uuid(),
+        code: 'projects',
         label: 'Projects',
         component: Projects,
         urls: ['/projects'],
@@ -72,6 +78,7 @@ export default [
     },
     {
         id: uuid(),
+        code: 'contact',
         label: 'Contact',
         component: Contact,
         urls: ['/contact'],

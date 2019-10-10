@@ -3,8 +3,8 @@ import history from '../utils/history';
 import { SET_LAYOUT, closeMobileDrawer } from '../actions/actions';
 
 function* setLayout(action) {
-    const { urls } = action.layout;
-    history.push(urls[0]);
+    const { url } = action;
+    history.push(url);
     yield put(closeMobileDrawer());
 }
 

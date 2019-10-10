@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
 const NotFound = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const layout = layouts.find(({ homepage }) => homepage);
+    const homepageUrl = layouts.find(({ homepage }) => homepage).urls[0];
     return (
         <div className={classes.root}>
             <Paper classes={{ root: classes.container }}>
@@ -47,7 +47,7 @@ const NotFound = () => {
                 <Typography variant="button" color="textSecondary" align="center" className={classes.errorMessage}>
                     404 - Page not found
                 </Typography>
-                <Button variant="contained" to="/" size="large" onClick={() => dispatch(setLayout(layout))}>
+                <Button variant="contained" to={homepageUrl} size="large" onClick={() => dispatch(setLayout(homepageUrl))}>
                     Go to homepage
                 </Button>
             </Paper>

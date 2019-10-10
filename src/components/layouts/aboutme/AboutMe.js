@@ -1,33 +1,49 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
+import { Button } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import LayoutHeader from '../LayoutHeader';
 import BasicInformationPanel from './BasicInformationPanel';
-import Section from '../../common/Section';
 import LayoutBody from '../LayoutBody';
-import SkillsSection from '../../common/SkillsSection';
+import TilesSection from '../../common/TilesSection';
+import { setLayout } from '../../../actions/actions';
 
 const useStyles = makeStyles(theme => ({
-    skills: {
-        paddingTop: theme.spacing(2)
+    button: {
+        margin: theme.spacing(1)
+    },
+    buttonIcon: {
+        paddingRight: theme.spacing(1)
     }
 }));
 
+const findLayoutByCode = (layouts, codeToFind) => layouts.find(({ code }) => code === codeToFind);
+
 function AboutMe({ content, layouts }) {
+    const dispatch = useDispatch();
     const classes = useStyles();
     const { skills } = content;
+    const { urls: resumeUrls, icon: ResumeIcon } = findLayoutByCode(layouts, 'resume');
+    // const projectsLayout = findLayoutByCode(layouts, 'projects');
     return (
         <React.Fragment>
             <LayoutHeader>
                 <BasicInformationPanel layouts={layouts} />
             </LayoutHeader>
             <LayoutBody>
-                {skills && (
-                    <React.Fragment>
-                        <Section className={classes.skillsSection} title="Skills" subtitle="A brief overview of my skills" />
-                        <SkillsSection className={classes.skills} skills={skills} onlyMainSkills />
-                    </React.Fragment>
-                )}
+                <TilesSection sectionTitle="Skills" sectionSubtitle="A brief overview of my skills" tiles={skills} onlyMainTiles>
+                    <Button
+                        className={classes.button}
+                        variant="contained"
+                        size="medium"
+                        color="secondary"
+                        onClick={() => dispatch(setLayout(resumeUrls[0]))}
+                    >
+                        <ResumeIcon className={classes.buttonIcon} />
+                        View all skills...
+                    </Button>
+                </TilesSection>
             </LayoutBody>
         </React.Fragment>
     );

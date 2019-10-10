@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     bioImage: {
+        borderRadius: '3px',
         [theme.breakpoints.only('xs')]: {
             width: '100%'
         },
@@ -78,22 +79,19 @@ function BasicInformationPanel({ layouts }) {
                 {longBio && <div className={classes.longBio}>{longBio}</div>}
                 {links.length && (
                     <Grid container className={classes.buttonsBar} justify="center" variant="body2" alignItems="center">
-                        {links.map(layout => {
-                            const { id, buttonLabel, icon: Icon } = layout;
-                            return (
-                                <Button
-                                    key={id}
-                                    className={classes.button}
-                                    variant="contained"
-                                    size="medium"
-                                    color="secondary"
-                                    onClick={() => dispatch(setLayout(layout))}
-                                >
-                                    <Icon className={classes.buttonIcon} />
-                                    {buttonLabel}
-                                </Button>
-                            );
-                        })}
+                        {links.map(({ id, buttonLabel, icon: Icon, urls }) => (
+                            <Button
+                                key={id}
+                                className={classes.button}
+                                variant="contained"
+                                size="medium"
+                                color="secondary"
+                                onClick={() => dispatch(setLayout(urls[0]))}
+                            >
+                                <Icon className={classes.buttonIcon} />
+                                {buttonLabel}
+                            </Button>
+                        ))}
                     </Grid>
                 )}
             </Grid>

@@ -24,17 +24,14 @@ function DrawerMenu() {
             <List>
                 {layouts
                     .filter(({ urls, enabled }) => urls && enabled)
-                    .map(layout => {
-                        const { id, buttonLabel, urls, icon: Icon } = layout;
-                        return (
-                            <ListItem button key={id} to={urls[0]} onClick={() => dispatch(setLayout(layout))}>
-                                <ListItemIcon>
-                                    <Icon />
-                                </ListItemIcon>
-                                <ListItemText primary={buttonLabel} />
-                            </ListItem>
-                        );
-                    })}
+                    .map(({ id, buttonLabel, urls, icon: Icon }) => (
+                        <ListItem button key={id} to={urls[0]} onClick={() => dispatch(setLayout(urls[0]))}>
+                            <ListItemIcon>
+                                <Icon />
+                            </ListItemIcon>
+                            <ListItemText primary={buttonLabel} />
+                        </ListItem>
+                    ))}
             </List>
         </React.Fragment>
     );

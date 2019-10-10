@@ -2,9 +2,9 @@ export const SET_LAYOUT = 'SET_LAYOUT';
 export const OPEN_MOBILE_DRAWER = 'OPEN_MOBILE_DRAWER';
 export const CLOSE_MOBILE_DRAWER = 'CLOSE_MOBILE_DRAWER';
 
-export const setLayout = layout => ({
+export const setLayout = url => ({
     type: SET_LAYOUT,
-    layout
+    url
 });
 
 export const openMobileDrawer = () => ({
