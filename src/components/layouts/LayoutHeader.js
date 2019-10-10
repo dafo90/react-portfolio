@@ -2,26 +2,37 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Divider } from '@material-ui/core';
+import Layout from './Layout';
 
 const useStyles = makeStyles(theme => ({
     root: {
         // background: theme.palette.secondary[50]
         background: theme.palette.background.paper
+    },
+    header: {
+        paddingTop: theme.spacing(6),
+        paddingBottom: theme.spacing(6),
+        [theme.breakpoints.down('sm')]: {
+            paddingTop: theme.spacing(3),
+            paddingBottom: theme.spacing(3)
+        }
     }
 }));
 
 function LayoutHeader({ children }) {
     const classes = useStyles();
     return (
-        <div className={classes.root}>
-            {children}
+        <React.Fragment>
+            <div className={classes.root}>
+                <Layout className={classes.header}>{children}</Layout>
+            </div>
             <Divider />
-        </div>
+        </React.Fragment>
     );
 }
 
 LayoutHeader.propTypes = {
-    children: PropTypes.object
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
 };
 
 LayoutHeader.defaultProps = {

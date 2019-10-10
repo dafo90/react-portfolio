@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { ListItem, Typography, Avatar } from '@material-ui/core';
 import SocialButtonsBar from '../../common/SocialButtonsBar';
@@ -7,45 +8,59 @@ import personalData from '../../../configurations/personalData';
 import socials from '../../../configurations/socials';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        paddingBottom: theme.spacing(5)
-    },
     name: {
-        padding: theme.spacing(2),
+        paddingTop: theme.spacing(2),
         fontWeight: 450
     },
-    avatar: {
+    avatarBox: {
         margin: 'auto',
-        width: '200px',
-        height: '200px',
+        maxWidth: '200px',
+        maxHeight: '200px',
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(2)
     },
+    avatar: {
+        width: '100%',
+        height: '100%'
+    },
     shortBio: {
-        margin: theme.spacing(1),
+        paddingTop: theme.spacing(1),
         fontSize: 15
+    },
+    socials: {
+        paddingTop: theme.spacing(2)
     }
 }));
 
-function DrawerHeader() {
+function DrawerHeader({ className }) {
     const classes = useStyles();
     const { name, profileImage, shortBio, address } = personalData;
     return (
-        <div className={classes.root}>
+        <div className={className}>
             <ListItem button key="headerName" />
             <Typography className={classes.name} variant="h5" align="center">
                 {name}
             </Typography>
-            <Avatar alt={name} src={profileImage} className={classes.avatar} />
+            <div className={classes.avatarBox}>
+                <Avatar alt={name} src={profileImage} className={classes.avatar} />
+            </div>
             {shortBio && (
                 <Typography className={classes.shortBio} align="center">
                     {shortBio}
                 </Typography>
             )}
-            {socials && <SocialButtonsBar socials={socials} />}
+            {socials && <SocialButtonsBar className={classes.socials} socials={socials} />}
             {address && <Address address={address} iconSize="30px" />}
         </div>
     );
 }
+
+DrawerHeader.propTypes = {
+    className: PropTypes.string
+};
+
+DrawerHeader.defaultProps = {
+    className: ''
+};
 
 export default DrawerHeader;
