@@ -11,10 +11,11 @@ const useStyles = makeStyles(() => ({
     })
 }));
 
-function Bullet({ size, color }) {
+const Bullet = React.forwardRef(({ size, color, ...props }, ref) => {
     const classes = useStyles({ size, color });
-    return <div className={classes.root} />;
-}
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    return <div {...props} ref={ref} className={classes.root} />;
+});
 
 Bullet.propTypes = {
     color: PropTypes.string.isRequired,
