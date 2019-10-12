@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Tooltip, Avatar } from '@material-ui/core';
+import { Avatar } from '@material-ui/core';
 import { NotInterested } from '@material-ui/icons';
 import {
     TiSocialFacebook,
@@ -19,6 +19,7 @@ import {
     TiSocialDribbble
 } from 'react-icons/ti';
 import PropTypes from 'prop-types';
+import ArrowTooltip from './ArrowTooltip';
 
 const useStyles = makeStyles(theme => ({
     socialCircle: ({ iconSize }) => ({
@@ -69,20 +70,20 @@ const findIconComponent = socialIconName => {
     }
 };
 
-const socialBullet = (classes, socialName, url, iconName) => (
-    <Avatar component="a" alt={socialName} href={url} target="_blank" rel="noreferrer" className={classes.socialCircle}>
-        {findIconComponent(iconName)}
-    </Avatar>
-);
-
 function SocialButton({ tooltip, socialName, url, iconName, iconSize }) {
     const classes = useStyles({ iconSize });
-    return tooltip ? (
-        <Tooltip title={tooltip} enterDelay={300} leaveDelay={300} placement="bottom">
-            {socialBullet(classes, socialName, url, iconName)}
-        </Tooltip>
-    ) : (
-        socialBullet(classes, socialName, url, iconName)
+    return (
+        <ArrowTooltip
+            title={tooltip}
+            placement="bottom"
+            disableFocusListener={!tooltip}
+            disableHoverListener={!tooltip}
+            disableTouchListener={!tooltip}
+        >
+            <Avatar component="a" alt={socialName} href={url} target="_blank" rel="noreferrer" className={classes.socialCircle}>
+                {findIconComponent(iconName)}
+            </Avatar>
+        </ArrowTooltip>
     );
 }
 

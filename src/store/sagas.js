@@ -1,66 +1,14 @@
 import { put, call, all, takeEvery, takeLatest } from 'redux-saga/effects';
 import moment from 'moment';
-import uuid from 'uuid/v4';
-import { Gavel, Code, CallSplit, Visibility, Star } from '@material-ui/icons';
 import history from '../utils/history';
 import github from '../configurations/github';
 import { SET_LAYOUT, GITHUB_REQUEST_REPOS, closeMobileDrawer, receiveGithubRepos } from '../actions/actions';
-import { getGithubData, getGithubResource } from './proxies';
+import { getGithubData } from './proxies';
 
 function* setLayout(action) {
     const { url } = action;
     history.push(url);
     yield put(closeMobileDrawer());
-}
-
-function* buildTags({ license, language, forks, watchers, stars }) {
-    const tags = [];
-
-    if (license) {
-        const completeLicense = (yield call(getGithubData, { url: license.url })).data;
-        tags.push({
-            id: uuid(),
-            text: license.spdx_id,
-            icon: Gavel,
-            color: 'default',
-            variant: 'default',
-            url: completeLicense.html_url
-        });
-    }
-
-    tags.push({
-        id: uuid(),
-        text: language || 'Unknown',
-        icon: Code,
-        color: 'default',
-        variant: 'default'
-    });
-
-    tags.push({
-        id: uuid(),
-        text: `${watchers} watchers`,
-        icon: Visibility,
-        color: 'default',
-        variant: 'outlined'
-    });
-
-    tags.push({
-        id: uuid(),
-        text: `${stars} stars`,
-        icon: Star,
-        color: 'default',
-        variant: 'outlined'
-    });
-
-    tags.push({
-        id: uuid(),
-        text: `${forks} forks`,
-        icon: CallSplit,
-        color: 'default',
-        variant: 'outlined'
-    });
-
-    return tags;
 }
 
 function* buildRepoParams({
@@ -79,25 +27,25 @@ function* buildRepoParams({
     forks_count: forks,
     watchers_count: watchers,
     stargazers_count: stars,
-    contributors_url: contributorsUrl,
-    default_branch: defaultBranch
+    contributors_url: contributorsUrl
 }) {
     try {
-        const { username: githubUsername, configFile: githubConfigFile } = github;
-        const branch = githubConfigFile.branch || defaultBranch;
-        const { imageFile, ...others } = (yield call(getGithubResource, {
-            githubUsername,
-            repoName: name,
-            branch,
-            githubConfigFile: githubConfigFile.name
-        })).data;
-        const tags = yield call(buildTags, { license, language, forks, watchers, stars });
+        const { enabled, main, imageUrl } = (github.repos && github.repos.find(({ id: configId }) => id === configId)) || {
+            enabled: false,
+            main: false,
+            imageUrl: undefined
+        };
+        const completeLicense = (yield call(getGithubData, { url: license.url })).data;
+        const tags = github.buildTags(archived, completeLicense, language, forks, watchers, stars);
         return {
             id,
+            enabled,
+            main,
             name,
             description,
             url,
-            imageUrl: imageFile ? `https://raw.githubusercontent.com/${githubUsername}/${name}/${branch}/${imageFile}` : undefined,
+            imageUrl: imageUrl || '/logos/github.svg',
+            transparentImage: !imageUrl,
             fork,
             createdAt: moment(createdAt, github.dateFormat).toDate(),
             updatedAt: moment(updatedAt, github.dateFormat).toDate(),
@@ -105,8 +53,7 @@ function* buildRepoParams({
             archived,
             disabled,
             contributorsUrl,
-            tags,
-            ...others
+            tags
         };
     } catch (err) {
         return { enabled: false };

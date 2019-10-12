@@ -18,7 +18,7 @@ function TilesSection({ children, className, tooltip, sectionTitle, sectionSubti
         <div className={className}>
             <Section title={sectionTitle} subtitle={sectionSubtitle} />
             <Grid className={classes.tiles} container variant="body2" justify="center" spacing={3}>
-                {visibleTiles.map(({ id, imageUrl, name, description, url, level, tags }) => (
+                {visibleTiles.map(({ id, imageUrl, name, description, url, level, tags, transparentImage }) => (
                     <Grid key={id} item>
                         <TileBox
                             tooltip={tooltip}
@@ -29,6 +29,7 @@ function TilesSection({ children, className, tooltip, sectionTitle, sectionSubti
                             level={level}
                             hyperlinkTitle={hyperlinkTitle}
                             tags={tags}
+                            transparentImage={transparentImage}
                         />
                     </Grid>
                 ))}
