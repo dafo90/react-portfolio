@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { Button } from '@material-ui/core';
+import { Button, Divider } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import LayoutHeader from '../LayoutHeader';
@@ -51,6 +51,7 @@ function AboutMe({ content, layouts }) {
                         View all skills...
                     </Button>
                 </TilesSection>
+                <Divider />
                 <TilesSection
                     sectionTitle="GitHub Repositories"
                     sectionSubtitle="My Open Source Projects"

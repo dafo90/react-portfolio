@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Typography, Link, Grid, Zoom, Chip } from '@material-ui/core';
 import grey from '@material-ui/core/colors/grey';
@@ -10,7 +10,7 @@ import ArrowTooltip from './ArrowTooltip';
 const maxLevel = 6;
 const logoRadius = '3px';
 const logoWidth = '60px';
-const transitionDelay = 400;
+const transitionDelay = 500;
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -51,9 +51,13 @@ function TileBox({ imageUrl, name, description, tooltip, level, url, hyperlinkTi
     const classes = useStyles({ transparentImage });
     const [isTileInViewport, tilePaper] = useIsInViewport();
     const [bulletsColorOffset, setBulletsColorOffset] = useState(0);
+    const [transitionIn, setTransitionIn] = useState(false);
+    useEffect(() => {
+        if (isTileInViewport) setTransitionIn(true);
+    }, [isTileInViewport]);
     return (
         <div ref={tilePaper}>
-            <Zoom in={isTileInViewport} direction="up" style={{ transitionDelay: isTileInViewport ? `${transitionDelay}ms` : '0ms' }} timeout={300}>
+            <Zoom in={transitionIn} direction="up" style={{ transitionDelay: transitionIn ? `${transitionDelay}ms` : '0ms' }} timeout={300}>
                 <Paper className={classes.root}>
                     <Grid container variant="body2" justify="space-between" alignItems="center">
                         <Grid xs item>
@@ -88,7 +92,7 @@ function TileBox({ imageUrl, name, description, tooltip, level, url, hyperlinkTi
                                 >
                                     <BulletsBar
                                         isVisibleAfter={transitionDelay}
-                                        startBulletsTransizion={isTileInViewport}
+                                        startBulletsTransizion={transitionIn}
                                         className={classes.levelBar}
                                         level={level}
                                         max={maxLevel}

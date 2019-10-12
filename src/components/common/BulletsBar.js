@@ -21,7 +21,7 @@ const BulletsBar = React.forwardRef(({ className, bulletSize, level, startBullet
                         <Fade
                             in={startBulletsTransizion}
                             style={{ transitionDelay: startBulletsTransizion ? `${isVisibleAfter + 400}ms` : '0ms' }}
-                            timeout={index * index * index * 8}
+                            timeout={index * index * index * 9}
                         >
                             <Bullet color={color} size={bulletSize} />
                         </Fade>
