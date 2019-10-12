@@ -23,7 +23,7 @@ export default [
                     enabled: true,
                     main: true,
                     level: 5,
-                    iconUrl: '/logos/js.svg',
+                    imageUrl: '/logos/js.svg',
                     url: 'https://www.javascript.com',
                     name: 'JavaScript',
                     description:
@@ -34,7 +34,7 @@ export default [
                     enabled: true,
                     main: true,
                     level: 6,
-                    iconUrl: '/logos/java.svg',
+                    imageUrl: '/logos/java.svg',
                     url: 'https://www.javascript.com',
                     name: 'Java EE',
                     description: 'Java is the language I use mainly since 2014, notwithstanding JavaScript in the last few years is taking over.'
@@ -44,7 +44,7 @@ export default [
                     enabled: true,
                     main: true,
                     level: 5,
-                    iconUrl: '/logos/spring.svg',
+                    imageUrl: '/logos/spring.svg',
                     url: 'https://spring.io',
                     name: 'Spring & Spring Boot',
                     description: 'Spring (and Spring Boot) is the framework for Java I use since 2014 to create web services.'

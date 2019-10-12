@@ -9,7 +9,7 @@ function SocialButtonsBar({ className, socials, iconSize }) {
         <Grid className={className} container justify="center" variant="body2" alignItems="center" spacing={1}>
             {visibleSocials.map(({ url, iconName, name: socialName, id }) => (
                 <Grid key={id} item>
-                    <SocialButton socialName={socialName} url={url} iconName={iconName} iconSize={iconSize} />
+                    <SocialButton tooltip={socialName} socialName={socialName} url={url} iconName={iconName} iconSize={iconSize} />
                 </Grid>
             ))}
         </Grid>

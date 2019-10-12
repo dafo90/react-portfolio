@@ -11,16 +11,25 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function TilesSection({ children, className, sectionTitle, sectionSubtitle, tiles, onlyMainTiles }) {
+function TilesSection({ children, className, tooltip, sectionTitle, sectionSubtitle, tiles, onlyMainTiles, hyperlinkTitle }) {
     const classes = useStyles();
     const visibleTiles = tiles.filter(({ main = false, enabled = true }) => enabled && (!onlyMainTiles || main));
     return visibleTiles.length ? (
         <div className={className}>
             <Section title={sectionTitle} subtitle={sectionSubtitle} />
             <Grid className={classes.tiles} container variant="body2" justify="center" spacing={3}>
-                {visibleTiles.map(({ id, iconUrl, name, description, url, level }) => (
+                {visibleTiles.map(({ id, imageUrl, name, description, url, level, tags }) => (
                     <Grid key={id} item>
-                        <TileBox iconUrl={iconUrl} name={name} description={description} url={url} level={level} />
+                        <TileBox
+                            tooltip={tooltip}
+                            imageUrl={imageUrl}
+                            name={name}
+                            description={description}
+                            url={url}
+                            level={level}
+                            hyperlinkTitle={hyperlinkTitle}
+                            tags={tags}
+                        />
                     </Grid>
                 ))}
             </Grid>
@@ -32,17 +41,21 @@ function TilesSection({ children, className, sectionTitle, sectionSubtitle, tile
 TilesSection.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
     className: PropTypes.string,
+    tooltip: PropTypes.string,
     sectionTitle: PropTypes.string.isRequired,
     sectionSubtitle: PropTypes.string,
     tiles: PropTypes.array.isRequired,
-    onlyMainTiles: PropTypes.bool
+    onlyMainTiles: PropTypes.bool,
+    hyperlinkTitle: PropTypes.bool
 };
 
 TilesSection.defaultProps = {
     children: undefined,
     className: undefined,
+    tooltip: undefined,
     sectionSubtitle: undefined,
-    onlyMainTiles: false
+    onlyMainTiles: false,
+    hyperlinkTitle: false
 };
 
 export default TilesSection;

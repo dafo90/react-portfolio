@@ -5,15 +5,21 @@ import PropTypes from 'prop-types';
 function Address({ className, address }) {
     return (
         <div className={className}>
-            <Typography variant="body2" color="textSecondary" align="center">
-                {address.street}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" align="center">
-                {`${address.zip} ${address.city}`}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" align="center">
-                {address.state}
-            </Typography>
+            {address.street && (
+                <Typography variant="body2" color="textSecondary" align="center">
+                    {address.street}
+                </Typography>
+            )}
+            {(address.zip || address.city) && (
+                <Typography variant="body2" color="textSecondary" align="center">
+                    {`${address.zip && `${address.zip} `}${address.city}`}
+                </Typography>
+            )}
+            {address.state && (
+                <Typography variant="body2" color="textSecondary" align="center">
+                    {address.state}
+                </Typography>
+            )}
         </div>
     );
 }

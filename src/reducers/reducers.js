@@ -1,4 +1,4 @@
-import { SET_LAYOUT, OPEN_MOBILE_DRAWER, CLOSE_MOBILE_DRAWER } from '../actions/actions';
+import { SET_LAYOUT, OPEN_MOBILE_DRAWER, CLOSE_MOBILE_DRAWER, GITHUB_RECEIVE_REPOS } from '../actions/actions';
 import layouts from '../configurations/layouts';
 
 const findLayoutByPath = urlToFind => layouts.find(({ urls }) => urls && urls.find(url => url === urlToFind));
@@ -6,7 +6,7 @@ const findLayoutByPath = urlToFind => layouts.find(({ urls }) => urls && urls.fi
 const initialState = {
     layout: findLayoutByPath(window.location.pathname),
     mobileDrawerOpen: false,
-    drawerWidth: '280px'
+    githubRepos: []
 };
 
 function rootReducer(state = initialState, action) {
@@ -25,6 +25,11 @@ function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 mobileDrawerOpen: false
+            };
+        case GITHUB_RECEIVE_REPOS:
+            return {
+                ...state,
+                githubRepos: action.repos
             };
         default:
             return state;

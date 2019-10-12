@@ -5,13 +5,12 @@ import uuid from 'uuid/v4';
 import deepOrange from '@material-ui/core/colors/deepOrange';
 import Bullet from './Bullet';
 
-const max = 6;
 const prefixId = uuid();
 
-const BulletsBar = React.forwardRef(({ className, bulletSize, level, startBulletsTransizion, isVisibleAfter, ...props }, ref) => {
+const BulletsBar = React.forwardRef(({ className, bulletSize, level, startBulletsTransizion, isVisibleAfter, max, colorOffset, ...props }, ref) => {
     const bullets = [];
     for (let i = 0; i < max; i += 1) {
-        bullets.push({ id: `${prefixId}${i}`, index: i, color: i < level ? deepOrange[700] : deepOrange[100] });
+        bullets.push({ id: `${prefixId}${i}`, index: i, color: i < level ? deepOrange[700 + colorOffset] : deepOrange[100 + colorOffset] });
     }
     return (
         // eslint-disable-next-line react/jsx-props-no-spreading
@@ -38,14 +37,17 @@ BulletsBar.propTypes = {
     level: PropTypes.number.isRequired,
     bulletSize: PropTypes.string,
     startBulletsTransizion: PropTypes.bool,
-    isVisibleAfter: PropTypes.number
+    isVisibleAfter: PropTypes.number,
+    max: PropTypes.number.isRequired,
+    colorOffset: PropTypes.number
 };
 
 BulletsBar.defaultProps = {
     className: undefined,
     bulletSize: '10px',
     startBulletsTransizion: false,
-    isVisibleAfter: 0
+    isVisibleAfter: 0,
+    colorOffset: 0
 };
 
 export default BulletsBar;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Avatar } from '@material-ui/core';
+import { Tooltip, Avatar } from '@material-ui/core';
 import { NotInterested } from '@material-ui/icons';
 import {
     TiSocialFacebook,
@@ -34,51 +34,60 @@ const useStyles = makeStyles(theme => ({
     })
 }));
 
-function SocialButton({ socialName, url, iconName, iconSize }) {
-    const classes = useStyles({ iconSize });
+const findIconComponent = socialIconName => {
+    switch (socialIconName.toLowerCase()) {
+        case 'facebook':
+            return <TiSocialFacebook />;
+        case 'instagram':
+            return <TiSocialInstagram />;
+        case 'googleplus':
+            return <TiSocialGooglePlus />;
+        case 'github':
+            return <TiSocialGithub />;
+        case 'twitter':
+            return <TiSocialTwitter />;
+        case 'vimeo':
+            return <TiSocialVimeo />;
+        case 'youtube':
+            return <TiSocialYoutube />;
+        case 'tumbler':
+            return <TiSocialTumbler />;
+        case 'skype':
+            return <TiSocialSkype />;
+        case 'pinterest':
+            return <TiSocialPinterest />;
+        case 'linkedin':
+            return <TiSocialLinkedin />;
+        case 'lastfm':
+            return <TiSocialLastFm />;
+        case 'flickr':
+            return <TiSocialFlickr />;
+        case 'dribble':
+            return <TiSocialDribbble />;
+        default:
+            return <NotInterested />;
+    }
+};
 
-    const findIconComponent = socialIconName => {
-        switch (socialIconName.toLowerCase()) {
-            case 'facebook':
-                return <TiSocialFacebook />;
-            case 'instagram':
-                return <TiSocialInstagram />;
-            case 'googleplus':
-                return <TiSocialGooglePlus />;
-            case 'github':
-                return <TiSocialGithub />;
-            case 'twitter':
-                return <TiSocialTwitter />;
-            case 'vimeo':
-                return <TiSocialVimeo />;
-            case 'youtube':
-                return <TiSocialYoutube />;
-            case 'tumbler':
-                return <TiSocialTumbler />;
-            case 'skype':
-                return <TiSocialSkype />;
-            case 'pinterest':
-                return <TiSocialPinterest />;
-            case 'linkedin':
-                return <TiSocialLinkedin />;
-            case 'lastfm':
-                return <TiSocialLastFm />;
-            case 'flickr':
-                return <TiSocialFlickr />;
-            case 'dribble':
-                return <TiSocialDribbble />;
-            default:
-                return <NotInterested />;
-        }
-    };
-    return (
-        <Avatar component="a" alt={socialName} href={url} target="_blank" rel="noreferrer" className={classes.socialCircle}>
-            {findIconComponent(iconName)}
-        </Avatar>
+const socialBullet = (classes, socialName, url, iconName) => (
+    <Avatar component="a" alt={socialName} href={url} target="_blank" rel="noreferrer" className={classes.socialCircle}>
+        {findIconComponent(iconName)}
+    </Avatar>
+);
+
+function SocialButton({ tooltip, socialName, url, iconName, iconSize }) {
+    const classes = useStyles({ iconSize });
+    return tooltip ? (
+        <Tooltip title={tooltip} enterDelay={300} leaveDelay={300} placement="bottom">
+            {socialBullet(classes, socialName, url, iconName)}
+        </Tooltip>
+    ) : (
+        socialBullet(classes, socialName, url, iconName)
     );
 }
 
 SocialButton.propTypes = {
+    tooltip: PropTypes.string,
     socialName: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     iconName: PropTypes.string.isRequired,
@@ -86,6 +95,7 @@ SocialButton.propTypes = {
 };
 
 SocialButton.defaultProps = {
+    tooltip: undefined,
     iconSize: '32px'
 };
 

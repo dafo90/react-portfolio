@@ -4,8 +4,10 @@ import layouts from './configurations/layouts';
 import history from './utils/history';
 import Portfolio from './components/Portfolio';
 import NotFound from './components/NotFound';
+import useFetchBaseData from './hooks/useFetchBaseData';
 
 function App() {
+    useFetchBaseData();
     return (
         <Router history={history}>
             <Switch>

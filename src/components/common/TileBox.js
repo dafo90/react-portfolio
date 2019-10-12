@@ -1,11 +1,12 @@
 import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Paper, Typography, Link, Grid, Tooltip, Zoom } from '@material-ui/core';
+import { Paper, Typography, Link, Grid, Tooltip, Zoom, Chip } from '@material-ui/core';
 import grey from '@material-ui/core/colors/grey';
 import useIsInViewport from 'use-is-in-viewport';
 import BulletsBar from './BulletsBar';
 
+const maxLevel = 6;
 const logoRadius = '3px';
 const logoWidth = '60px';
 const transitionDelay = 400;
@@ -41,11 +42,22 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const logo = (className, iconUrl, name) => <img className={className} src={iconUrl} alt={name} />;
+const logo = (className, imageUrl, name) => <img className={className} src={imageUrl} alt={name} />;
+const bullet = (classes, isTileInViewport, level, colorOffset) => (
+    <BulletsBar
+        isVisibleAfter={transitionDelay}
+        startBulletsTransizion={isTileInViewport}
+        className={classes.levelBar}
+        level={level}
+        max={maxLevel}
+        colorOffset={colorOffset}
+    />
+);
 
-function TileBox({ iconUrl, name, description, level, url }) {
+function TileBox({ imageUrl, name, description, tooltip, level, url, hyperlinkTitle, tags }) {
     const classes = useStyles();
     const [isTileInViewport, tilePaper] = useIsInViewport();
+    const [bulletsColorOffset, setBulletsColorOffset] = useState(0);
     return (
         // eslint-disable-next-line react/jsx-props-no-spreading
         <div ref={tilePaper}>
@@ -54,31 +66,43 @@ function TileBox({ iconUrl, name, description, level, url }) {
                     <Grid container variant="body2" justify="space-between" alignItems="center">
                         <Grid xs item>
                             <Typography className={classes.name} variant="h5" align="left">
-                                {name}
+                                {hyperlinkTitle ? (
+                                    <Link href={url} color="inherit" component="a" target="_blank" rel="noreferrer">
+                                        {name}
+                                    </Link>
+                                ) : (
+                                    name
+                                )}
                             </Typography>
                         </Grid>
                         {level && (
-                            <Grid xs="auto" item>
-                                <Tooltip title="Knowledge level" enterDelay={300} leaveDelay={300} placement="top">
-                                    <BulletsBar
-                                        isVisibleAfter={transitionDelay}
-                                        startBulletsTransizion={isTileInViewport}
-                                        className={classes.levelBar}
-                                        level={level}
-                                    />
-                                </Tooltip>
+                            <Grid
+                                xs="auto"
+                                item
+                                onMouseOver={() => setBulletsColorOffset(200)}
+                                onFocus={() => setBulletsColorOffset(200)}
+                                onMouseOut={() => setBulletsColorOffset(0)}
+                                onBlur={() => setBulletsColorOffset(0)}
+                            >
+                                {tooltip ? (
+                                    <Tooltip title={`${tooltip} (${level}/${maxLevel})`} enterDelay={300} leaveDelay={300} placement="top">
+                                        {bullet(classes, isTileInViewport, level, bulletsColorOffset)}
+                                    </Tooltip>
+                                ) : (
+                                    bullet(classes, isTileInViewport, level, bulletsColorOffset)
+                                )}
                             </Grid>
                         )}
                     </Grid>
                     <Grid container variant="body2" justify="space-between" alignItems="center" spacing={2}>
-                        {iconUrl && (
+                        {imageUrl && (
                             <Grid xs="auto" item>
                                 {url ? (
                                     <Link href={url} component="a" target="_blank" rel="noreferrer">
-                                        <div className={classes.logoHoverZoom}>{logo(classes.logo, iconUrl, name)}</div>
+                                        <div className={classes.logoHoverZoom}>{logo(classes.logo, imageUrl, name)}</div>
                                     </Link>
                                 ) : (
-                                    logo(classes.logo, iconUrl, name)
+                                    logo(classes.logo, imageUrl, name)
                                 )}
                             </Grid>
                         )}
@@ -88,6 +112,26 @@ function TileBox({ iconUrl, name, description, level, url }) {
                             </Typography>
                         </Grid>
                     </Grid>
+                    {tags && tags.length && (
+                        <Grid container variant="body2" alignItems="center" spacing={1}>
+                            {tags.map(({ id, text, icon: Icon, variant, color, url: tagUrl }) => (
+                                <Grid key={id} item>
+                                    <Chip
+                                        label={text}
+                                        icon={<Icon />}
+                                        size="small"
+                                        component={tagUrl && 'a'}
+                                        target={tagUrl && '_blank'}
+                                        rel={tagUrl && 'noreferrer'}
+                                        href={tagUrl}
+                                        clickable={!!tagUrl}
+                                        variant={variant}
+                                        color={color}
+                                    />
+                                </Grid>
+                            ))}
+                        </Grid>
+                    )}
                 </Paper>
             </Zoom>
         </div>
@@ -95,17 +139,23 @@ function TileBox({ iconUrl, name, description, level, url }) {
 }
 
 TileBox.propTypes = {
-    iconUrl: PropTypes.elementType,
+    imageUrl: PropTypes.elementType,
     name: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
+    tooltip: PropTypes.string,
     level: PropTypes.number,
-    url: PropTypes.string
+    url: PropTypes.string,
+    hyperlinkTitle: PropTypes.bool,
+    tags: PropTypes.array
 };
 
 TileBox.defaultProps = {
-    iconUrl: undefined,
+    imageUrl: undefined,
+    tooltip: undefined,
     level: undefined,
-    url: undefined
+    url: undefined,
+    hyperlinkTitle: false,
+    tags: undefined
 };
 
 export default TileBox;
