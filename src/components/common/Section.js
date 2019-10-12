@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         paddingTop: theme.spacing(2)
     },
     bar: {
-        borderLeft: `7px solid ${theme.palette.divider}`
+        borderLeft: `7px solid ${theme.palette.primary.light}`
     },
     title: {
         paddingLeft: theme.spacing(1)

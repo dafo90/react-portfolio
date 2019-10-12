@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { Button, Divider } from '@material-ui/core';
+import { Grid, Button, Divider } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import LayoutHeader from '../LayoutHeader';
@@ -10,23 +10,24 @@ import TilesSection from '../../common/TilesSection';
 import { setLayout } from '../../../actions/actions';
 
 const useStyles = makeStyles(theme => ({
-    button: {
-        margin: theme.spacing(1)
+    buttonGrid: {
+        padding: theme.spacing(2)
     },
-    buttonIcon: {
-        paddingRight: theme.spacing(1)
+    divider: {
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(2)
     }
 }));
 
-const findLayoutByCode = (layouts, codeToFind) => layouts.find(({ code }) => code === codeToFind);
+const findLayoutByCode = (layouts, codeToFind) => layouts.find(({ code, enabled }) => enabled && code === codeToFind) || {};
 
 function AboutMe({ content, layouts }) {
     const dispatch = useDispatch();
     const classes = useStyles();
     const githubRepos = useSelector(state => state.githubRepos);
     const { skills } = content;
-    const { urls: resumeUrls, icon: ResumeIcon } = findLayoutByCode(layouts, 'resume');
-    const { urls: projectsUrls, icon: ProjectsIcon } = findLayoutByCode(layouts, 'projects');
+    const { urls: resumeUrls } = findLayoutByCode(layouts, 'resume');
+    const { urls: projectsUrls } = findLayoutByCode(layouts, 'projects');
     return (
         <React.Fragment>
             <LayoutHeader>
@@ -40,18 +41,18 @@ function AboutMe({ content, layouts }) {
                     tiles={skills}
                     onlyMainTiles
                 >
-                    <Button
-                        className={classes.button}
-                        variant="contained"
-                        size="medium"
-                        color="secondary"
-                        onClick={() => dispatch(setLayout(resumeUrls[0]))}
-                    >
-                        <ResumeIcon className={classes.buttonIcon} />
-                        View all skills...
-                    </Button>
+                    {resumeUrls && (
+                        <React.Fragment>
+                            <Grid className={classes.buttonGrid} container justify="center">
+                                <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(resumeUrls[0]))}>
+                                    View all Skills
+                                </Button>
+                            </Grid>
+                            <Divider className={classes.divider} />
+                        </React.Fragment>
+                    )}
                 </TilesSection>
-                <Divider />
+
                 <TilesSection
                     sectionTitle="GitHub Repositories"
                     sectionSubtitle="My Open Source Projects"
@@ -59,16 +60,13 @@ function AboutMe({ content, layouts }) {
                     onlyMainTiles
                     hyperlinkTitle
                 >
-                    <Button
-                        className={classes.button}
-                        variant="contained"
-                        size="medium"
-                        color="secondary"
-                        onClick={() => dispatch(setLayout(projectsUrls[0]))}
-                    >
-                        <ProjectsIcon className={classes.buttonIcon} />
-                        View all projects...
-                    </Button>
+                    {projectsUrls && (
+                        <Grid className={classes.buttonGrid} container justify="center">
+                            <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(projectsUrls[0]))}>
+                                View all Projects
+                            </Button>
+                        </Grid>
+                    )}
                 </TilesSection>
             </LayoutBody>
         </React.Fragment>

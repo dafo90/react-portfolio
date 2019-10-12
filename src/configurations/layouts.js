@@ -61,7 +61,7 @@ export default [
         buttonLabel: 'Resume',
         icon: FolderShared,
         homepage: false,
-        enabled: true,
+        enabled: false,
         content: {}
     },
     {
@@ -73,7 +73,7 @@ export default [
         buttonLabel: 'Projects',
         icon: DeveloperMode,
         homepage: false,
-        enabled: true,
+        enabled: false,
         content: {}
     },
     {
@@ -85,7 +85,7 @@ export default [
         buttonLabel: 'Contact',
         icon: Email,
         homepage: false,
-        enabled: true,
+        enabled: false,
         content: {}
     }
 ];

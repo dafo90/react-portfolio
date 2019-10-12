@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Grid, Fade } from '@material-ui/core';
 import uuid from 'uuid/v4';
-import deepOrange from '@material-ui/core/colors/deepOrange';
+import { deepOrange } from '@material-ui/core/colors';
 import Bullet from './Bullet';
 
 const prefixId = uuid();
@@ -10,7 +10,7 @@ const prefixId = uuid();
 const BulletsBar = React.forwardRef(({ className, bulletSize, level, startBulletsTransizion, isVisibleAfter, max, colorOffset, ...props }, ref) => {
     const bullets = [];
     for (let i = 0; i < max; i += 1) {
-        bullets.push({ id: `${prefixId}${i}`, index: i, color: i < level ? deepOrange[700 + colorOffset] : deepOrange[100 + colorOffset] });
+        bullets.push({ id: `${prefixId}${i}`, index: i, color: i < level ? deepOrange[700 + colorOffset] : deepOrange[300 + colorOffset] });
     }
     return (
         // eslint-disable-next-line react/jsx-props-no-spreading

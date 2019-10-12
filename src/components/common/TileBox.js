@@ -75,14 +75,7 @@ function TileBox({ imageUrl, name, description, tooltip, level, url, hyperlinkTi
                             </Typography>
                         </Grid>
                         {level && (
-                            <Grid
-                                xs="auto"
-                                item
-                                onMouseOver={() => setBulletsColorOffset(200)}
-                                onFocus={() => setBulletsColorOffset(200)}
-                                onMouseOut={() => setBulletsColorOffset(0)}
-                                onBlur={() => setBulletsColorOffset(0)}
-                            >
+                            <Grid xs="auto" item onMouseEnter={() => setBulletsColorOffset(200)} onMouseLeave={() => setBulletsColorOffset(0)}>
                                 <ArrowTooltip
                                     title={`${tooltip} (${level}/${maxLevel})`}
                                     placement="top"

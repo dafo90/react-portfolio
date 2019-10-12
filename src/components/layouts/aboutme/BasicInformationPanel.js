@@ -11,8 +11,7 @@ const useStyles = makeStyles(theme => ({
         fontWeight: 550
     },
     title: {
-        paddingTop: theme.spacing(3),
-        color: theme.palette.text.secondary
+        paddingTop: theme.spacing(3)
     },
     longBio: {
         paddingTop: theme.spacing(2),
@@ -64,7 +63,7 @@ function BasicInformationPanel({ layouts }) {
     const dispatch = useDispatch();
     const classes = useStyles();
     const { bioImage, name, title, longBio } = personalData;
-    const links = layouts.filter(({ homepage }) => !homepage);
+    const links = layouts.filter(({ homepage, enabled }) => enabled && !homepage);
     return (
         <Grid container spacing={4}>
             <Grid item xs={12} md>
@@ -72,7 +71,7 @@ function BasicInformationPanel({ layouts }) {
                     {name}
                 </Typography>
                 {title && (
-                    <Typography className={classes.title} variant="h5" align="left">
+                    <Typography className={classes.title} color="textSecondary" variant="h5" align="left">
                         {title}
                     </Typography>
                 )}
@@ -80,14 +79,7 @@ function BasicInformationPanel({ layouts }) {
                 {links.length && (
                     <Grid container className={classes.buttonsBar} justify="center" variant="body2" alignItems="center">
                         {links.map(({ id, buttonLabel, icon: Icon, urls }) => (
-                            <Button
-                                key={id}
-                                className={classes.button}
-                                variant="contained"
-                                size="medium"
-                                color="secondary"
-                                onClick={() => dispatch(setLayout(urls[0]))}
-                            >
+                            <Button key={id} className={classes.button} variant="outlined" size="medium" onClick={() => dispatch(setLayout(urls[0]))}>
                                 <Icon className={classes.buttonIcon} />
                                 {buttonLabel}
                             </Button>

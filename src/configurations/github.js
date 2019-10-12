@@ -36,7 +36,7 @@ export default {
                 text: completeLicense.spdx_id,
                 tooltip: 'License',
                 icon: Gavel,
-                color: 'default',
+                color: 'secondary',
                 variant: 'default',
                 url: completeLicense.html_url
             });
@@ -47,7 +47,7 @@ export default {
             text: language || 'Unknown',
             tooltip: 'Language',
             icon: Code,
-            color: 'default',
+            color: 'secondary',
             variant: 'default'
         });
 
@@ -65,7 +65,7 @@ export default {
                 text: watchers,
                 tooltip: 'Watchers',
                 icon: Visibility,
-                color: 'default',
+                color: 'secondary',
                 variant: 'outlined'
             });
 
@@ -74,7 +74,7 @@ export default {
                 text: stars,
                 tooltip: 'Stars',
                 icon: Star,
-                color: 'default',
+                color: 'secondary',
                 variant: 'outlined'
             });
 
@@ -83,7 +83,7 @@ export default {
                 text: forks,
                 tooltip: 'Forks',
                 icon: CallSplit,
-                color: 'default',
+                color: 'secondary',
                 variant: 'outlined'
             });
         }

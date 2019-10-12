@@ -25,11 +25,11 @@ const useStyles = makeStyles(theme => ({
     socialCircle: ({ iconSize }) => ({
         width: iconSize,
         height: iconSize,
-        background: theme.palette.secondary.light,
+        background: theme.palette.primary.light,
         fontSize: `${Number(iconSize.replace(/\D+/g, '')) / 1.6}px`,
         transition: '.2s ease',
         '&:hover': {
-            background: theme.palette.secondary.main,
+            background: theme.palette.primary.main,
             fontSize: `${Number(iconSize.replace(/\D+/g, '')) / 1.4}px`
         }
     })
@@ -80,7 +80,7 @@ function SocialButton({ tooltip, socialName, url, iconName, iconSize }) {
             disableHoverListener={!tooltip}
             disableTouchListener={!tooltip}
         >
-            <Avatar component="a" alt={socialName} href={url} target="_blank" rel="noreferrer" className={classes.socialCircle}>
+            <Avatar className={classes.socialCircle} component="a" alt={socialName} href={url} target="_blank" rel="noreferrer">
                 {findIconComponent(iconName)}
             </Avatar>
         </ArrowTooltip>
