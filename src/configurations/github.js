@@ -34,6 +34,7 @@ export default {
             tags.push({
                 id: uuid(),
                 text: completeLicense.spdx_id,
+                tooltip: 'License',
                 icon: Gavel,
                 color: 'default',
                 variant: 'default',
@@ -44,6 +45,7 @@ export default {
         tags.push({
             id: uuid(),
             text: language || 'Unknown',
+            tooltip: 'Language',
             icon: Code,
             color: 'default',
             variant: 'default'
