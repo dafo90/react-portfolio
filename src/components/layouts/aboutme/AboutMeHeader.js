@@ -1,27 +1,17 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { Grid, Typography, Button } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import personalData from '../../../configurations/personalData';
 import { setLayout } from '../../../actions/actions';
+import HeaderTitle from '../../common/HeaderTitle';
 
 const useStyles = makeStyles(theme => ({
-    name: {
-        fontWeight: 550
-    },
-    title: {
-        paddingTop: theme.spacing(3)
-    },
     longBio: {
         paddingTop: theme.spacing(2),
         textAlign: 'justify',
         textJustify: 'inter-word'
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary
     },
     bioImageBox: {
         float: 'left',
@@ -59,25 +49,18 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function BasicInformationPanel({ layouts }) {
+function AboutMeHeader({ layouts }) {
     const dispatch = useDispatch();
     const classes = useStyles();
     const { bioImage, name, title, longBio } = personalData;
     const links = layouts.filter(({ homepage, enabled }) => enabled && !homepage);
     return (
-        <Grid container spacing={4}>
-            <Grid item xs={12} md>
-                <Typography className={classes.name} variant="h3" align="left">
-                    {name}
-                </Typography>
-                {title && (
-                    <Typography className={classes.title} color="textSecondary" variant="h5" align="left">
-                        {title}
-                    </Typography>
-                )}
+        <Grid container spacing={4} justify="center">
+            <Grid item xs>
+                <HeaderTitle title={name} subtitle={title} />
                 {longBio && <div className={classes.longBio}>{longBio}</div>}
                 {links.length && (
-                    <Grid container className={classes.buttonsBar} justify="center" variant="body2" alignItems="center">
+                    <Grid container className={classes.buttonsBar} justify="center" alignItems="center">
                         {links.map(({ id, buttonLabel, icon: Icon, urls }) => (
                             <Button key={id} className={classes.button} variant="outlined" size="medium" onClick={() => dispatch(setLayout(urls[0]))}>
                                 <Icon className={classes.buttonIcon} />
@@ -87,7 +70,7 @@ function BasicInformationPanel({ layouts }) {
                     </Grid>
                 )}
             </Grid>
-            <Grid item xs={12} md="auto">
+            <Grid item xs="auto">
                 <div className={classes.bioImageBox}>
                     <img alt={name} src={bioImage} className={classes.bioImage} />
                 </div>
@@ -96,8 +79,8 @@ function BasicInformationPanel({ layouts }) {
     );
 }
 
-BasicInformationPanel.propTypes = {
+AboutMeHeader.propTypes = {
     layouts: PropTypes.array.isRequired
 };
 
-export default BasicInformationPanel;
+export default AboutMeHeader;

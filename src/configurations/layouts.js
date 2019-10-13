@@ -73,7 +73,7 @@ export default [
         buttonLabel: 'Projects',
         icon: DeveloperMode,
         homepage: false,
-        enabled: false,
+        enabled: true,
         content: {}
     },
     {

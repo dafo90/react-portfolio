@@ -3,6 +3,7 @@ import { Gavel, Code, CallSplit, Visibility, Star, BusinessCenter } from '@mater
 
 export default {
     username: 'dafo90',
+    url: 'https://github.com/dafo90',
     dateFormat: 'YYYY-MM-DDTHH:mm:ssZ',
     repos: [
         {
@@ -30,17 +31,15 @@ export default {
     buildTags: (archived, completeLicense, language, forks, watchers, stars) => {
         const tags = [];
 
-        if (completeLicense) {
-            tags.push({
-                id: uuid(),
-                text: completeLicense.spdx_id,
-                tooltip: 'License',
-                icon: Gavel,
-                color: 'secondary',
-                variant: 'default',
-                url: completeLicense.html_url
-            });
-        }
+        tags.push({
+            id: uuid(),
+            text: completeLicense ? completeLicense.spdx_id : '-',
+            tooltip: 'License',
+            icon: Gavel,
+            color: 'secondary',
+            variant: 'default',
+            url: completeLicense ? completeLicense.html_url : undefined
+        });
 
         tags.push({
             id: uuid(),

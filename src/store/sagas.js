@@ -35,7 +35,7 @@ function* buildRepoParams({
             main: false,
             imageUrl: undefined
         };
-        const completeLicense = (yield call(getGithubData, { url: license.url })).data;
+        const completeLicense = license && license.url && (yield call(getGithubData, { url: license.url })).data;
         const tags = github.buildTags(archived, completeLicense, language, forks, watchers, stars);
         return {
             id,

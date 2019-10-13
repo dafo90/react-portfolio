@@ -4,18 +4,19 @@ import { Grid, Button, Divider } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import LayoutHeader from '../LayoutHeader';
-import BasicInformationPanel from './BasicInformationPanel';
 import LayoutBody from '../LayoutBody';
+import AboutMeHeader from './AboutMeHeader';
 import TilesSection from '../../common/TilesSection';
 import { setLayout } from '../../../actions/actions';
 
 const useStyles = makeStyles(theme => ({
     buttonGrid: {
-        padding: theme.spacing(2)
+        paddingTop: theme.spacing(2),
+        paddingBottom: theme.spacing(2)
     },
     divider: {
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2)
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(4)
     }
 }));
 
@@ -31,7 +32,7 @@ function AboutMe({ content, layouts }) {
     return (
         <React.Fragment>
             <LayoutHeader>
-                <BasicInformationPanel layouts={layouts} />
+                <AboutMeHeader layouts={layouts} />
             </LayoutHeader>
             <LayoutBody>
                 <TilesSection
@@ -41,16 +42,16 @@ function AboutMe({ content, layouts }) {
                     tiles={skills}
                     onlyMainTiles
                 >
-                    {resumeUrls && (
-                        <React.Fragment>
+                    <React.Fragment>
+                        {resumeUrls && (
                             <Grid className={classes.buttonGrid} container justify="center">
                                 <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(resumeUrls[0]))}>
                                     View all Skills
                                 </Button>
                             </Grid>
-                            <Divider className={classes.divider} />
-                        </React.Fragment>
-                    )}
+                        )}
+                        <Divider className={classes.divider} />
+                    </React.Fragment>
                 </TilesSection>
 
                 <TilesSection

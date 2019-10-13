@@ -16,7 +16,7 @@ function TilesSection({ children, className, tooltip, sectionTitle, sectionSubti
     const visibleTiles = tiles.filter(({ main = false, enabled = true }) => enabled && (!onlyMainTiles || main));
     return visibleTiles.length ? (
         <div className={className}>
-            <Section title={sectionTitle} subtitle={sectionSubtitle} />
+            {sectionTitle && <Section title={sectionTitle} subtitle={sectionSubtitle} />}
             <Grid className={classes.tiles} container variant="body2" justify="center" spacing={3}>
                 {visibleTiles.map(({ id, imageUrl, name, description, url, level, tags, transparentImage }) => (
                     <Grid key={id} item>
@@ -43,7 +43,7 @@ TilesSection.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
     className: PropTypes.string,
     tooltip: PropTypes.string,
-    sectionTitle: PropTypes.string.isRequired,
+    sectionTitle: PropTypes.string,
     sectionSubtitle: PropTypes.string,
     tiles: PropTypes.array.isRequired,
     onlyMainTiles: PropTypes.bool,
@@ -54,6 +54,7 @@ TilesSection.defaultProps = {
     children: undefined,
     className: undefined,
     tooltip: undefined,
+    sectionTitle: undefined,
     sectionSubtitle: undefined,
     onlyMainTiles: false,
     hyperlinkTitle: false

@@ -2,10 +2,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Typography, Link, Grid, Zoom, Chip } from '@material-ui/core';
-import grey from '@material-ui/core/colors/grey';
 import useIsInViewport from 'use-is-in-viewport';
 import BulletsBar from './BulletsBar';
 import ArrowTooltip from './ArrowTooltip';
+import LinkImg from './LinkImg';
 
 const maxLevel = 6;
 const logoRadius = '3px';
@@ -18,24 +18,13 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(2)
     },
     logoHoverZoom: {
-        background: grey[300],
-        border: `1px solid ${theme.palette.divider}`,
-        maxWidth: `${Number(logoWidth.replace(/\D+/g, '')) + 2}px`,
-        overflow: 'hidden',
+        maxWidth: logoWidth,
         borderRadius: logoRadius
     },
-    logo: ({ transparentImage }) => ({
+    logo: {
         maxWidth: logoWidth,
-        objectPosition: 'center',
-        objectFit: 'cover',
-        opacity: transparentImage ? 0.2 : 1,
-        verticalAlign: 'middle',
-        borderRadius: logoRadius,
-        transition: 'transform .5s ease',
-        '&:hover': {
-            transform: 'scale(1.2)'
-        }
-    }),
+        borderRadius: logoRadius
+    },
     name: {
         paddingBottom: theme.spacing(1)
     },
@@ -98,11 +87,14 @@ function TileBox({ imageUrl, name, description, tooltip, level, url, hyperlinkTi
                     <Grid container variant="body2" justify="space-between" alignItems="center" spacing={2}>
                         {imageUrl && (
                             <Grid xs="auto" item>
-                                <Link component="a" target="_blank" rel="noreferrer" href={url}>
-                                    <div className={classes.logoHoverZoom}>
-                                        <img className={classes.logo} src={imageUrl} alt={name} />
-                                    </div>
-                                </Link>
+                                <LinkImg
+                                    imgClassName={classes.logo}
+                                    imgBoxClassName={classes.logoHoverZoom}
+                                    src={imageUrl}
+                                    alt={name}
+                                    href={url}
+                                    transparentImage={transparentImage}
+                                />
                             </Grid>
                         )}
                         <Grid xs item>

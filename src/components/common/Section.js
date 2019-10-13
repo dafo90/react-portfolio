@@ -37,8 +37,8 @@ function Section({ className, title, subtitle }) {
 
 Section.propTypes = {
     className: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string
+    title: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
+    subtitle: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
 };
 
 Section.defaultProps = {
