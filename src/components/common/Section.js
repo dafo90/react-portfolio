@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 
 function Section({ className, title, subtitle }) {
     const classes = useStyles();
-    const rootClassName = classNames(classes.root, { [`${className}`]: className });
+    const rootClassName = classNames(classes.root, { [className]: !!className });
     return (
         <div className={rootClassName}>
             <div className={classes.bar}>

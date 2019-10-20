@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 function Layout({ children, className }) {
     const classes = useStyles();
-    const rootClassName = classNames(classes.root, { [`${className}`]: className });
+    const rootClassName = classNames(classes.root, { [className]: !!className });
     return <div className={rootClassName}>{children}</div>;
 }
 

@@ -7,10 +7,10 @@ export default {
     dateFormat: 'YYYY-MM-DDTHH:mm:ssZ',
     repos: [
         {
-            id: 142853515,
-            name: 'caldera-forms-anti-spam',
+            id: 215624053,
+            name: 'tic-tac-toe',
             enabled: true,
-            main: false,
+            main: true,
             imageUrl: undefined
         },
         {
@@ -26,6 +26,13 @@ export default {
             enabled: true,
             main: true,
             imageUrl: '/logos/telegram-bot-docker-manager.png'
+        },
+        {
+            id: 142853515,
+            name: 'caldera-forms-anti-spam',
+            enabled: true,
+            main: false,
+            imageUrl: undefined
         }
     ],
     buildTags: (archived, completeLicense, language, forks, watchers, stars) => {

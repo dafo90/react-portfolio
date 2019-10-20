@@ -38,7 +38,7 @@ function Portfolio() {
             <MobileAppBar />
 
             {/* Drawer Menu */}
-            <nav className={classes.drawer} aria-label="mailbox folders">
+            <nav className={classes.drawer}>
                 {/* Drawer Mobile View */}
                 <Hidden mdUp implementation="css">
                     <MobileDrawer maxWidth={drawerWidth} />

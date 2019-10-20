@@ -22,8 +22,8 @@ const useStyles = makeStyles(() => ({
 
 function OnHoverImg({ src, alt, href, imgClassName: rootImgClassName, imgBoxClassName: rootImgBoxClassName, scale, transparentImage }) {
     const classes = useStyles({ scale, transparentImage });
-    const imgClassName = classNames(classes.img, { [`${rootImgClassName}`]: rootImgClassName });
-    const imgBoxClassName = classNames(classes.imgBox, { [`${rootImgBoxClassName}`]: rootImgBoxClassName });
+    const imgClassName = classNames(classes.img, { [rootImgClassName]: rootImgClassName });
+    const imgBoxClassName = classNames(classes.imgBox, { [rootImgBoxClassName]: rootImgBoxClassName });
     return (
         <Link component="a" target="_blank" rel="noreferrer" href={href}>
             <div className={imgBoxClassName}>
