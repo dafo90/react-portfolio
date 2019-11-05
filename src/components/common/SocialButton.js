@@ -70,7 +70,7 @@ const findIconComponent = socialIconName => {
     }
 };
 
-function SocialButton({ tooltip, socialName, url, iconName, iconSize }) {
+const SocialButton = ({ tooltip, socialName, url, iconName, iconSize }) => {
     const classes = useStyles({ iconSize });
     return (
         <ArrowTooltip
@@ -85,7 +85,7 @@ function SocialButton({ tooltip, socialName, url, iconName, iconSize }) {
             </Avatar>
         </ArrowTooltip>
     );
-}
+};
 
 SocialButton.propTypes = {
     tooltip: PropTypes.string,

@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function PortfolioFooter() {
+const PortfolioFooter = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -32,6 +32,6 @@ function PortfolioFooter() {
             </Container>
         </div>
     );
-}
+};
 
 export default PortfolioFooter;

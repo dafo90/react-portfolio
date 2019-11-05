@@ -9,7 +9,7 @@ const initialState = {
     githubRepos: []
 };
 
-function rootReducer(state = initialState, action) {
+const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_LAYOUT:
             return {
@@ -34,6 +34,6 @@ function rootReducer(state = initialState, action) {
         default:
             return state;
     }
-}
+};
 
 export default rootReducer;

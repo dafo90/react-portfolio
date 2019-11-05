@@ -2,7 +2,7 @@ import { Link, Typography } from '@material-ui/core';
 import React from 'react';
 import packageJson from '../../package.alias.json';
 
-function Copyright() {
+const Copyright = () => {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             Copyright ©
@@ -12,6 +12,6 @@ function Copyright() {
             {` ${new Date().getFullYear()}.`}
         </Typography>
     );
-}
+};
 
 export default Copyright;

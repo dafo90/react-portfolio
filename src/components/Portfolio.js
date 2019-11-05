@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function Portfolio() {
+const Portfolio = () => {
     const classes = useStyles();
     return (
         <div className={classes.root}>
@@ -57,6 +57,6 @@ function Portfolio() {
             </main>
         </div>
     );
-}
+};
 
 export default Portfolio;

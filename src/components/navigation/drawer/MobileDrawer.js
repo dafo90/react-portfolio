@@ -13,7 +13,7 @@ const useStyles = makeStyles(() => ({
     })
 }));
 
-function MobileDrawer({ width, maxWidth }) {
+const MobileDrawer = ({ width, maxWidth }) => {
     const dispatch = useDispatch();
     const classes = useStyles({ width, maxWidth });
     const theme = useTheme();
@@ -35,7 +35,7 @@ function MobileDrawer({ width, maxWidth }) {
             <DrawerMenu />
         </Drawer>
     );
-}
+};
 
 MobileDrawer.propTypes = {
     width: PropTypes.string,

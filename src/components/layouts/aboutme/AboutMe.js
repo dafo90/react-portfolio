@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
 
 const findLayoutByCode = (layouts, codeToFind) => layouts.find(({ code, enabled }) => enabled && code === codeToFind) || {};
 
-function AboutMe({ content, layouts }) {
+const AboutMe = ({ content, layouts }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
     const githubRepos = useSelector(state => state.githubRepos);
@@ -72,7 +72,7 @@ function AboutMe({ content, layouts }) {
             </LayoutBody>
         </React.Fragment>
     );
-}
+};
 
 AboutMe.propTypes = {
     content: PropTypes.object.isRequired,

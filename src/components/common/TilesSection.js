@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Section from './Section';
-import TileBox from './TileBox';
+import TileBox from './tile/TileCard';
 
 const useStyles = makeStyles(theme => ({
     tiles: {
@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function TilesSection({ children, className, tooltip, sectionTitle, sectionSubtitle, tiles, onlyMainTiles, hyperlinkTitle }) {
+const TilesSection = ({ children, className, tooltip, sectionTitle, sectionSubtitle, tiles, onlyMainTiles, hyperlinkTitle }) => {
     const classes = useStyles();
     const visibleTiles = tiles.filter(({ main = false, enabled = true }) => enabled && (!onlyMainTiles || main));
     return visibleTiles.length ? (
@@ -37,7 +37,7 @@ function TilesSection({ children, className, tooltip, sectionTitle, sectionSubti
             {children}
         </div>
     ) : null;
-}
+};
 
 TilesSection.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),

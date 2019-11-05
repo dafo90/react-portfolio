@@ -2,7 +2,7 @@ import { Typography } from '@material-ui/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Address({ className, address }) {
+const Address = ({ className, address }) => {
     return (
         <div className={className}>
             {address.street && (
@@ -22,7 +22,7 @@ function Address({ className, address }) {
             )}
         </div>
     );
-}
+};
 
 Address.propTypes = {
     className: PropTypes.string,

@@ -11,26 +11,45 @@ function* setLayout(action) {
     yield put(closeMobileDrawer());
 }
 
-function* buildRepoParams({
-    id,
-    name,
-    description,
-    html_url: url,
-    license,
-    fork,
-    created_at: createdAt,
-    updated_at: updatedAt,
-    pushed_at: pushedAt,
-    language,
-    archived,
-    disabled,
-    forks_count: forks,
-    watchers_count: watchers,
-    stargazers_count: stars,
-    contributors_url: contributorsUrl
-}) {
+// function* buildRepoParams({
+//     id,
+//     name,
+//     description,
+//     html_url: url,
+//     license,
+//     fork,
+//     created_at: createdAt,
+//     updated_at: updatedAt,
+//     pushed_at: pushedAt,
+//     language,
+//     archived,
+//     disabled,
+//     forks_count: forks,
+//     watchers_count: watchers,
+//     stargazers_count: stars,
+//     contributors_url: contributorsUrl
+// }) {
+function* buildRepoParams(configRepo, repos) {
     try {
-        const { enabled, main, imageUrl } = (github.repos && github.repos.find(({ id: configId }) => id === configId)) || {
+        const {
+            id,
+            name,
+            description,
+            html_url: url,
+            license,
+            fork,
+            created_at: createdAt,
+            updated_at: updatedAt,
+            pushed_at: pushedAt,
+            language,
+            archived,
+            disabled,
+            forks_count: forks,
+            watchers_count: watchers,
+            stargazers_count: stars,
+            contributors_url: contributorsUrl
+        } = (repos && repos.find(({ id: repoId }) => repoId === configRepo.id)) || {
+            id: configRepo.id,
             enabled: false,
             main: false,
             imageUrl: undefined
@@ -39,13 +58,11 @@ function* buildRepoParams({
         const tags = github.buildTags(archived, completeLicense, language, forks, watchers, stars);
         return {
             id,
-            enabled,
-            main,
             name,
             description,
             url,
-            imageUrl: imageUrl || '/logos/github.svg',
-            transparentImage: !imageUrl,
+            imageUrl: '/logos/github.svg',
+            transparentImage: !configRepo.imageUrl,
             fork,
             createdAt: moment(createdAt, github.dateFormat).toDate(),
             updatedAt: moment(updatedAt, github.dateFormat).toDate(),
@@ -53,7 +70,8 @@ function* buildRepoParams({
             archived,
             disabled,
             contributorsUrl,
-            tags
+            tags,
+            ...configRepo
         };
     } catch (err) {
         return { enabled: false };
@@ -71,7 +89,8 @@ function* requestGithubRepos() {
         repos = repos.concat(data);
         page += 1;
     } while (data && data.length);
-    repos = yield all(repos.filter(({ private: privateRepo }) => !privateRepo).map(repo => buildRepoParams(repo)));
+    repos = repos.filter(({ private: privateRepo }) => !privateRepo);
+    repos = yield all(github.repos && github.repos.map(configRepo => buildRepoParams(configRepo, repos)));
     yield put(receiveGithubRepos(repos));
 }
 

@@ -3,7 +3,7 @@ import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import SocialButton from './SocialButton';
 
-function SocialButtonsBar({ className, socials, iconSize }) {
+const SocialButtonsBar = ({ className, socials, iconSize }) => {
     const visibleSocials = socials.filter(({ enabled }) => enabled);
     return visibleSocials.length ? (
         <Grid className={className} container justify="center" variant="body2" alignItems="center" spacing={1}>
@@ -14,7 +14,7 @@ function SocialButtonsBar({ className, socials, iconSize }) {
             ))}
         </Grid>
     ) : null;
-}
+};
 
 SocialButtonsBar.propTypes = {
     className: PropTypes.string,

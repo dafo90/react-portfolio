@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function LayoutHeader({ children }) {
+const LayoutHeader = ({ children }) => {
     const classes = useStyles();
     return (
         <React.Fragment>
@@ -29,7 +29,7 @@ function LayoutHeader({ children }) {
             <Divider />
         </React.Fragment>
     );
-}
+};
 
 LayoutHeader.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])

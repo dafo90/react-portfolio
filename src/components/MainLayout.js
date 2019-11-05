@@ -3,7 +3,7 @@ import { Route, Router, Switch } from 'react-router-dom';
 import history from '../utils/history';
 import layouts from '../configurations/layouts';
 
-function MainLayout() {
+const MainLayout = () => {
     return (
         <Router history={history}>
             <Switch>
@@ -15,6 +15,6 @@ function MainLayout() {
             </Switch>
         </Router>
     );
-}
+};
 
 export default MainLayout;

@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function AboutMeHeader({ layouts }) {
+const AboutMeHeader = ({ layouts }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
     const { bioImage, name, title, longBio } = personalData;
@@ -77,7 +77,7 @@ function AboutMeHeader({ layouts }) {
             </Grid>
         </Grid>
     );
-}
+};
 
 AboutMeHeader.propTypes = {
     layouts: PropTypes.array.isRequired

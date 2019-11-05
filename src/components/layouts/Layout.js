@@ -28,11 +28,11 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function Layout({ children, className }) {
+const Layout = ({ children, className }) => {
     const classes = useStyles();
     const rootClassName = classNames(classes.root, { [className]: !!className });
     return <div className={rootClassName}>{children}</div>;
-}
+};
 
 Layout.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),

@@ -68,7 +68,7 @@ const useStylesArrow = makeStyles(theme => ({
     popper: arrowGenerator(theme.palette.grey[900])
 }));
 
-function ArrowTooltip({ title, ...props }) {
+const ArrowTooltip = ({ title, ...props }) => {
     const { arrow, ...classes } = useStylesArrow();
     const [arrowRef, setArrowRef] = React.useState(null);
 
@@ -97,7 +97,7 @@ function ArrowTooltip({ title, ...props }) {
             }
         />
     );
-}
+};
 
 ArrowTooltip.propTypes = {
     title: PropTypes.string.isRequired

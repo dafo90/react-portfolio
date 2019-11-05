@@ -8,45 +8,50 @@ export default {
     repos: [
         {
             id: 215624053,
-            name: 'tic-tac-toe',
+            name: 'Tic-Tac-Toe',
             enabled: true,
             main: true,
-            imageUrl: undefined
+            description: 'Tic-Tac-Toe game built with React, Material-UI, Redux and Saga'
         },
         {
             id: 182591319,
-            name: 'node-password-generator',
+            name: 'Node Password Generator',
             enabled: true,
-            main: true,
-            imageUrl: undefined
+            main: true
         },
         {
             id: 186187657,
-            name: 'telegram-bot-docker-manager',
+            name: 'Telegram Bot Docker Manager',
             enabled: true,
-            main: true,
-            imageUrl: '/logos/telegram-bot-docker-manager.png'
+            main: true
+        },
+        {
+            id: 218816700,
+            name: 'Docker - vsftpd',
+            enabled: true,
+            main: false
         },
         {
             id: 142853515,
-            name: 'caldera-forms-anti-spam',
+            name: 'Caldera Forms Anti Spam',
             enabled: true,
-            main: false,
-            imageUrl: undefined
+            main: false
         }
     ],
     buildTags: (archived, completeLicense, language, forks, watchers, stars) => {
         const tags = [];
 
-        tags.push({
-            id: uuid(),
-            text: completeLicense ? completeLicense.spdx_id : '-',
-            tooltip: 'License',
-            icon: Gavel,
-            color: 'secondary',
-            variant: 'default',
-            url: completeLicense ? completeLicense.html_url : undefined
-        });
+        if (completeLicense) {
+            tags.push({
+                id: uuid(),
+                text: completeLicense.spdx_id,
+                tooltip: 'License',
+                icon: Gavel,
+                color: 'secondary',
+                variant: 'default',
+                url: completeLicense.html_url
+            });
+        }
 
         tags.push({
             id: uuid(),

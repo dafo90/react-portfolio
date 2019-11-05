@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function Section({ className, title, subtitle, imgSrc, imgAlt, imgHref }) {
+const Section = ({ className, title, subtitle, imgSrc, imgAlt, imgHref }) => {
     const classes = useStyles();
     return (
         <div className={className}>
@@ -47,7 +47,7 @@ function Section({ className, title, subtitle, imgSrc, imgAlt, imgHref }) {
             </Grid>
         </div>
     );
-}
+};
 
 Section.propTypes = {
     className: PropTypes.string,

@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function DrawerHeader({ className }) {
+const DrawerHeader = ({ className }) => {
     const classes = useStyles();
     const { name, profileImage, shortBio, address } = personalData;
     return (
@@ -53,7 +53,7 @@ function DrawerHeader({ className }) {
             {address && <Address address={address} iconSize="30px" />}
         </div>
     );
-}
+};
 
 DrawerHeader.propTypes = {
     className: PropTypes.string

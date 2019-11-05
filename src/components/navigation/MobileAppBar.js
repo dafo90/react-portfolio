@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function MobileAppBar() {
+const MobileAppBar = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
     const { label: title } = useSelector(state => state.layout);
@@ -34,6 +34,6 @@ function MobileAppBar() {
             </Toolbar>
         </AppBar>
     );
-}
+};
 
 export default MobileAppBar;

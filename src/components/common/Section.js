@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function Section({ className, title, subtitle }) {
+const Section = ({ className, title, subtitle }) => {
     const classes = useStyles();
     const rootClassName = classNames(classes.root, { [className]: !!className });
     return (
@@ -33,7 +33,7 @@ function Section({ className, title, subtitle }) {
             )}
         </div>
     );
-}
+};
 
 Section.propTypes = {
     className: PropTypes.string,

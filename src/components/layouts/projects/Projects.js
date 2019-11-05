@@ -6,7 +6,7 @@ import TilesSection from '../../common/TilesSection';
 import HeaderTitle from '../../common/HeaderTitle';
 import github from '../../../configurations/github';
 
-function Projects() {
+const Projects = () => {
     const githubRepos = useSelector(state => state.githubRepos);
     return (
         <React.Fragment>
@@ -24,6 +24,6 @@ function Projects() {
             </LayoutBody>
         </React.Fragment>
     );
-}
+};
 
 export default Projects;

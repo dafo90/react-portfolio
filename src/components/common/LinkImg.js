@@ -20,7 +20,7 @@ const useStyles = makeStyles(() => ({
     })
 }));
 
-function OnHoverImg({ src, alt, href, imgClassName: rootImgClassName, imgBoxClassName: rootImgBoxClassName, scale, transparentImage }) {
+const OnHoverImg = ({ src, alt, href, imgClassName: rootImgClassName, imgBoxClassName: rootImgBoxClassName, scale, transparentImage }) => {
     const classes = useStyles({ scale, transparentImage });
     const imgClassName = classNames(classes.img, { [rootImgClassName]: rootImgClassName });
     const imgBoxClassName = classNames(classes.imgBox, { [rootImgBoxClassName]: rootImgBoxClassName });
@@ -31,7 +31,7 @@ function OnHoverImg({ src, alt, href, imgClassName: rootImgClassName, imgBoxClas
             </div>
         </Link>
     );
-}
+};
 
 OnHoverImg.propTypes = {
     src: PropTypes.string.isRequired,

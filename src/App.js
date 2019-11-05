@@ -6,7 +6,7 @@ import Portfolio from './components/Portfolio';
 import NotFound from './components/NotFound';
 import useFetchBaseData from './hooks/useFetchBaseData';
 
-function App() {
+const App = () => {
     useFetchBaseData();
     return (
         <Router history={history}>
@@ -23,6 +23,6 @@ function App() {
             </Switch>
         </Router>
     );
-}
+};
 
 export default App;

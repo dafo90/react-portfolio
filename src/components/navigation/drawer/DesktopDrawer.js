@@ -10,7 +10,7 @@ const useStyles = makeStyles(() => ({
     })
 }));
 
-function DesktopDrawer({ width }) {
+const DesktopDrawer = ({ width }) => {
     const classes = useStyles({ width });
     return (
         <Drawer
@@ -23,7 +23,7 @@ function DesktopDrawer({ width }) {
             <DrawerMenu />
         </Drawer>
     );
-}
+};
 
 DesktopDrawer.propTypes = {
     width: PropTypes.string.isRequired

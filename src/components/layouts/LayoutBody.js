@@ -14,10 +14,10 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function LayoutBody({ children }) {
+const LayoutBody = ({ children }) => {
     const classes = useStyles();
     return <Layout className={classes.body}>{children}</Layout>;
-}
+};
 
 LayoutBody.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])

@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-function DrawerMenu() {
+const DrawerMenu = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
     return (
@@ -35,6 +35,6 @@ function DrawerMenu() {
             </List>
         </React.Fragment>
     );
-}
+};
 
 export default DrawerMenu;
