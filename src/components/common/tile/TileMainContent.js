@@ -12,13 +12,26 @@ const useStyles = makeStyles(theme => ({
     cardMedia: ({ scale, transparentImage, zoomImage }) => ({
         opacity: transparentImage ? 0.2 : 1,
         transition: 'transform .5s ease',
-        transform: zoomImage ? `scale(${scale})` : undefined
+        transform: zoomImage ? `scale(${scale})` : undefined,
+        [theme.breakpoints.only('xs')]: {
+            height: '160px'
+        },
+        [theme.breakpoints.only('sm')]: {
+            height: '190px'
+        },
+        [theme.breakpoints.up('md')]: {
+            height: '230px'
+        }
     }),
     imgBox: {
         overflow: 'hidden'
     },
     levelBar: {
         paddingBottom: theme.spacing(1)
+    },
+    description: {
+        overflow: 'auto',
+        height: '100%'
     }
 }));
 
@@ -60,7 +73,7 @@ const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, t
                         </Grid>
                     )}
                 </Grid>
-                <Typography variant="body2" color="textSecondary" align="justify" component="p">
+                <Typography variant="body2" color="textSecondary" align="justify" component="p" className={classes.description}>
                     {description}
                 </Typography>
             </CardContent>

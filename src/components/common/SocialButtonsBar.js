@@ -7,9 +7,9 @@ const SocialButtonsBar = ({ className, socials, iconSize }) => {
     const visibleSocials = socials.filter(({ enabled }) => enabled);
     return visibleSocials.length ? (
         <Grid className={className} container justify="center" variant="body2" alignItems="center" spacing={1}>
-            {visibleSocials.map(({ url, iconName, name: socialName, id }) => (
+            {visibleSocials.map(({ url, icon, name: socialName, id }) => (
                 <Grid key={id} item>
-                    <SocialButton tooltip={socialName} socialName={socialName} url={url} iconName={iconName} iconSize={iconSize} />
+                    <SocialButton tooltip={socialName} socialName={socialName} url={url} icon={icon} iconSize={iconSize} />
                 </Grid>
             ))}
         </Grid>

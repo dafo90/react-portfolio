@@ -1,4 +1,6 @@
 import uuid from 'uuid/v4';
+// import { FacebookShareButton, LinkedinShareButton, TwitterShareButton, WhatsappShareButton, EmailShareButton } from 'react-share';
+// import { TiSocialFacebook, TiSocialInstagram, TiSocialGithub, TiSocialLinkedin, TiSocialFlickr } from 'react-icons/ti';
 import { Gavel, Code, CallSplit, Visibility, Star, BusinessCenter } from '@material-ui/icons';
 
 export default {
@@ -12,6 +14,14 @@ export default {
             enabled: true,
             main: true,
             description: 'Tic-Tac-Toe game built with React, Material-UI, Redux and Saga'
+            // share: [
+            //     { socialButton: FacebookShareButton, key: 'facebook', icon: TiSocialFacebook },
+            //     { socialButton: LinkedinShareButton, key: 'linkedin' },
+            //     { socialButton: TwitterShareButton, key: 'twitter' },
+            //     { socialButton: WhatsappShareButton, key: 'whatsapp' },
+            //     { socialButton: EmailShareButton, key: 'email' }
+            // ],
+            // demo: 'https://dafo90.github.io/tic-tac-toe'
         },
         {
             id: 182591319,

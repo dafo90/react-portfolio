@@ -1,39 +1,40 @@
 import uuid from 'uuid/v4';
+import { TiSocialFacebook, TiSocialInstagram, TiSocialGithub, TiSocialLinkedin, TiSocialFlickr } from 'react-icons/ti';
 
 export default [
     {
         id: uuid(),
         name: 'LinkedIn',
         url: 'https://linkedin.com/in/didierdafond',
-        iconName: 'linkedin',
+        icon: TiSocialLinkedin,
         enabled: true
     },
     {
         id: uuid(),
         name: 'GitHub',
         url: 'https://github.com/dafo90',
-        iconName: 'github',
+        icon: TiSocialGithub,
         enabled: true
     },
     {
         id: uuid(),
         name: 'Flickr',
         url: 'https://flickr.com/people/140115200@N07',
-        iconName: 'flickr',
+        icon: TiSocialFlickr,
         enabled: true
     },
     {
         id: uuid(),
         name: 'Facebook',
         url: 'https://facebook.com/didier.dafond',
-        iconName: 'facebook',
+        icon: TiSocialFacebook,
         enabled: true
     },
     {
         id: uuid(),
         name: 'Instagram',
         url: 'https://instagram.com/didierdafond',
-        iconName: 'instagram',
+        icon: TiSocialInstagram,
         enabled: true
     }
 ];

@@ -8,13 +8,27 @@ import TileMainContent from './TileMainContent';
 
 const transitionDelay = 500;
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(theme => ({
     card: {
-        maxWidth: '350px'
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        [theme.breakpoints.only('xs')]: {
+            maxWidth: '250px'
+        },
+        [theme.breakpoints.only('sm')]: {
+            width: '300px'
+        },
+        [theme.breakpoints.up('md')]: {
+            width: '350px'
+        }
+    },
+    footer: {
+        marginTop: 'auto'
     }
 }));
 
-const TileCard = ({ imageUrl, name, description, tooltip, level, url, hyperlinkTitle, tags, transparentImage }) => {
+const TileCard = ({ imageUrl, name, description, tooltip, level, url, hyperlinkTitle, tags, transparentImage, share, demo }) => {
     const classes = useStyles({ transparentImage });
     const [isTileInViewport, tilePaper] = useIsInViewport();
     const [transitionIn, setTransitionIn] = useState(false);
@@ -49,46 +63,51 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, hyperlinkT
                         level={level}
                         transparentImage={transparentImage}
                         transitionIn={transitionIn}
+                        className={classes.content}
                     />
                 )}
-                {tags && tags.length && (
-                    <CardContent>
-                        <Grid container variant="body2" alignItems="center" spacing={1}>
-                            {tags.map(({ id, text, icon: Icon, variant, color, url: tagUrl, tooltip: tagTooltip }) => (
-                                <Grid key={id} item>
-                                    <ArrowTooltip
-                                        title={tagTooltip || '-'}
-                                        placement="bottom"
-                                        disableFocusListener={!tagTooltip}
-                                        disableHoverListener={!tagTooltip}
-                                        disableTouchListener={!tagTooltip}
-                                    >
-                                        <Chip
-                                            label={text}
-                                            icon={<Icon />}
-                                            size="small"
-                                            component={tagUrl && 'a'}
-                                            target={tagUrl && '_blank'}
-                                            rel={tagUrl && 'noreferrer'}
-                                            href={tagUrl}
-                                            clickable={!!tagUrl}
-                                            variant={variant}
-                                            color={color}
-                                        />
-                                    </ArrowTooltip>
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </CardContent>
-                )}
-                <CardActions>
-                    <Button size="small" color="primary">
-                        Share
-                    </Button>
-                    <Button size="small" color="primary">
-                        Demo
-                    </Button>
-                </CardActions>
+                <div className={classes.footer}>
+                    {tags && tags.length && (
+                        <CardContent>
+                            <Grid container variant="body2" alignItems="center" spacing={1}>
+                                {tags.map(({ id, text, icon: Icon, variant, color, url: tagUrl, tooltip: tagTooltip }) => (
+                                    <Grid key={id} item>
+                                        <ArrowTooltip
+                                            title={tagTooltip || '-'}
+                                            placement="bottom"
+                                            disableFocusListener={!tagTooltip}
+                                            disableHoverListener={!tagTooltip}
+                                            disableTouchListener={!tagTooltip}
+                                        >
+                                            <Chip
+                                                label={text}
+                                                icon={<Icon />}
+                                                size="small"
+                                                component={tagUrl && 'a'}
+                                                target={tagUrl && '_blank'}
+                                                rel={tagUrl && 'noreferrer'}
+                                                href={tagUrl}
+                                                clickable={!!tagUrl}
+                                                variant={variant}
+                                                color={color}
+                                            />
+                                        </ArrowTooltip>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </CardContent>
+                    )}
+                    {((share && share.length) || demo) && (
+                        <CardActions className={classes.actions}>
+                            {share && share.length && share.map(({ socialButton: SocialButton, key }) => <SocialButton key={key} url={url} />)}
+                            {demo && (
+                                <Button size="small" color="primary">
+                                    Demo
+                                </Button>
+                            )}
+                        </CardActions>
+                    )}
+                </div>
             </Card>
         </Zoom>
     );
@@ -103,7 +122,9 @@ TileCard.propTypes = {
     url: PropTypes.string,
     hyperlinkTitle: PropTypes.bool,
     tags: PropTypes.array,
-    transparentImage: PropTypes.bool
+    transparentImage: PropTypes.bool,
+    share: PropTypes.array,
+    demo: PropTypes.string
 };
 
 TileCard.defaultProps = {
@@ -113,7 +134,9 @@ TileCard.defaultProps = {
     url: undefined,
     hyperlinkTitle: false,
     tags: undefined,
-    transparentImage: false
+    transparentImage: false,
+    share: undefined,
+    demo: undefined
 };
 
 export default TileCard;

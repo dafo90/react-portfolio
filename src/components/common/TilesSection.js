@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import Section from './Section';
-import TileBox from './tile/TileCard';
+import TileCard from './tile/TileCard';
 
 const useStyles = makeStyles(theme => ({
     tiles: {
@@ -18,9 +18,9 @@ const TilesSection = ({ children, className, tooltip, sectionTitle, sectionSubti
         <div className={className}>
             {sectionTitle && <Section title={sectionTitle} subtitle={sectionSubtitle} />}
             <Grid className={classes.tiles} container variant="body2" justify="center" spacing={3}>
-                {visibleTiles.map(({ id, imageUrl, name, description, url, level, tags, transparentImage }) => (
+                {visibleTiles.map(({ id, imageUrl, name, description, url, level, tags, transparentImage, share, demo }) => (
                     <Grid key={id} item>
-                        <TileBox
+                        <TileCard
                             tooltip={tooltip}
                             imageUrl={imageUrl}
                             name={name}
@@ -30,6 +30,8 @@ const TilesSection = ({ children, className, tooltip, sectionTitle, sectionSubti
                             hyperlinkTitle={hyperlinkTitle}
                             tags={tags}
                             transparentImage={transparentImage}
+                            share={share}
+                            demo={demo}
                         />
                     </Grid>
                 ))}
