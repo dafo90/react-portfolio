@@ -85,7 +85,7 @@ export default [
         buttonLabel: 'Contact',
         icon: Email,
         homepage: false,
-        enabled: false,
+        enabled: true,
         content: {}
     }
 ];

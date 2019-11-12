@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
         paddingBottom: theme.spacing(2)
     },
     logo: {
-        maxHeight: '100px'
+        height: '100px'
     }
 }));
 
@@ -19,11 +19,11 @@ const Section = ({ className, title, subtitle, imgSrc, imgAlt, imgHref }) => {
         <div className={className}>
             <Grid container spacing={4} variant="body2" justify="center" alignItems="center">
                 <Grid item xs>
-                    <Typography className={classes.title} variant="h3" align="right">
+                    <Typography className={classes.title} variant="h3" align="center">
                         {title}
                     </Typography>
                     {subtitle && (
-                        <Typography variant="h6" color="textSecondary" align="right">
+                        <Typography variant="h6" color="textSecondary" align="center">
                             {subtitle}
                         </Typography>
                     )}
@@ -31,14 +31,7 @@ const Section = ({ className, title, subtitle, imgSrc, imgAlt, imgHref }) => {
                 {imgSrc && imgAlt && (
                     <Grid item xs="auto">
                         {imgHref ? (
-                            <LinkImg
-                                imgClassName={classes.logo}
-                                imgBoxClassName={classes.logoHoverZoom}
-                                src={imgSrc}
-                                alt={imgAlt}
-                                href={imgHref}
-                                scale={1.0}
-                            />
+                            <LinkImg imgClassName={classes.logo} src={imgSrc} alt={imgAlt} href={imgHref} scale={1.0} />
                         ) : (
                             <img className={classes.logo} src={imgSrc} alt={imgAlt} />
                         )}

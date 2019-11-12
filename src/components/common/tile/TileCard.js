@@ -99,7 +99,13 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, hyperlinkT
                     )}
                     {((share && share.length) || demo) && (
                         <CardActions className={classes.actions}>
-                            {share && share.length && share.map(({ socialButton: SocialButton, key }) => <SocialButton key={key} url={url} />)}
+                            {share &&
+                                share.length &&
+                                share.map(({ socialButton: SocialButton, key, icon: Icon }) => (
+                                    <SocialButton key={key} url={url}>
+                                        <Icon />
+                                    </SocialButton>
+                                ))}
                             {demo && (
                                 <Button size="small" color="primary">
                                     Demo

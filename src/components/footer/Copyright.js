@@ -5,7 +5,8 @@ import packageJson from '../../package.alias.json';
 const Copyright = () => {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
-            Copyright ©
+            {/* eslint-disable-next-line react/jsx-curly-brace-presence */}
+            {'Copyright © '}
             <Link color="inherit" href={packageJson.homepage}>
                 {packageJson.author}
             </Link>

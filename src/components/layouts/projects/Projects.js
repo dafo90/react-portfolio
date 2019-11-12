@@ -14,7 +14,7 @@ const Projects = () => {
                 <HeaderTitle
                     title="GitHub Repositories"
                     subtitle="All my personal Project Sources are published on GitHub"
-                    imgSrc="/logos/github.svg"
+                    imgSrc="/logos/github-color.svg"
                     imgAlt="GitHub"
                     imgHref={github.url}
                 />
