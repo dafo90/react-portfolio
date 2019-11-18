@@ -1,12 +1,20 @@
-import { SET_LAYOUT, OPEN_MOBILE_DRAWER, CLOSE_MOBILE_DRAWER, GITHUB_RECEIVE_REPOS } from '../actions/actions';
+import { SET_LAYOUT, OPEN_MOBILE_DRAWER, CLOSE_MOBILE_DRAWER, GITHUB_RECEIVE_REPOS, SET_SELECTED_INDEX_MENU } from '../actions/actions';
 import layouts from '../configurations/layouts';
 
-const findLayoutByPath = urlToFind => layouts.find(({ urls }) => urls && urls.find(url => url === urlToFind));
+const findLayoutByPath = urlToFind => layouts.find(({ enabled, urls }) => enabled && urls && urls.includes(urlToFind));
+const findLayoutIndex = urlToFind => {
+    const { index } = layouts
+        .filter(({ enabled, urls }) => enabled && urls && urls.length)
+        .map(({ urls }, i) => ({ urls, index: i }))
+        .find(({ urls }) => urls.includes(urlToFind));
+    return index;
+};
 
 const initialState = {
     layout: findLayoutByPath(window.location.pathname),
     mobileDrawerOpen: false,
-    githubRepos: []
+    githubRepos: [],
+    selectedIndexMenu: findLayoutIndex(window.location.pathname)
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -30,6 +38,11 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 githubRepos: action.repos
+            };
+        case SET_SELECTED_INDEX_MENU:
+            return {
+                ...state,
+                selectedIndexMenu: action.selectedIndexMenu
             };
         default:
             return state;

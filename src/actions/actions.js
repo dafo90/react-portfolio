@@ -3,6 +3,7 @@ export const OPEN_MOBILE_DRAWER = 'OPEN_MOBILE_DRAWER';
 export const CLOSE_MOBILE_DRAWER = 'CLOSE_MOBILE_DRAWER';
 export const GITHUB_REQUEST_REPOS = 'GITHUB_REQUEST_REPOS';
 export const GITHUB_RECEIVE_REPOS = 'GITHUB_RECEIVE_REPOS';
+export const SET_SELECTED_INDEX_MENU = 'SET_SELECTED_INDEX_MENU';
 
 export const setLayout = url => ({
     type: SET_LAYOUT,
@@ -15,6 +16,11 @@ export const openMobileDrawer = () => ({
 
 export const closeMobileDrawer = () => ({
     type: CLOSE_MOBILE_DRAWER
+});
+
+export const setSelectedIndexMenu = selectedIndexMenu => ({
+    type: SET_SELECTED_INDEX_MENU,
+    selectedIndexMenu
 });
 
 // GitHub actions

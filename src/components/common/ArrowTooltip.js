@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import PropTypes from 'prop-types';
@@ -70,7 +70,7 @@ const useStylesArrow = makeStyles(theme => ({
 
 const ArrowTooltip = ({ title, ...props }) => {
     const { arrow, ...classes } = useStylesArrow();
-    const [arrowRef, setArrowRef] = React.useState(null);
+    const [arrowRef, setArrowRef] = useState(null);
 
     return (
         <Tooltip

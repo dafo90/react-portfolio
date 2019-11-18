@@ -2,33 +2,21 @@ import { put, call, all, takeEvery, takeLatest } from 'redux-saga/effects';
 import moment from 'moment';
 import history from '../utils/history';
 import github from '../configurations/github';
-import { SET_LAYOUT, GITHUB_REQUEST_REPOS, closeMobileDrawer, receiveGithubRepos } from '../actions/actions';
+import { SET_LAYOUT, GITHUB_REQUEST_REPOS, closeMobileDrawer, receiveGithubRepos, setSelectedIndexMenu } from '../actions/actions';
 import { getGithubData } from './proxies';
+import layouts from '../configurations/layouts';
 
 function* setLayout(action) {
     const { url } = action;
+    const { index: selectedIndexMenu } = layouts
+        .filter(({ enabled, urls }) => enabled && urls && urls.length)
+        .map(({ urls }, i) => ({ urls, index: i }))
+        .find(({ urls }) => urls.includes(url));
+    yield put(setSelectedIndexMenu(selectedIndexMenu));
     history.push(url);
     yield put(closeMobileDrawer());
 }
 
-// function* buildRepoParams({
-//     id,
-//     name,
-//     description,
-//     html_url: url,
-//     license,
-//     fork,
-//     created_at: createdAt,
-//     updated_at: updatedAt,
-//     pushed_at: pushedAt,
-//     language,
-//     archived,
-//     disabled,
-//     forks_count: forks,
-//     watchers_count: watchers,
-//     stargazers_count: stars,
-//     contributors_url: contributorsUrl
-// }) {
 function* buildRepoParams(configRepo, repos) {
     try {
         const {

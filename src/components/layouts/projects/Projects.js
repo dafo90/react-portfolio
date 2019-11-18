@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@material-ui/core';
 import { useSelector } from 'react-redux';
 import LayoutHeader from '../LayoutHeader';
 import LayoutBody from '../LayoutBody';
@@ -13,7 +14,15 @@ const Projects = () => {
             <LayoutHeader>
                 <HeaderTitle
                     title="GitHub Repositories"
-                    subtitle="All my personal Project Sources are published on GitHub"
+                    subtitle={
+                        <div>
+                            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+                            All my personal Project Sources are published on{' '}
+                            <Link color="inherit" href={github.url} target="_blank" rel="noreferrer">
+                                GitHub
+                            </Link>
+                        </div>
+                    }
                     imgSrc="/logos/github-color.svg"
                     imgAlt="GitHub"
                     imgHref={github.url}
