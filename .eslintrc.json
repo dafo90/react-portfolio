@@ -41,6 +41,7 @@
     },
     "globals": {
         "document": true,
-        "window": true
+        "window": true,
+        "FormData": true
     }
 }

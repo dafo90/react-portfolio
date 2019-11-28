@@ -1,4 +1,12 @@
-import { SET_LAYOUT, OPEN_MOBILE_DRAWER, CLOSE_MOBILE_DRAWER, GITHUB_RECEIVE_REPOS, SET_SELECTED_INDEX_MENU } from '../actions/actions';
+import {
+    SET_LAYOUT,
+    OPEN_MOBILE_DRAWER,
+    CLOSE_MOBILE_DRAWER,
+    GITHUB_RECEIVE_REPOS,
+    SET_SELECTED_INDEX_MENU,
+    OPEN_SNACKBAR,
+    CLOSE_SNACKBAR
+} from '../actions/actions';
 import layouts from '../configurations/layouts';
 
 const findLayoutByPath = urlToFind => layouts.find(({ enabled, urls }) => enabled && urls && urls.includes(urlToFind));
@@ -14,7 +22,10 @@ const initialState = {
     layout: findLayoutByPath(window.location.pathname),
     mobileDrawerOpen: false,
     githubRepos: [],
-    selectedIndexMenu: findLayoutIndex(window.location.pathname)
+    selectedIndexMenu: findLayoutIndex(window.location.pathname),
+    openSnackbar: false,
+    snackbarVariant: 'success',
+    snackbarMessage: undefined
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -43,6 +54,18 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 selectedIndexMenu: action.selectedIndexMenu
+            };
+        case OPEN_SNACKBAR:
+            return {
+                ...state,
+                openSnackbar: true,
+                snackbarVariant: action.snackbarVariant,
+                snackbarMessage: action.snackbarMessage
+            };
+        case CLOSE_SNACKBAR:
+            return {
+                ...state,
+                openSnackbar: false
             };
         default:
             return state;

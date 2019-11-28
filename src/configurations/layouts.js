@@ -86,6 +86,9 @@ export default [
         icon: Email,
         homepage: false,
         enabled: true,
-        content: {}
+        content: {
+            googleRecaptchaClientSiteKey: '6LfnwsQUAAAAAM4sjdJb7BPUe-Bv0SzZksDJQCkB',
+            formSubmitUrl: 'https://formspree.io/xyyzybdj'
+        }
     }
 ];

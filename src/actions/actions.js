@@ -4,6 +4,8 @@ export const CLOSE_MOBILE_DRAWER = 'CLOSE_MOBILE_DRAWER';
 export const GITHUB_REQUEST_REPOS = 'GITHUB_REQUEST_REPOS';
 export const GITHUB_RECEIVE_REPOS = 'GITHUB_RECEIVE_REPOS';
 export const SET_SELECTED_INDEX_MENU = 'SET_SELECTED_INDEX_MENU';
+export const OPEN_SNACKBAR = 'OPEN_SNACKBAR';
+export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR';
 
 export const setLayout = url => ({
     type: SET_LAYOUT,
@@ -32,4 +34,16 @@ export const requestGithubRepos = () => ({
 export const receiveGithubRepos = repos => ({
     type: GITHUB_RECEIVE_REPOS,
     repos
+});
+
+// Snackbar actions
+
+export const openSnackbar = (variant, message) => ({
+    type: OPEN_SNACKBAR,
+    snackbarVariant: variant,
+    snackbarMessage: message
+});
+
+export const closeSnackbar = () => ({
+    type: CLOSE_SNACKBAR
 });
