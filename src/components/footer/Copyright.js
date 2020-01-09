@@ -7,7 +7,7 @@ const Copyright = () => {
         <Typography variant="body2" color="textSecondary" align="center">
             {/* eslint-disable-next-line react/jsx-curly-brace-presence */}
             {'Copyright © '}
-            <Link color="inherit" href={packageJson.homepage}>
+            <Link color="inherit" href={packageJson.homepage} underline="always">
                 {packageJson.author}
             </Link>
             {` ${new Date().getFullYear()}.`}

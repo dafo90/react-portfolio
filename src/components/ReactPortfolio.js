@@ -1,14 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Hidden, Slide, Snackbar } from '@material-ui/core';
-import { useSelector, useDispatch } from 'react-redux';
+import { Hidden } from '@material-ui/core';
 import Footer from './footer/Footer';
 import MainLayout from './MainLayout';
 import MobileAppBar from './navigation/MobileAppBar';
 import MobileDrawer from './navigation/drawer/MobileDrawer';
 import DesktopDrawer from './navigation/drawer/DesktopDrawer';
-import SnackbarContentWrapper from './common/SnackbarContentWrapper';
-import { closeSnackbar } from '../actions/actions';
 
 const drawerWidth = '280px';
 
@@ -33,22 +30,8 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-// eslint-disable-next-line react/jsx-props-no-spreading
-const TransitionDown = props => <Slide {...props} direction="down" />;
-
-const Portfolio = () => {
-    const dispatch = useDispatch();
+const ReactPortfolio = () => {
     const classes = useStyles();
-
-    const isSnackbarOpen = useSelector(state => state.openSnackbar);
-    const snackbarVariant = useSelector(state => state.snackbarVariant);
-    const snackbarMessage = useSelector(state => state.snackbarMessage);
-
-    const handleCloseSnackbar = (event, reason) => {
-        if (reason === 'clickaway') return;
-        dispatch(closeSnackbar());
-    };
-
     return (
         <React.Fragment>
             <div className={classes.root}>
@@ -74,20 +57,8 @@ const Portfolio = () => {
                     <Footer className={classes.footer} />
                 </main>
             </div>
-            <Snackbar
-                TransitionComponent={TransitionDown}
-                anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'center'
-                }}
-                open={isSnackbarOpen}
-                autoHideDuration={4000}
-                onClose={handleCloseSnackbar}
-            >
-                <SnackbarContentWrapper variant={snackbarVariant} message={snackbarMessage} onClose={handleCloseSnackbar} />
-            </Snackbar>
         </React.Fragment>
     );
 };
 
-export default Portfolio;
+export default ReactPortfolio;

@@ -20,10 +20,10 @@ const useStyles = makeStyles(() => ({
     })
 }));
 
-const OnHoverImg = ({ src, alt, href, imgClassName: rootImgClassName, imgBoxClassName: rootImgBoxClassName, scale, transparentImage }) => {
+const LinkImg = ({ src, alt, href, imgClassName: rootImgClassName, imgBoxClassName: rootImgBoxClassName, scale, transparentImage }) => {
     const classes = useStyles({ scale, transparentImage });
-    const imgClassName = classNames(classes.img, { [rootImgClassName]: rootImgClassName });
-    const imgBoxClassName = classNames(classes.imgBox, { [rootImgBoxClassName]: rootImgBoxClassName });
+    const imgClassName = classNames(classes.img, rootImgClassName);
+    const imgBoxClassName = classNames(classes.imgBox, rootImgBoxClassName);
     return (
         <Link component="a" target="_blank" rel="noreferrer" href={href}>
             <div className={imgBoxClassName}>
@@ -33,7 +33,7 @@ const OnHoverImg = ({ src, alt, href, imgClassName: rootImgClassName, imgBoxClas
     );
 };
 
-OnHoverImg.propTypes = {
+LinkImg.propTypes = {
     src: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired,
     href: PropTypes.string.isRequired,
@@ -43,11 +43,11 @@ OnHoverImg.propTypes = {
     transparentImage: PropTypes.bool
 };
 
-OnHoverImg.defaultProps = {
+LinkImg.defaultProps = {
     imgClassName: undefined,
     imgBoxClassName: undefined,
     scale: 1.3,
     transparentImage: false
 };
 
-export default OnHoverImg;
+export default LinkImg;

@@ -1,17 +1,16 @@
 import React, { useState, useRef } from 'react';
-import { Paper, TextField, Button, Typography } from '@material-ui/core';
-import { Send } from '@material-ui/icons';
+import { Paper, TextField, Button, Typography, Snackbar, Slide } from '@material-ui/core';
+import { Email, Send } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import SnackbarContentWrapper from '../../common/SnackbarContentWrapper';
 import LayoutHeader from '../LayoutHeader';
 import HeaderTitle from '../../common/HeaderTitle';
 import SocialButtonsBar from '../../common/SocialButtonsBar';
 import LayoutBody from '../LayoutBody';
 import socials from '../../../configurations/socials';
-import { openSnackbar } from '../../../actions/actions';
 
 const useStyles = makeStyles(theme => ({
     socialsBar: {
@@ -31,11 +30,16 @@ const useStyles = makeStyles(theme => ({
     },
     buttonIcon: {
         paddingRight: theme.spacing(1)
+    },
+    icon: {
+        fontSize: '170px'
     }
 }));
 
+// eslint-disable-next-line react/jsx-props-no-spreading
+const TransitionDown = props => <Slide {...props} direction="down" />;
+
 const Contact = ({ content }) => {
-    const dispatch = useDispatch();
     const classes = useStyles();
 
     const recaptchaRef = useRef({});
@@ -44,6 +48,7 @@ const Contact = ({ content }) => {
 
     const [form, setForm] = useState({});
     const [error, setError] = useState({});
+    const [snackbarData, setSnackbarData] = useState({ open: false, variant: 'success', message: '' });
 
     const isValid = (errorFields, formFields) =>
         !Object.keys(errorFields).find(errorField => errorFields[errorField]) &&
@@ -66,13 +71,13 @@ const Contact = ({ content }) => {
         axios
             .post(formSubmitUrl, bodyFormData)
             .then(() => {
-                dispatch(openSnackbar('success', 'Thanks for contacting me, I will reply to you as soon as possible!'));
                 recaptchaRef.current.reset(recaptchaRef.current.getWidgetId());
+                setSnackbarData({ open: true, variant: 'success', message: 'Thanks for contacting me, I will reply to you as soon as possible!' });
                 setForm({});
                 setError({});
             })
             .catch(() => {
-                dispatch(openSnackbar('error', 'Something went wrong'));
+                setSnackbarData({ open: true, variant: 'error', message: 'Something went wrong' });
             });
     };
 
@@ -101,6 +106,11 @@ const Contact = ({ content }) => {
         setError({ ...error, [field]: undefined });
     };
 
+    const handleCloseSnackbar = (event, reason) => {
+        if (reason === 'clickaway') return;
+        setSnackbarData({ open: false, variant: 'success', message: '' });
+    };
+
     return (
         <React.Fragment>
             <LayoutHeader>
@@ -112,8 +122,7 @@ const Contact = ({ content }) => {
                             <SocialButtonsBar socials={socials} iconSize="22px" className={classes.socialsBar} />
                         </div>
                     }
-                    imgSrc="/logos/mail.svg"
-                    imgAlt="Contact"
+                    icon={<Email className={classes.icon} />}
                 />
             </LayoutHeader>
             <LayoutBody>
@@ -193,6 +202,18 @@ const Contact = ({ content }) => {
                     </form>
                 </Paper>
             </LayoutBody>
+            <Snackbar
+                TransitionComponent={TransitionDown}
+                anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'center'
+                }}
+                open={snackbarData.open}
+                autoHideDuration={4000}
+                onClose={handleCloseSnackbar}
+            >
+                <SnackbarContentWrapper variant={snackbarData.variant} message={snackbarData.message} onClose={handleCloseSnackbar} />
+            </Snackbar>
         </React.Fragment>
     );
 };

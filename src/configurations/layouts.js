@@ -1,4 +1,7 @@
+/* eslint-disable react/jsx-curly-brace-presence */
+import React from 'react';
 import { Person, FolderShared, Email, DeveloperMode } from '@material-ui/icons';
+import { Link } from '@material-ui/core';
 import uuid from 'uuid/v4';
 import AboutMe from '../components/layouts/aboutme/AboutMe';
 import Contact from '../components/layouts/contact/Contact';
@@ -61,8 +64,169 @@ export default [
         buttonLabel: 'Resume',
         icon: FolderShared,
         homepage: false,
-        enabled: false,
-        content: {}
+        enabled: true,
+        content: {
+            skills: [
+                {
+                    id: uuid(),
+                    title: 'Programming',
+                    description: 'Java · JavaScript · ActionScript · LaTeX · Bash · C/C++',
+                    image: '/icons/dev.png'
+                },
+                { id: uuid(), title: 'Back-end', description: 'Spring & Spring Boot · NodeJS (FeathersJS & Express)', image: '/icons/gear.png' },
+                {
+                    id: uuid(),
+                    title: 'Front-end',
+                    description: 'React · Redux & Saga · Material-UI · HTML5 · CSS · Flex · JSP',
+                    image: '/icons/frames.png'
+                },
+                { id: uuid(), title: 'Database', description: 'Oracle Database · MySQL · MongoDB', image: '/icons/bookshelf.png' },
+                {
+                    id: uuid(),
+                    title: 'DevOps',
+                    description: 'Docker · Rancher · Jenkins · Kibana · Atlassian Suite · Nexus',
+                    image: '/icons/speedometer.png'
+                },
+                {
+                    id: uuid(),
+                    title: 'Tools',
+                    description: 'Npm · Maven · Git · Tomcat & JBoss · Postman · IntelliJ IDEA · Visual Studio Code · NetBeans',
+                    image: '/icons/tools.png'
+                },
+                { id: uuid(), title: 'CMS', description: 'WordPress', image: '/icons/browser.png' },
+                { id: uuid(), title: 'Hardware', description: 'Arduino · Raspberry', image: '/icons/computer.png' }
+            ],
+            languages: [
+                { id: uuid(), title: 'Italian', description: 'Mother tongue', image: '/flags/italy.png' },
+                {
+                    id: uuid(),
+                    title: 'English',
+                    description: 'Technical - Good technical notions, basic spoken and writing',
+                    image: '/flags/unitedkingdom.png'
+                },
+                { id: uuid(), title: 'German', description: 'Intermediate - Good spoken and written notions', image: '/flags/germany.png' },
+                { id: uuid(), title: 'French', description: 'Basic - Basic spoken and written notions', image: '/flags/france.png' }
+            ],
+            courses: [
+                {
+                    id: uuid(),
+                    title: '2019',
+                    description: 'M001: MongoDB Basics',
+                    others: 'MongoDB University',
+                    image: '/logos/mongodbuniversity.png'
+                },
+                {
+                    id: uuid(),
+                    title: '2016',
+                    description: 'ITIL Foundation certificate in IT Service Management',
+                    others: 'AXELOS',
+                    image: '/logos/itil.jpeg'
+                },
+                {
+                    id: uuid(),
+                    title: '2012',
+                    description: 'Zertifikat Deutsch TELC B1',
+                    others: 'Carl Duisberg, D-78315 Radolfzell (Germany)',
+                    image: '/logos/telc.png'
+                }
+            ],
+            awards: [
+                {
+                    id: uuid(),
+                    title: '2010',
+                    description: 'Third best grade of Technical Professional Maturity, Scuola Arti e Mestieri di Bellinzona (SAMB)',
+                    image: '/icons/trophy.png'
+                }
+            ],
+            knowMeMore: [
+                {
+                    id: uuid(),
+                    title: 'Good knowledge of electronics in general',
+                    image: '/icons/bolt.png'
+                },
+                { id: uuid(), title: 'Passionate about combustion engines (ICE) and the automotive world in general', image: '/icons/car.png' },
+                { id: uuid(), title: "80's Arcade Cabinet Machine enthusiast; built five entirely by myself", image: '/icons/gamecontroller.png' },
+                {
+                    id: uuid(),
+                    title: 'Active in the carnival group of Castione (Sciatt) as a committee mebmer since 2014 and accountant since 2018',
+                    image: '/icons/trends.png'
+                }
+            ],
+            worksAndSchools: [
+                {
+                    id: uuid(),
+                    enabled: true,
+                    imageUrl: '/logos/eoc.svg',
+                    imageAlt: 'EOC',
+                    date: '2014 - Present',
+                    title: (
+                        <div>
+                            {'Full-Stack Developer '}
+                            <Link color="inherit" underline="always" href="https://www.eoc.ch" target="_top" rel="noreferrer">
+                                @EOC
+                            </Link>
+                        </div>
+                    ),
+                    subtitle: 'Ente Ospedaliero Cantonale, CH-6500 Bellinzona',
+                    description:
+                        "Full-Stack developer mainly in Java (Spring & Spring Boot) and Oracle Database as back-end and React Hooks as front-end. Since the end of 2017 the back-end's development moved gradually on NodeJS (with framework FeathersJS) and MongoDB as database. Using Jenkins as a build & deploy system, Docker (with Rancher) as a service manager and Kibana as a log aggregator."
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    imageUrl: '/logos/supsi.png',
+                    imageAlt: 'SUPSI',
+                    date: '2011 - 2014',
+                    title: (
+                        <div>
+                            {"Bachelor's in Computer Science "}
+                            <Link color="inherit" underline="always" href="http://www.supsi.ch" target="_top" rel="noreferrer">
+                                @SUPSI
+                            </Link>
+                        </div>
+                    ),
+                    subtitle: 'Scuola Universitaria della Svizzera Italiana, CH-6928 Manno',
+                    description:
+                        "Diploma's project: P2P photo sharing via gesture recognition. Experience with basic AI in gesture recognition and the (old) Android framework."
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    imageUrl: '/logos/arbedo-castione.svg',
+                    imageAlt: 'Arbedo-Castione',
+                    date: '2010 - 2011',
+                    url: 'https://www.arbedocastione.ch',
+                    title: (
+                        <div>
+                            {'Civil Service '}
+                            <Link color="inherit" underline="always" href="https://www.arbedocastione.ch" target="_top" rel="noreferrer">
+                                @Municipality of Arbedo-Castione
+                            </Link>
+                        </div>
+                    ),
+                    subtitle: 'Municipio di Arbedo-Castione, CH-6517 Arbedo',
+                    description:
+                        'Mainly administrative work with Microsoft Office suite, cadastral map updating and two months (one in 2016 and one in 2017) of landscaping and gardening work. Ended in 2017.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    imageUrl: '/logos/samb.png',
+                    imageAlt: 'SAMB',
+                    date: '2006 - 2010',
+                    title: (
+                        <div>
+                            {'Federal Proficiency Certificate and Certificate of Technical Professional Maturity '}
+                            <Link color="inherit" underline="always" href="http://www.samb.ti.ch" target="_top" rel="noreferrer">
+                                @SAMB
+                            </Link>
+                        </div>
+                    ),
+                    subtitle: 'Scuola Arti e Mestieri Bellinzona, CH-6500 Bellinzona',
+                    description: "Electronics' notions and development of simple software for microprocessors."
+                }
+            ]
+        }
     },
     {
         id: uuid(),

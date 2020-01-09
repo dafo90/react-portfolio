@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import SocialButton from './SocialButton';
 
 const SocialButtonsBar = ({ className, socials, iconSize }) => {
-    const visibleSocials = socials.filter(({ enabled }) => enabled);
+    const visibleSocials = socials.filter(({ enabled = false }) => enabled);
     return visibleSocials.length ? (
         <Grid className={className} container justify="center" variant="body2" alignItems="center" spacing={1}>
             {visibleSocials.map(({ url, icon, name: socialName, id }) => (

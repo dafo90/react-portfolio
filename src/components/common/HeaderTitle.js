@@ -2,18 +2,14 @@ import { Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import LinkImg from './LinkImg';
 
 const useStyles = makeStyles(theme => ({
     title: {
         paddingBottom: theme.spacing(2)
-    },
-    logo: {
-        height: '100px'
     }
 }));
 
-const Section = ({ className, title, subtitle, imgSrc, imgAlt, imgHref }) => {
+const Section = ({ className, title, subtitle, icon }) => {
     const classes = useStyles();
     return (
         <div className={className}>
@@ -28,13 +24,9 @@ const Section = ({ className, title, subtitle, imgSrc, imgAlt, imgHref }) => {
                         </Typography>
                     )}
                 </Grid>
-                {imgSrc && imgAlt && (
+                {icon && (
                     <Grid item xs="auto">
-                        {imgHref ? (
-                            <LinkImg imgClassName={classes.logo} src={imgSrc} alt={imgAlt} href={imgHref} scale={1.0} />
-                        ) : (
-                            <img className={classes.logo} src={imgSrc} alt={imgAlt} />
-                        )}
+                        {icon}
                     </Grid>
                 )}
             </Grid>
@@ -46,17 +38,13 @@ Section.propTypes = {
     className: PropTypes.string,
     title: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
     subtitle: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-    imgSrc: PropTypes.string,
-    imgAlt: PropTypes.string,
-    imgHref: PropTypes.string
+    icon: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
 };
 
 Section.defaultProps = {
     className: undefined,
     subtitle: undefined,
-    imgSrc: undefined,
-    imgAlt: undefined,
-    imgHref: undefined
+    icon: undefined
 };
 
 export default Section;
