@@ -12,7 +12,7 @@ export default {
         date: '09.10.1990',
         format: 'DD.MM.YYYY'
     },
-    shortBio: `Hi 👋, I'm Didier Dafond and I'm a Full-Stack Developer.`,
+    shortBio: `Hi 👋, I'm Didier Dafond and I'm a Full-Stack Developer`,
     longBio: (
         <React.Fragment>
             <p>

@@ -4,11 +4,10 @@ import { Avatar, Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { blueGrey } from '@material-ui/core/colors';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 import Section from './Section';
-
-const contentStyleColor = 'rgb(20, 30, 50)';
 
 const useStyles = makeStyles(theme => ({
     title: {
@@ -37,10 +36,10 @@ const TimelineTiles = ({ className, sectionTitle, sectionSubtitle, tiles }) => {
                     <VerticalTimelineElement
                         key={id}
                         className="vertical-timeline-element--work"
-                        contentStyle={{ background: contentStyleColor, color: theme.palette.primary }}
-                        contentArrowStyle={{ borderRight: `7px solid  ${contentStyleColor}` }}
+                        contentStyle={{ background: blueGrey[500], color: theme.palette.primary }}
+                        contentArrowStyle={{ borderRight: `7px solid  ${blueGrey[500]}` }}
                         date={date}
-                        iconStyle={{ background: contentStyleColor, color: theme.palette.primary }}
+                        iconStyle={{ background: blueGrey[500], color: theme.palette.primary }}
                         icon={<Avatar src={imageUrl} alt={imageAlt} className={classes.logo} />}
                     >
                         <div>

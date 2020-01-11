@@ -32,6 +32,13 @@ export default {
             main: false
         },
         {
+            id: 230647506,
+            name: 'Raspberry Pi Scripts',
+            enabled: true,
+            main: false,
+            description: 'Raspberry Pi Scripts to manage power on/off button and one fan in PWM mode'
+        },
+        {
             id: 142853515,
             name: 'Caldera Forms Anti Spam',
             enabled: true,

@@ -36,12 +36,95 @@ export default [
                     id: uuid(),
                     enabled: true,
                     main: true,
+                    level: 5,
+                    imageUrl: '/logos/npm.svg',
+                    url: 'https://www.npmjs.com/',
+                    name: 'npm',
+                    description: 'Before you can even use Node.js or React, getting in touch with npm is mandatory.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 5,
+                    imageUrl: '/logos/eslint.svg',
+                    url: 'https://eslint.org',
+                    name: 'ESLint',
+                    description: 'Once tried it is impossible to do without it. Since I use JavaScript ESLint is my inseparable tool.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 4,
+                    imageUrl: '/logos/nodejs.svg',
+                    url: 'https://nodejs.org',
+                    name: 'Node.js',
+                    description: 'Starting from the end of 2017 Node.js has supported Java as back-end technology in my developer life.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 4,
+                    imageUrl: '/logos/feathersjs.svg',
+                    url: 'https://feathersjs.com',
+                    name: 'Feathers',
+                    description:
+                        'I always used Node.js with Feathers. Like Spring for Java, Feathers is a framework to simplify the development of REST APIs in Node.js.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 5,
+                    imageUrl: '/logos/react.svg',
+                    url: 'https://reactjs.org',
+                    name: 'React (Hooks)',
+                    description: 'I started using React around the same time as Node.js. To better understand this technology I created this webpage.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 5,
+                    imageUrl: '/logos/redux-saga.svg',
+                    url: 'https://redux-saga.js.org',
+                    name: 'Redux and Saga',
+                    description: 'To build complex Apps with react this two libraries are indispensable.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 4,
+                    imageUrl: '/logos/material.svg',
+                    url: 'https://material-ui.com',
+                    name: 'Material-UI',
+                    description: 'After a few months with Semantic UI, the power and cleanliness of Material-UI "imposed" its introduction.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 4,
+                    imageUrl: '/logos/mongodb.svg',
+                    url: 'https://www.mongodb.com',
+                    name: 'MongoDB',
+                    description:
+                        'To complete the transition to current technologies, MongoDB is absolutly the DB that best fits a server Node.js (for flexibility and method of use).'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
                     level: 6,
                     imageUrl: '/logos/java.svg',
                     url: 'https://www.javascript.com',
                     name: 'Java EE',
                     description: 'Java is the language I use mainly since 2014, notwithstanding JavaScript in the last few years is taking over.'
                 },
+                // maven
                 {
                     id: uuid(),
                     enabled: true,
@@ -51,6 +134,77 @@ export default [
                     url: 'https://spring.io',
                     name: 'Spring & Spring Boot',
                     description: 'Spring (and Spring Boot) is the framework for Java I use since 2014 to create web services.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 5,
+                    imageUrl: '/logos/oracle.svg',
+                    url: 'https://www.oracle.com',
+                    name: 'Oracle DB',
+                    description: 'Before using MongoDB the main database that I used was Oracle Database.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 5,
+                    imageUrl: '/logos/git.svg',
+                    url: 'https://git-scm.com',
+                    name: 'Git',
+                    description: 'Git... Can you really develop without it!?'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 2,
+                    imageUrl: '/logos/rancher.svg',
+                    url: 'https://rancher.com',
+                    name: 'Rancher',
+                    description: 'I use Rancher (litterally as user) to manage the deployed Apps.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 3,
+                    imageUrl: '/logos/docker.svg',
+                    url: 'https://www.docker.com',
+                    name: 'Docker',
+                    description: 'Quite the same of Rancher, but in this case I use Docker a little bit deeper with my home server.'
+                },
+                // raspberry
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 5,
+                    imageUrl: '/logos/arduino.svg',
+                    url: 'https://www.arduino.cc',
+                    name: 'Arduino',
+                    description: 'Arduino is more like one of my hobbies. I like being able to build small, low-cost circuits at home.'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 5,
+                    imageUrl: '/logos/wordpress.svg',
+                    url: 'https://wordpress.com',
+                    name: 'WordPress',
+                    description: 'In some cases the fastest, simplest and most immediate choice...'
+                },
+                {
+                    id: uuid(),
+                    enabled: true,
+                    main: true,
+                    level: 5,
+                    imageUrl: '/logos/latex.svg',
+                    url: 'https://www.latex-project.org',
+                    name: 'LaTeX',
+                    description: 'Simply LaTeX is my favorite typesetting system!'
                 }
             ]
         }
@@ -162,7 +316,7 @@ export default [
                     title: (
                         <div>
                             {'Full-Stack Developer '}
-                            <Link color="inherit" underline="always" href="https://www.eoc.ch" target="_top" rel="noreferrer">
+                            <Link color="inherit" underline="always" href="https://www.eoc.ch" target="_blank" rel="noreferrer">
                                 @EOC
                             </Link>
                         </div>
@@ -180,7 +334,7 @@ export default [
                     title: (
                         <div>
                             {"Bachelor's in Computer Science "}
-                            <Link color="inherit" underline="always" href="http://www.supsi.ch" target="_top" rel="noreferrer">
+                            <Link color="inherit" underline="always" href="http://www.supsi.ch" target="_blank" rel="noreferrer">
                                 @SUPSI
                             </Link>
                         </div>
@@ -199,7 +353,7 @@ export default [
                     title: (
                         <div>
                             {'Civil Service '}
-                            <Link color="inherit" underline="always" href="https://www.arbedocastione.ch" target="_top" rel="noreferrer">
+                            <Link color="inherit" underline="always" href="https://www.arbedocastione.ch" target="_blank" rel="noreferrer">
                                 @Municipality of Arbedo-Castione
                             </Link>
                         </div>
@@ -217,7 +371,7 @@ export default [
                     title: (
                         <div>
                             {'Federal Proficiency Certificate and Certificate of Technical Professional Maturity '}
-                            <Link color="inherit" underline="always" href="http://www.samb.ti.ch" target="_top" rel="noreferrer">
+                            <Link color="inherit" underline="always" href="http://www.samb.ti.ch" target="_blank" rel="noreferrer">
                                 @SAMB
                             </Link>
                         </div>
