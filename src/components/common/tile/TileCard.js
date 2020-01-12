@@ -50,6 +50,7 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, hyperlinkT
                                 level={level}
                                 transparentImage={transparentImage}
                                 transitionIn={transitionIn}
+                                transitionDelay={transitionDelay}
                                 zoomImage={zoomImage}
                             />
                         </Link>
@@ -63,6 +64,7 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, hyperlinkT
                         level={level}
                         transparentImage={transparentImage}
                         transitionIn={transitionIn}
+                        transitionDelay={transitionDelay}
                         className={classes.content}
                     />
                 )}

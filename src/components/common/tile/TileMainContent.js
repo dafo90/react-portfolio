@@ -1,12 +1,11 @@
 import { makeStyles } from '@material-ui/core/styles';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { CardContent, CardMedia, Typography, Grid } from '@material-ui/core';
 import BulletsBar from '../BulletsBar';
 import ArrowTooltip from '../ArrowTooltip';
 
 const maxLevel = 6;
-const transitionDelay = 500;
 
 const useStyles = makeStyles(theme => ({
     cardMedia: ({ scale, transparentImage, zoomImage }) => ({
@@ -35,9 +34,16 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, transparentImage, zoomImage, transitionIn }) => {
+const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, transparentImage, zoomImage, transitionIn, transitionDelay }) => {
     const classes = useStyles({ scale, transparentImage, zoomImage });
     const [bulletsColorOffset, setBulletsColorOffset] = useState(0);
+    const [startBulletsTransition, setStartBulletsTransition] = useState(false);
+    useEffect(() => {
+        if (transitionIn)
+            setTimeout(() => {
+                setStartBulletsTransition(true);
+            }, transitionDelay + 750);
+    }, [transitionDelay, transitionIn]);
     return (
         <React.Fragment>
             {imageUrl && (
@@ -63,7 +69,7 @@ const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, t
                             >
                                 <BulletsBar
                                     isVisibleAfter={transitionDelay}
-                                    startBulletsTransition={transitionIn}
+                                    startBulletsTransition={startBulletsTransition}
                                     className={classes.levelBar}
                                     level={level}
                                     max={maxLevel}
@@ -90,7 +96,8 @@ TileMainContent.propTypes = {
     scale: PropTypes.number,
     transparentImage: PropTypes.bool,
     zoomImage: PropTypes.bool,
-    transitionIn: PropTypes.bool
+    transitionIn: PropTypes.bool,
+    transitionDelay: PropTypes.number
 };
 
 TileMainContent.defaultProps = {
@@ -100,7 +107,8 @@ TileMainContent.defaultProps = {
     scale: 1.3,
     transparentImage: false,
     zoomImage: false,
-    transitionIn: false
+    transitionIn: false,
+    transitionDelay: 0
 };
 
 export default TileMainContent;
