@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { DeveloperMode } from '@material-ui/icons';
 import LayoutHeader from '../LayoutHeader';
 import LayoutBody from '../LayoutBody';
-import TilesSection from '../../common/TilesSection';
+import TilesSection from '../../common/tile/TilesSection';
 import HeaderTitle from '../../common/HeaderTitle';
 import github from '../../../configurations/github';
 

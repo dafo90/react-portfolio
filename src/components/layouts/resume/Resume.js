@@ -8,7 +8,7 @@ import LayoutBody from '../LayoutBody';
 import HeaderTitle from '../../common/HeaderTitle';
 import ResumeHeader from './ResumeHeader';
 import TimelineTiles from '../../common/TimelineTiles';
-import ListArray from '../../common/ListArray';
+import ElementsArray from '../../common/element/ElementsArray';
 
 const leftColumnMinWidth = '350px';
 const rightColumnWidth = '300px';
@@ -56,20 +56,20 @@ const Resume = ({ content }) => {
                         <Grid className={classes.leftColumn} item xs>
                             <TimelineTiles className={classes.timeline} tiles={worksAndSchools.filter(({ enabled = false }) => enabled)} />
                             <Typography variant="h5">Know me more&hellip;</Typography>
-                            <ListArray elements={knowMeMore} />
+                            <ElementsArray elements={knowMeMore} />
                         </Grid>
                         <Grid className={classes.rightColumn} item xs={12} sm="auto">
                             <Typography variant="h5">Skills</Typography>
-                            <ListArray elements={skills} />
+                            <ElementsArray elements={skills} />
                             <Divider className={classes.divider} />
                             <Typography variant="h5">Courses</Typography>
-                            <ListArray elements={courses} />
+                            <ElementsArray elements={courses} />
                             <Divider className={classes.divider} />
                             <Typography variant="h5">Awards</Typography>
-                            <ListArray elements={awards} />
+                            <ElementsArray elements={awards} />
                             <Divider className={classes.divider} />
                             <Typography variant="h5">Languages</Typography>
-                            <ListArray elements={languages} />
+                            <ElementsArray elements={languages} />
                         </Grid>
                     </Grid>
                 </Paper>

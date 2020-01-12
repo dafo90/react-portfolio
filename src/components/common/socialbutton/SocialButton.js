@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import ArrowTooltip from './ArrowTooltip';
+import ArrowTooltip from '../ArrowTooltip';
 
 const useStyles = makeStyles(theme => ({
     socialCircle: ({ iconSize }) => ({

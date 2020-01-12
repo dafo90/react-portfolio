@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { CardContent, CardMedia, Typography, Grid } from '@material-ui/core';
-import BulletsBar from '../BulletsBar';
+import BulletsBar from '../bullet/BulletsBar';
 import ArrowTooltip from '../ArrowTooltip';
 
 const maxLevel = 6;
@@ -68,7 +68,6 @@ const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, t
                                 disableTouchListener={!tooltip}
                             >
                                 <BulletsBar
-                                    isVisibleAfter={transitionDelay}
                                     startBulletsTransition={startBulletsTransition}
                                     className={classes.levelBar}
                                     level={level}

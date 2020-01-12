@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import LayoutHeader from '../LayoutHeader';
 import LayoutBody from '../LayoutBody';
 import AboutMeHeader from './AboutMeHeader';
-import TilesSection from '../../common/TilesSection';
+import TilesSection from '../../common/tile/TilesSection';
 import { setLayout } from '../../../actions/actions';
 
 const useStyles = makeStyles(theme => ({

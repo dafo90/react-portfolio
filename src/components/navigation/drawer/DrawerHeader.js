@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { ListItem, Typography, Avatar } from '@material-ui/core';
-import SocialButtonsBar from '../../common/SocialButtonsBar';
+import SocialButtonsBar from '../../common/socialbutton/SocialButtonsBar';
 import Address from '../../common/Address';
 import personalData from '../../../configurations/personalData';
 import socials from '../../../configurations/socials';

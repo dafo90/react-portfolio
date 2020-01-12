@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Box } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
     root: ({ size, color }) => ({
@@ -14,7 +15,7 @@ const useStyles = makeStyles(() => ({
 const Bullet = React.forwardRef(({ size, color, ...props }, ref) => {
     const classes = useStyles({ size, color });
     // eslint-disable-next-line react/jsx-props-no-spreading
-    return <div {...props} ref={ref} className={classes.root} />;
+    return <Box {...props} ref={ref} className={classes.root} />;
 });
 
 Bullet.propTypes = {

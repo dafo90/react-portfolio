@@ -8,7 +8,7 @@ import axios from 'axios';
 import SnackbarContentWrapper from '../../common/SnackbarContentWrapper';
 import LayoutHeader from '../LayoutHeader';
 import HeaderTitle from '../../common/HeaderTitle';
-import SocialButtonsBar from '../../common/SocialButtonsBar';
+import SocialButtonsBar from '../../common/socialbutton/SocialButtonsBar';
 import LayoutBody from '../LayoutBody';
 import socials from '../../../configurations/socials';
 
