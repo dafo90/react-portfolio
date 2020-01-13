@@ -39,10 +39,13 @@ const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, t
     const [bulletsColorOffset, setBulletsColorOffset] = useState(0);
     const [startBulletsTransition, setStartBulletsTransition] = useState(false);
     useEffect(() => {
-        if (transitionIn)
-            setTimeout(() => {
+        if (transitionIn) {
+            const timeout = setTimeout(() => {
                 setStartBulletsTransition(true);
             }, transitionDelay + 750);
+            return () => clearTimeout(timeout);
+        }
+        return undefined;
     }, [transitionDelay, transitionIn]);
     return (
         <React.Fragment>

@@ -36,7 +36,7 @@ const Projects = () => {
                 />
             </LayoutHeader>
             <LayoutBody>
-                <TilesSection tiles={githubRepos} hyperlinkTitle />
+                <TilesSection tiles={githubRepos} />
             </LayoutBody>
         </React.Fragment>
     );

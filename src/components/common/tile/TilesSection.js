@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const TilesSection = ({ children, className, tooltip, sectionTitle, sectionSubtitle, tiles, onlyMainTiles, hyperlinkTitle }) => {
+const TilesSection = ({ children, className, tooltip, sectionTitle, sectionSubtitle, tiles, onlyMainTiles }) => {
     const classes = useStyles();
     const visibleTiles = tiles.filter(({ main = false, enabled = true }) => enabled && (!onlyMainTiles || main));
     return visibleTiles.length ? (
@@ -27,7 +27,6 @@ const TilesSection = ({ children, className, tooltip, sectionTitle, sectionSubti
                             description={description}
                             url={url}
                             level={level}
-                            hyperlinkTitle={hyperlinkTitle}
                             tags={tags}
                             transparentImage={transparentImage}
                             share={share}
@@ -48,8 +47,7 @@ TilesSection.propTypes = {
     sectionTitle: PropTypes.string,
     sectionSubtitle: PropTypes.string,
     tiles: PropTypes.array.isRequired,
-    onlyMainTiles: PropTypes.bool,
-    hyperlinkTitle: PropTypes.bool
+    onlyMainTiles: PropTypes.bool
 };
 
 TilesSection.defaultProps = {
@@ -58,8 +56,7 @@ TilesSection.defaultProps = {
     tooltip: undefined,
     sectionTitle: undefined,
     sectionSubtitle: undefined,
-    onlyMainTiles: false,
-    hyperlinkTitle: false
+    onlyMainTiles: false
 };
 
 export default TilesSection;

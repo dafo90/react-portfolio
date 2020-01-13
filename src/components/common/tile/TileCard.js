@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const TileCard = ({ imageUrl, name, description, tooltip, level, url, hyperlinkTitle, tags, transparentImage, share, demo }) => {
+const TileCard = ({ imageUrl, name, description, tooltip, level, url, tags, transparentImage, share, demo }) => {
     const classes = useStyles({ transparentImage });
     const [isTileInViewport, tilePaper] = useIsInViewport();
     const [transitionIn, setTransitionIn] = useState(false);
@@ -41,7 +41,7 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, hyperlinkT
             <Card ref={tilePaper} className={classes.card}>
                 {url ? (
                     <CardActionArea onMouseEnter={() => setZoomImage(true)} onMouseLeave={() => setZoomImage(false)}>
-                        <Link color="inherit" underline="none" component="a" target="_blank" rel="noreferrer" href={hyperlinkTitle ? url : undefined}>
+                        <Link color="inherit" underline="none" component="a" target="_blank" rel="noreferrer" href={url}>
                             <TileMainContent
                                 imageUrl={imageUrl}
                                 name={name}
@@ -128,7 +128,6 @@ TileCard.propTypes = {
     tooltip: PropTypes.string,
     level: PropTypes.number,
     url: PropTypes.string,
-    hyperlinkTitle: PropTypes.bool,
     tags: PropTypes.array,
     transparentImage: PropTypes.bool,
     share: PropTypes.array,
@@ -140,7 +139,6 @@ TileCard.defaultProps = {
     tooltip: undefined,
     level: undefined,
     url: undefined,
-    hyperlinkTitle: false,
     tags: undefined,
     transparentImage: false,
     share: undefined,

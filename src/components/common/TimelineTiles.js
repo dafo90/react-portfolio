@@ -22,14 +22,14 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const TimelineTiles = ({ className, sectionTitle, sectionSubtitle, tiles }) => {
+const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtitle, tiles }, ref) => {
     const classes = useStyles();
     const theme = useTheme();
     const matchesUpXl = useMediaQuery(theme.breakpoints.up('xl'));
     const elemTitleClassName = classNames('vertical-timeline-element-title', classes.title);
     const elemSubtitleClassName = classNames('vertical-timeline-element-subtitle', classes.subtitle);
     return (
-        <div className={className}>
+        <div ref={ref} className={className}>
             {sectionTitle && <Section title={sectionTitle} subtitle={sectionSubtitle} />}
             <VerticalTimeline layout={matchesUpXl ? '2-columns' : '1-column'}>
                 {tiles.map(({ id, title, subtitle, date, imageUrl, imageAlt, description }) => (
@@ -56,7 +56,7 @@ const TimelineTiles = ({ className, sectionTitle, sectionSubtitle, tiles }) => {
             </VerticalTimeline>
         </div>
     );
-};
+});
 
 TimelineTiles.propTypes = {
     className: PropTypes.string,

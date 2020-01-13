@@ -54,13 +54,7 @@ const AboutMe = ({ content, layouts }) => {
                     </React.Fragment>
                 </TilesSection>
 
-                <TilesSection
-                    sectionTitle="GitHub Repositories"
-                    sectionSubtitle="My Open Source Projects"
-                    tiles={githubRepos}
-                    onlyMainTiles
-                    hyperlinkTitle
-                >
+                <TilesSection sectionTitle="GitHub Repositories" sectionSubtitle="My Open Source Projects" tiles={githubRepos} onlyMainTiles>
                     {projectsUrls && (
                         <Grid className={classes.buttonGrid} container justify="center">
                             <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(projectsUrls[0]))}>
