@@ -47,8 +47,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const Resume = ({ content }) => {
+const Resume = ({ pageConf }) => {
     const classes = useStyles();
+    const { content } = pageConf;
     const { worksAndSchools, skills, languages, courses, awards, knowMeMore, interests } = content;
     const [refTimeline, { width: bubbleChartWidth }] = useDimensions();
     const bubbleChartHeight = bubbleChartWidth;
@@ -73,7 +74,7 @@ const Resume = ({ content }) => {
                             <Section className={classes.section} title="Interests" />
                             <BubbleChart
                                 graph={{
-                                    zoom: 1,
+                                    zoom: 0.95,
                                     offsetX: 0.0,
                                     offsetY: 0.0
                                 }}
@@ -115,7 +116,7 @@ const Resume = ({ content }) => {
 };
 
 Resume.propTypes = {
-    content: PropTypes.object.isRequired
+    pageConf: PropTypes.object.isRequired
 };
 
 export default Resume;

@@ -1,12 +1,12 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux';
-import { DeveloperMode } from '@material-ui/icons';
+import React from 'react';
+import { Extension } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import LayoutHeader from '../LayoutHeader';
 import LayoutBody from '../LayoutBody';
 import TilesSection from '../../common/tile/TilesSection';
 import HeaderTitle from '../../common/HeaderTitle';
+import skills from '../../../configurations/skills';
 
 const useStyles = makeStyles(() => ({
     icon: {
@@ -14,24 +14,23 @@ const useStyles = makeStyles(() => ({
     }
 }));
 
-const Projects = ({ pageConf }) => {
+const Skills = ({ pageConf }) => {
     const classes = useStyles();
-    const githubRepos = useSelector(state => state.githubRepos);
     const { title, subtitle } = pageConf;
     return (
         <React.Fragment>
             <LayoutHeader>
-                <HeaderTitle title={title} subtitle={subtitle} icon={<DeveloperMode className={classes.icon} />} />
+                <HeaderTitle title={title} subtitle={subtitle} icon={<Extension className={classes.icon} />} />
             </LayoutHeader>
             <LayoutBody>
-                <TilesSection tiles={githubRepos} />
+                <TilesSection tiles={skills.filter(({ enabled }) => enabled)} />
             </LayoutBody>
         </React.Fragment>
     );
 };
 
-Projects.propTypes = {
+Skills.propTypes = {
     pageConf: PropTypes.object.isRequired
 };
 
-export default Projects;
+export default Skills;

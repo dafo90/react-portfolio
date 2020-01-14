@@ -19,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 const MobileAppBar = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const { label: title } = useSelector(state => state.layout);
+    const { title } = useSelector(state => state.layout);
     return (
         <AppBar position="fixed" className={classes.root} color="inherit">
             <Toolbar>

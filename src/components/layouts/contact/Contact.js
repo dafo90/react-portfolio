@@ -8,9 +8,7 @@ import axios from 'axios';
 import SnackbarContentWrapper from '../../common/SnackbarContentWrapper';
 import LayoutHeader from '../LayoutHeader';
 import HeaderTitle from '../../common/HeaderTitle';
-import SocialButtonsBar from '../../common/socialbutton/SocialButtonsBar';
 import LayoutBody from '../LayoutBody';
-import socials from '../../../configurations/socials';
 
 const useStyles = makeStyles(theme => ({
     socialsBar: {
@@ -32,20 +30,18 @@ const useStyles = makeStyles(theme => ({
         paddingRight: theme.spacing(1)
     },
     icon: {
-        fontSize: '170px'
+        fontSize: '150px'
     }
 }));
 
 // eslint-disable-next-line react/jsx-props-no-spreading
 const TransitionDown = props => <Slide {...props} direction="down" />;
 
-const Contact = ({ content }) => {
+const Contact = ({ pageConf }) => {
     const classes = useStyles();
-
     const recaptchaRef = useRef({});
-
+    const { title, subtitle, content } = pageConf;
     const { googleRecaptchaClientSiteKey, formSubmitUrl } = content;
-
     const [form, setForm] = useState({});
     const [error, setError] = useState({});
     const [snackbarData, setSnackbarData] = useState({ open: false, variant: 'success', message: '' });
@@ -114,16 +110,7 @@ const Contact = ({ content }) => {
     return (
         <React.Fragment>
             <LayoutHeader>
-                <HeaderTitle
-                    title="Contact"
-                    subtitle={
-                        <div>
-                            <div>Get in touch</div>
-                            <SocialButtonsBar socials={socials} iconSize="22px" className={classes.socialsBar} />
-                        </div>
-                    }
-                    icon={<Email className={classes.icon} />}
-                />
+                <HeaderTitle title={title} subtitle={subtitle} icon={<Email className={classes.icon} />} />
             </LayoutHeader>
             <LayoutBody>
                 <Paper className={classes.form}>
@@ -219,11 +206,7 @@ const Contact = ({ content }) => {
 };
 
 Contact.propTypes = {
-    content: PropTypes.object.isRequired
-};
-
-Contact.propTypes = {
-    content: PropTypes.object.isRequired
+    pageConf: PropTypes.object.isRequired
 };
 
 export default Contact;

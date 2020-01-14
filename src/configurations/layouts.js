@@ -1,218 +1,32 @@
 /* eslint-disable react/jsx-curly-brace-presence */
 import React from 'react';
-import { Person, FolderShared, Email, DeveloperMode } from '@material-ui/icons';
+import { Person, FolderShared, Email, DeveloperMode, Extension } from '@material-ui/icons';
 import { Link } from '@material-ui/core';
 import uuid from 'uuid/v4';
 import AboutMe from '../components/layouts/aboutme/AboutMe';
 import Contact from '../components/layouts/contact/Contact';
+import Skills from '../components/layouts/skills/Skills';
 import Projects from '../components/layouts/projects/Projects';
 import Resume from '../components/layouts/resume/Resume';
+import github from './github';
 
 export default [
     {
         id: uuid(),
         code: 'aboutme',
-        label: 'About Me',
+        title: 'About Me',
         component: AboutMe,
         urls: ['/', '/aboutme'],
         buttonLabel: 'About Me',
         icon: Person,
         homepage: true,
         enabled: true,
-        content: {
-            skills: [
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/js.svg',
-                    url: 'https://www.javascript.com',
-                    name: 'JavaScript',
-                    description:
-                        'I started developing in JavaScript in 2017, thanks to the continuous improvements of this language I can now exploit its potential.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/npm.svg',
-                    url: 'https://www.npmjs.com/',
-                    name: 'npm',
-                    description: 'Before you can even use Node.js or React, getting in touch with npm is mandatory.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/eslint.svg',
-                    url: 'https://eslint.org',
-                    name: 'ESLint',
-                    description: 'Once tried it is impossible to do without it. Since I use JavaScript ESLint is my inseparable tool.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 4,
-                    imageUrl: '/logos/nodejs.svg',
-                    url: 'https://nodejs.org',
-                    name: 'Node.js',
-                    description: 'Starting from the end of 2017 Node.js has supported Java as back-end technology in my developer life.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 4,
-                    imageUrl: '/logos/feathersjs.svg',
-                    url: 'https://feathersjs.com',
-                    name: 'Feathers',
-                    description:
-                        'I always used Node.js with Feathers. Like Spring for Java, Feathers is a framework to simplify the development of REST APIs in Node.js.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/react.svg',
-                    url: 'https://reactjs.org',
-                    name: 'React (Hooks)',
-                    description: 'I started using React around the same time as Node.js. To better understand this technology I created this webpage.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/redux-saga.svg',
-                    url: 'https://redux-saga.js.org',
-                    name: 'Redux and Saga',
-                    description: 'To build complex Apps with react this two libraries are indispensable.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 4,
-                    imageUrl: '/logos/material.svg',
-                    url: 'https://material-ui.com',
-                    name: 'Material-UI',
-                    description: 'After a few months with Semantic UI, the power and cleanliness of Material-UI "imposed" its introduction.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 4,
-                    imageUrl: '/logos/mongodb.svg',
-                    url: 'https://www.mongodb.com',
-                    name: 'MongoDB',
-                    description:
-                        'To complete the transition to current technologies, MongoDB is absolutly the DB that best fits a server Node.js (for flexibility and method of use).'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 6,
-                    imageUrl: '/logos/java.svg',
-                    url: 'https://www.javascript.com',
-                    name: 'Java EE',
-                    description: 'Java is the language I use mainly since 2014, notwithstanding JavaScript in the last few years is taking over.'
-                },
-                // maven
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/spring.svg',
-                    url: 'https://spring.io',
-                    name: 'Spring & Spring Boot',
-                    description: 'Spring (and Spring Boot) is the framework for Java I use since 2014 to create web services.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/oracle.svg',
-                    url: 'https://www.oracle.com',
-                    name: 'Oracle DB',
-                    description: 'Before using MongoDB the main database that I used was Oracle Database.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/git.svg',
-                    url: 'https://git-scm.com',
-                    name: 'Git',
-                    description: 'Git... Can you really develop without it!?'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 2,
-                    imageUrl: '/logos/rancher.svg',
-                    url: 'https://rancher.com',
-                    name: 'Rancher',
-                    description: 'I use Rancher (litterally as user) to manage the deployed Apps.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 3,
-                    imageUrl: '/logos/docker.svg',
-                    url: 'https://www.docker.com',
-                    name: 'Docker',
-                    description: 'Quite the same of Rancher, but in this case I use Docker a little bit deeper with my home server.'
-                },
-                // raspberry
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/arduino.svg',
-                    url: 'https://www.arduino.cc',
-                    name: 'Arduino',
-                    description: 'Arduino is more like one of my hobbies. I like being able to build small, low-cost circuits at home.'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/wordpress.svg',
-                    url: 'https://wordpress.com',
-                    name: 'WordPress',
-                    description: 'In some cases the fastest, simplest and most immediate choice...'
-                },
-                {
-                    id: uuid(),
-                    enabled: true,
-                    main: true,
-                    level: 5,
-                    imageUrl: '/logos/latex.svg',
-                    url: 'https://www.latex-project.org',
-                    name: 'LaTeX',
-                    description: 'Simply LaTeX is my favorite typesetting system!'
-                }
-            ]
-        }
+        content: {}
     },
     {
         id: uuid(),
         code: 'resume',
-        label: 'Resume',
+        title: 'Resume',
         component: Resume,
         urls: ['/resume'],
         buttonLabel: 'Resume',
@@ -322,12 +136,12 @@ export default [
                     imageAlt: 'EOC',
                     date: '2014 - Present',
                     title: (
-                        <div>
+                        <React.Fragment>
                             {'Full-Stack Developer '}
                             <Link color="inherit" underline="always" href="https://www.eoc.ch" target="_blank" rel="noreferrer">
                                 @EOC
                             </Link>
-                        </div>
+                        </React.Fragment>
                     ),
                     subtitle: 'Ente Ospedaliero Cantonale, CH-6500 Bellinzona',
                     description:
@@ -340,12 +154,12 @@ export default [
                     imageAlt: 'SUPSI',
                     date: '2011 - 2014',
                     title: (
-                        <div>
+                        <React.Fragment>
                             {"Bachelor's in Computer Science "}
                             <Link color="inherit" underline="always" href="http://www.supsi.ch" target="_blank" rel="noreferrer">
                                 @SUPSI
                             </Link>
-                        </div>
+                        </React.Fragment>
                     ),
                     subtitle: 'Scuola Universitaria della Svizzera Italiana, CH-6928 Manno',
                     description:
@@ -359,12 +173,12 @@ export default [
                     date: '2010 - 2011',
                     url: 'https://www.arbedocastione.ch',
                     title: (
-                        <div>
+                        <React.Fragment>
                             {'Civil Service '}
                             <Link color="inherit" underline="always" href="https://www.arbedocastione.ch" target="_blank" rel="noreferrer">
                                 @Municipality of Arbedo-Castione
                             </Link>
-                        </div>
+                        </React.Fragment>
                     ),
                     subtitle: 'Municipio di Arbedo-Castione, CH-6517 Arbedo',
                     description:
@@ -377,12 +191,12 @@ export default [
                     imageAlt: 'SAMB',
                     date: '2006 - 2010',
                     title: (
-                        <div>
+                        <React.Fragment>
                             {'Federal Proficiency Certificate and Certificate of Technical Professional Maturity '}
                             <Link color="inherit" underline="always" href="http://www.samb.ti.ch" target="_blank" rel="noreferrer">
                                 @SAMB
                             </Link>
-                        </div>
+                        </React.Fragment>
                     ),
                     subtitle: 'Scuola Arti e Mestieri Bellinzona, CH-6500 Bellinzona',
                     description: "Electronics' notions and development of simple software for microprocessors."
@@ -393,7 +207,16 @@ export default [
     {
         id: uuid(),
         code: 'projects',
-        label: 'Projects',
+        title: 'Projects',
+        subtitle: (
+            <React.Fragment>
+                {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+                All my personal Project Sources are published on{' '}
+                <Link color="inherit" underline="always" href={github.url} target="_blank" rel="noreferrer">
+                    GitHub
+                </Link>
+            </React.Fragment>
+        ),
         component: Projects,
         urls: ['/projects'],
         buttonLabel: 'Projects',
@@ -404,8 +227,22 @@ export default [
     },
     {
         id: uuid(),
+        code: 'skills',
+        title: 'Technical Skills',
+        subtitle: 'A short list of my major Skills',
+        component: Skills,
+        urls: ['/skills'],
+        buttonLabel: 'Skills',
+        icon: Extension,
+        homepage: false,
+        enabled: true,
+        content: {}
+    },
+    {
+        id: uuid(),
         code: 'contact',
-        label: 'Contact',
+        title: 'Contact',
+        subtitle: 'Get in touch',
         component: Contact,
         urls: ['/contact'],
         buttonLabel: 'Contact',

@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { Grid, Button, Divider } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import LayoutHeader from '../LayoutHeader';
@@ -8,26 +8,23 @@ import LayoutBody from '../LayoutBody';
 import AboutMeHeader from './AboutMeHeader';
 import TilesSection from '../../common/tile/TilesSection';
 import { setLayout } from '../../../actions/actions';
+import skills from '../../../configurations/skills';
 
 const useStyles = makeStyles(theme => ({
     buttonGrid: {
         paddingTop: theme.spacing(2),
         paddingBottom: theme.spacing(2)
-    },
-    divider: {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(4)
     }
 }));
 
 const findLayoutByCode = (layouts, codeToFind) => layouts.find(({ code, enabled }) => enabled && code === codeToFind) || {};
 
-const AboutMe = ({ content, layouts }) => {
+const AboutMe = ({ layouts }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
     const githubRepos = useSelector(state => state.githubRepos);
-    const { skills } = content;
-    const { urls: resumeUrls } = findLayoutByCode(layouts, 'resume');
+
+    const { urls: skillsUrls } = findLayoutByCode(layouts, 'skills');
     const { urls: projectsUrls } = findLayoutByCode(layouts, 'projects');
     return (
         <React.Fragment>
@@ -35,26 +32,7 @@ const AboutMe = ({ content, layouts }) => {
                 <AboutMeHeader layouts={layouts} />
             </LayoutHeader>
             <LayoutBody>
-                <TilesSection
-                    sectionTitle="Skills"
-                    tooltip="Knowledge level"
-                    sectionSubtitle="A brief overview of my skills"
-                    tiles={skills}
-                    onlyMainTiles
-                >
-                    <React.Fragment>
-                        {resumeUrls && (
-                            <Grid className={classes.buttonGrid} container justify="center">
-                                <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(resumeUrls[0]))}>
-                                    View all Skills
-                                </Button>
-                            </Grid>
-                        )}
-                        <Divider className={classes.divider} />
-                    </React.Fragment>
-                </TilesSection>
-
-                <TilesSection sectionTitle="GitHub Repositories" sectionSubtitle="My Open Source Projects" tiles={githubRepos} onlyMainTiles>
+                <TilesSection sectionTitle="GitHub Repositories" sectionSubtitle="Some of my open source Projects" tiles={githubRepos} onlyMainTiles>
                     {projectsUrls && (
                         <Grid className={classes.buttonGrid} container justify="center">
                             <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(projectsUrls[0]))}>
@@ -63,13 +41,29 @@ const AboutMe = ({ content, layouts }) => {
                         </Grid>
                     )}
                 </TilesSection>
+                <TilesSection
+                    sectionTitle="Skills"
+                    tooltip="Knowledge level"
+                    sectionSubtitle="A brief overview of some of my Technical Skills"
+                    tiles={skills.filter(({ enabled, main }) => enabled && main)}
+                    onlyMainTiles
+                >
+                    <React.Fragment>
+                        {skillsUrls && (
+                            <Grid className={classes.buttonGrid} container justify="center">
+                                <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(skillsUrls[0]))}>
+                                    View all Skills
+                                </Button>
+                            </Grid>
+                        )}
+                    </React.Fragment>
+                </TilesSection>
             </LayoutBody>
         </React.Fragment>
     );
 };
 
 AboutMe.propTypes = {
-    content: PropTypes.object.isRequired,
     layouts: PropTypes.array.isRequired
 };
 
