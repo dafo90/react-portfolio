@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Avatar, Typography } from '@material-ui/core';
+import { Box, Avatar, Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -29,7 +29,7 @@ const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtit
     const elemTitleClassName = classNames('vertical-timeline-element-title', classes.title);
     const elemSubtitleClassName = classNames('vertical-timeline-element-subtitle', classes.subtitle);
     return (
-        <div ref={ref} className={className}>
+        <Box ref={ref} className={className}>
             {sectionTitle && <Section title={sectionTitle} subtitle={sectionSubtitle} />}
             <VerticalTimeline layout={matchesUpXl ? '2-columns' : '1-column'}>
                 {tiles.map(({ id, title, subtitle, date, imageUrl, imageAlt, description }) => (
@@ -42,7 +42,7 @@ const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtit
                         iconStyle={{ background: blueGrey[500], color: theme.palette.primary }}
                         icon={<Avatar src={imageUrl} alt={imageAlt} className={classes.logo} />}
                     >
-                        <div>
+                        <React.Fragment>
                             <Typography className={elemTitleClassName} variant="h5" component="h5">
                                 {title}
                             </Typography>
@@ -50,11 +50,11 @@ const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtit
                                 {subtitle}
                             </Typography>
                             <Typography variant="inherit">{description}</Typography>
-                        </div>
+                        </React.Fragment>
                     </VerticalTimelineElement>
                 ))}
             </VerticalTimeline>
-        </div>
+        </Box>
     );
 });
 

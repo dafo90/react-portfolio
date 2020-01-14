@@ -13,8 +13,8 @@ import TimelineTiles from '../../common/TimelineTiles';
 import Section from '../../common/Section';
 import ElementsArray from '../../common/element/ElementsArray';
 
-const leftColumnMinWidth = '350px';
-const rightColumnWidth = '300px';
+const leftColumnMinWidth = '150px';
+const rightColumnWidth = { xs: '150px', md: '300px', lg: '450px' };
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -30,8 +30,14 @@ const useStyles = makeStyles(theme => ({
         minWidth: leftColumnMinWidth
     },
     rightColumn: {
-        [theme.breakpoints.up('sm')]: {
-            width: rightColumnWidth
+        [theme.breakpoints.up('xs')]: {
+            minWidth: rightColumnWidth.xs
+        },
+        [theme.breakpoints.up('md')]: {
+            width: rightColumnWidth.md
+        },
+        [theme.breakpoints.up('lg')]: {
+            width: rightColumnWidth.lg
         }
     },
     divider: {
@@ -78,8 +84,8 @@ const Resume = ({ pageConf }) => {
                                     offsetX: 0.0,
                                     offsetY: 0.0
                                 }}
-                                width={bubbleChartWidth}
-                                height={bubbleChartHeight}
+                                width={bubbleChartWidth ? bubbleChartWidth - 10 : 0}
+                                height={bubbleChartHeight ? bubbleChartHeight - 10 : 0}
                                 showLegend={false}
                                 valueFont={{
                                     family: 'Arial',
@@ -95,7 +101,7 @@ const Resume = ({ pageConf }) => {
                                 data={interests}
                             />
                         </Grid>
-                        <Grid className={classes.rightColumn} item xs={12} sm="auto">
+                        <Grid className={classes.rightColumn} item xs={12} md="auto">
                             <Typography variant="h5">Skills</Typography>
                             <ElementsArray elements={skills} />
                             <Divider className={classes.divider} />

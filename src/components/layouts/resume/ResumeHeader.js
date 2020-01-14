@@ -30,8 +30,14 @@ const useStyles = makeStyles(theme => ({
         width: leftColumnMinWidth
     }),
     rightColumn: ({ rightColumnWidth }) => ({
-        [theme.breakpoints.up('sm')]: {
-            width: rightColumnWidth
+        [theme.breakpoints.up('xs')]: {
+            width: rightColumnWidth.xs
+        },
+        [theme.breakpoints.up('md')]: {
+            width: rightColumnWidth.md
+        },
+        [theme.breakpoints.up('lg')]: {
+            width: rightColumnWidth.lg
         }
     })
 }));
@@ -58,11 +64,11 @@ const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
                 )}
             </Grid>
             <Hidden xsDown implementation="css">
-                <Grid item sm="auto" className={classes.divider}>
+                <Grid item md="auto" className={classes.divider}>
                     <Divider orientation="vertical" variant="fullWidth" />
                 </Grid>
             </Hidden>
-            <Grid className={classes.rightColumn} item xs={12} sm="auto">
+            <Grid className={classes.rightColumn} item xs={12} md="auto">
                 <List dense disablePadding>
                     {email && (
                         <ListItem>
@@ -116,7 +122,7 @@ const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
 
 ResumeHeader.propTypes = {
     leftColumnMinWidth: PropTypes.string,
-    rightColumnWidth: PropTypes.string
+    rightColumnWidth: PropTypes.object
 };
 ResumeHeader.defaultProps = {
     leftColumnMinWidth: undefined,
