@@ -57,7 +57,7 @@ const ReactPortfolio = () => {
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
                     <MainLayout />
-                    <Footer className={classes.footer} />
+                    <Footer />
                 </main>
             </div>
         </React.Fragment>
