@@ -5,8 +5,9 @@ export default {
     name: 'Didier Dafond',
     title: 'Full-Stack Developer',
     profileImage: '/profile.jpg',
-    bioImage: '/profile.jpg',
+    bioImage: '/background.jpg',
     email: 'didier.dafond@gmail.com',
+    cvPdf: '/docs/cv.pdf',
     location: 'Switzerland',
     birthdate: {
         date: '09.10.1990',

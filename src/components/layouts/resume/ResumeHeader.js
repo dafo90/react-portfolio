@@ -1,6 +1,12 @@
 import React from 'react';
-import { Link, Grid, Typography, Divider, Avatar, Box, Hidden, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import { LocationOn as LocationIcon, Cake as CakeIcon, Email as EmailIcon, Language as LanguageIcon } from '@material-ui/icons';
+import { Link, Grid, Typography, Divider, Avatar, Box, Hidden, List, ListItem, ListItemIcon, ListItemText, Button } from '@material-ui/core';
+import {
+    LocationOn as LocationIcon,
+    Cake as CakeIcon,
+    Email as EmailIcon,
+    Language as LanguageIcon,
+    InsertDriveFile as InsertDriveFileIcon
+} from '@material-ui/icons';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
@@ -26,6 +32,12 @@ const useStyles = makeStyles(theme => ({
         marginTop: 0,
         marginBottom: 0
     },
+    button: {
+        marginTop: theme.spacing(2)
+    },
+    buttonIcon: {
+        paddingRight: theme.spacing(1)
+    },
     leftColumn: ({ leftColumnMinWidth }) => ({
         width: leftColumnMinWidth
     }),
@@ -44,7 +56,7 @@ const useStyles = makeStyles(theme => ({
 
 const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
     const classes = useStyles({ leftColumnMinWidth, rightColumnWidth });
-    const { name, title, profileImage, birthdate, email, location } = personalData;
+    const { name, title, profileImage, birthdate, email, location, cvPdf } = personalData;
     const momentBirthdate = birthdate && birthdate.date && birthdate.format ? moment(birthdate.date, birthdate.format) : undefined;
     return (
         <Grid container spacing={4} variant="body2" justify="flex-start" alignItems="center">
@@ -61,6 +73,12 @@ const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
                     <Typography variant="subtitle1" color="textSecondary" align="left">
                         {title}
                     </Typography>
+                )}
+                {cvPdf && (
+                    <Button className={classes.button} component="a" target="_blank" rel="noreferrer" href={cvPdf} variant="outlined" size="medium">
+                        <InsertDriveFileIcon className={classes.buttonIcon} />
+                        Download PDF
+                    </Button>
                 )}
             </Grid>
             <Hidden xsDown implementation="css">
