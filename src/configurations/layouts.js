@@ -250,7 +250,7 @@ export default [
         homepage: false,
         enabled: true,
         content: {
-            googleRecaptchaClientSiteKey: '6LfnwsQUAAAAAM4sjdJb7BPUe-Bv0SzZksDJQCkB',
+            googleRecaptchaClientSiteKey: '6LcybtAUAAAAABoPFS-l2HodL_NRrZIGOTDqULmd',
             formSubmitUrl: 'https://formspree.io/xyyzybdj'
         }
     }

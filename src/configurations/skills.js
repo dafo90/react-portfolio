@@ -9,6 +9,7 @@ export default [
         imageUrl: '/logos/js.svg',
         url: 'https://www.javascript.com',
         name: 'JavaScript',
+        tooltip: 'Knowledge level',
         description:
             'I started developing in JavaScript in 2017, thanks to the continuous improvements of this language I can now exploit its potential.'
     },
@@ -20,6 +21,7 @@ export default [
         imageUrl: '/logos/npm.svg',
         url: 'https://www.npmjs.com/',
         name: 'npm',
+        tooltip: 'Knowledge level',
         description: 'Before you can even use Node.js or React, getting in touch with npm is mandatory.'
     },
     {
@@ -30,6 +32,7 @@ export default [
         imageUrl: '/logos/eslint.svg',
         url: 'https://eslint.org',
         name: 'ESLint',
+        tooltip: 'Knowledge level',
         description: 'Once tried it is impossible to do without it. Since I use JavaScript ESLint is my inseparable tool.'
     },
     {
@@ -40,6 +43,7 @@ export default [
         imageUrl: '/logos/nodejs.svg',
         url: 'https://nodejs.org',
         name: 'Node.js',
+        tooltip: 'Knowledge level',
         description: 'Starting from the end of 2017 Node.js has supported Java as back-end technology in my developer life.'
     },
     {
@@ -50,6 +54,7 @@ export default [
         imageUrl: '/logos/feathersjs.svg',
         url: 'https://feathersjs.com',
         name: 'Feathers',
+        tooltip: 'Knowledge level',
         description:
             'I always used Node.js with Feathers. Like Spring for Java, Feathers is a framework to simplify the development of REST APIs in Node.js.'
     },
@@ -61,6 +66,7 @@ export default [
         imageUrl: '/logos/react.svg',
         url: 'https://reactjs.org',
         name: 'React (Hooks)',
+        tooltip: 'Knowledge level',
         description: 'I started using React around the same time as Node.js. To better understand this technology I created this webpage.'
     },
     {
@@ -71,6 +77,7 @@ export default [
         imageUrl: '/logos/redux-saga.svg',
         url: 'https://redux-saga.js.org',
         name: 'Redux and Saga',
+        tooltip: 'Knowledge level',
         description: 'To build complex Apps with react this two libraries are indispensable.'
     },
     {
@@ -81,6 +88,7 @@ export default [
         imageUrl: '/logos/material.svg',
         url: 'https://material-ui.com',
         name: 'Material-UI',
+        tooltip: 'Knowledge level',
         description: 'After a few months with Semantic UI, the power and cleanliness of Material-UI "imposed" its introduction.'
     },
     {
@@ -91,6 +99,7 @@ export default [
         imageUrl: '/logos/mongodb.svg',
         url: 'https://www.mongodb.com',
         name: 'MongoDB',
+        tooltip: 'Knowledge level',
         description:
             'To complete the transition to current technologies, MongoDB is absolutly the DB that best fits a server Node.js (for flexibility and method of use).'
     },
@@ -102,6 +111,7 @@ export default [
         imageUrl: '/logos/java.svg',
         url: 'https://www.java.com',
         name: 'Java EE',
+        tooltip: 'Knowledge level',
         description: 'Java is the language I use mainly since 2014, notwithstanding JavaScript in the last few years is taking over.'
     },
     {
@@ -112,6 +122,7 @@ export default [
         imageUrl: '/logos/spring.svg',
         url: 'https://spring.io',
         name: 'Spring & Spring Boot',
+        tooltip: 'Knowledge level',
         description: 'Spring (and Spring Boot) is the framework for Java I use since 2014 to create web services.'
     },
     {
@@ -122,6 +133,7 @@ export default [
         imageUrl: '/logos/maven.svg',
         url: 'https://maven.apache.org',
         name: 'Maven',
+        tooltip: 'Knowledge level',
         description: 'Since I started developing in Java Maven has accompanied and helped me manage the various projects.'
     },
     {
@@ -132,6 +144,7 @@ export default [
         imageUrl: '/logos/hibernate.svg',
         url: 'https://hibernate.org',
         name: 'Hibernate',
+        tooltip: 'Knowledge level',
         description:
             'Hibernate I assume it is the most complete library to access the database in Java, certainly the most complete that I have used.'
     },
@@ -143,6 +156,7 @@ export default [
         imageUrl: '/logos/oracle.svg',
         url: 'https://www.oracle.com',
         name: 'Oracle DB (SQL)',
+        tooltip: 'Knowledge level',
         description: 'Before using MongoDB the main database that I used was Oracle Database.'
     },
     {
@@ -153,6 +167,7 @@ export default [
         imageUrl: '/logos/git.svg',
         url: 'https://git-scm.com',
         name: 'Git',
+        tooltip: 'Knowledge level',
         description: 'Git... Can you really develop without it!?'
     },
     {
@@ -163,6 +178,7 @@ export default [
         imageUrl: '/logos/rancher.svg',
         url: 'https://rancher.com',
         name: 'Rancher',
+        tooltip: 'Knowledge level',
         description: 'I use Rancher (litterally as user) to manage the deployed Apps.'
     },
     {
@@ -173,6 +189,7 @@ export default [
         imageUrl: '/logos/docker.svg',
         url: 'https://www.docker.com',
         name: 'Docker',
+        tooltip: 'Knowledge level',
         description: 'Quite the same of Rancher, but in this case I use Docker a little bit deeper with my home server.'
     },
     {
@@ -183,6 +200,7 @@ export default [
         imageUrl: '/logos/raspberry.svg',
         url: 'https://www.raspberrypi.org',
         name: 'Raspberry Pi',
+        tooltip: 'Knowledge level',
         description:
             'I started using the Raspberry Pi to build my personal server, after this extremely positive first approach I used it for other projects (one of all is the Arcade Cabinet).'
     },
@@ -194,6 +212,7 @@ export default [
         imageUrl: '/logos/arduino.svg',
         url: 'https://www.arduino.cc',
         name: 'Arduino',
+        tooltip: 'Knowledge level',
         description: 'Arduino is more like one of my hobbies. I like being able to build small, low-cost circuits at home.'
     },
     {
@@ -204,6 +223,7 @@ export default [
         imageUrl: '/logos/wordpress.svg',
         url: 'https://wordpress.com',
         name: 'WordPress',
+        tooltip: 'Knowledge level',
         description: 'In some cases the fastest, simplest and most immediate choice...'
     },
     {
@@ -214,6 +234,7 @@ export default [
         imageUrl: '/logos/latex.svg',
         url: 'https://www.latex-project.org',
         name: 'LaTeX',
+        tooltip: 'Knowledge level',
         description: 'LaTeX is simply my favorite typesetting system!'
     }
 ];

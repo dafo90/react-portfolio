@@ -14,7 +14,7 @@ const Copyright = () => {
                 {` ${new Date().getFullYear()}.`}
             </Typography>
             <Typography variant="body2" color="textSecondary" align="center">
-                Theme inspired by the Lotus Type 79
+                Theme inspired by the Lotus Type 79.
             </Typography>
         </React.Fragment>
     );

@@ -43,7 +43,6 @@ const AboutMe = ({ layouts }) => {
                 </TilesSection>
                 <TilesSection
                     sectionTitle="Skills"
-                    tooltip="Knowledge level"
                     sectionSubtitle="A brief overview of some of my Technical Skills"
                     tiles={skills.filter(({ enabled, main }) => enabled && main)}
                     onlyMainTiles

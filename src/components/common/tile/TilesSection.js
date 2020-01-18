@@ -11,14 +11,14 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const TilesSection = ({ children, className, tooltip, sectionTitle, sectionSubtitle, tiles, onlyMainTiles }) => {
+const TilesSection = ({ children, className, sectionTitle, sectionSubtitle, tiles, onlyMainTiles }) => {
     const classes = useStyles();
     const visibleTiles = tiles.filter(({ main = false, enabled = true }) => enabled && (!onlyMainTiles || main));
     return visibleTiles.length ? (
         <div className={className}>
             {sectionTitle && <Section title={sectionTitle} subtitle={sectionSubtitle} />}
             <Grid className={classes.tiles} container variant="body2" justify="center" spacing={3}>
-                {visibleTiles.map(({ id, imageUrl, name, description, url, level, tags, transparentImage, share, demo }) => (
+                {visibleTiles.map(({ id, imageUrl, tooltip, name, description, url, level, tags, transparentImage, share, demo }) => (
                     <Grid key={id} item>
                         <TileCard
                             tooltip={tooltip}
@@ -43,7 +43,6 @@ const TilesSection = ({ children, className, tooltip, sectionTitle, sectionSubti
 TilesSection.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
     className: PropTypes.string,
-    tooltip: PropTypes.string,
     sectionTitle: PropTypes.string,
     sectionSubtitle: PropTypes.string,
     tiles: PropTypes.array.isRequired,
@@ -53,7 +52,6 @@ TilesSection.propTypes = {
 TilesSection.defaultProps = {
     children: undefined,
     className: undefined,
-    tooltip: undefined,
     sectionTitle: undefined,
     sectionSubtitle: undefined,
     onlyMainTiles: false
