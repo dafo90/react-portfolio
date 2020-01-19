@@ -9,6 +9,12 @@ import TileMainContent from './TileMainContent';
 const transitionDelay = 500;
 
 const useStyles = makeStyles(theme => ({
+    box: {
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+    },
     card: {
         height: '100%',
         display: 'flex',
@@ -37,7 +43,7 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, tags, tran
         if (isTileInViewport) setTransitionIn(true);
     }, [isTileInViewport]);
     return (
-        <Box ref={tilePaper}>
+        <Box ref={tilePaper} className={classes.box}>
             <Zoom in={transitionIn} direction="up" style={{ transitionDelay: transitionIn ? `${transitionDelay}ms` : '0ms' }} timeout={300}>
                 <Card className={classes.card}>
                     {url ? (

@@ -17,10 +17,10 @@ export default {
     longBio: (
         <React.Fragment>
             <p>
-                This site was born in 2019 from my need to learn more deeply and practice with React Hooks and Material-UI, building something useful
-                and simple like a web CV. Any improvement is certainly welcome, bearing in mind that the main focus is to be able to make it as
+                This website was born in 2019 from my need to learn more deeply and practice with React Hooks and Material-UI, building something
+                useful and simple like a web CV. Any improvement is certainly welcome, bearing in mind that the main focus is to be able to make it as
                 generic as possible
-                {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+                {' ' /* eslint-disable-next-line react/jsx-one-expression-per-line */}
                 to be used by other users. The project is public on{' '}
                 <Link
                     color="inherit"

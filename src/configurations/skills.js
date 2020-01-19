@@ -19,7 +19,7 @@ export default [
         main: false,
         level: 5,
         imageUrl: '/logos/npm.svg',
-        url: 'https://www.npmjs.com/',
+        url: 'https://www.npmjs.com',
         name: 'npm',
         tooltip: 'Knowledge level',
         description: 'Before you can even use Node.js or React, getting in touch with npm is mandatory.'
@@ -121,9 +121,9 @@ export default [
         level: 5,
         imageUrl: '/logos/spring.svg',
         url: 'https://spring.io',
-        name: 'Spring & Spring Boot',
+        name: 'Spring Boot',
         tooltip: 'Knowledge level',
-        description: 'Spring (and Spring Boot) is the framework for Java I use since 2014 to create web services.'
+        description: 'Spring Boot (and Spring) is the framework for Java I use since 2014 to create web services.'
     },
     {
         id: uuid(),
