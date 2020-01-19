@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Link } from '@material-ui/core';
 
 export default {
     name: 'Didier Dafond',
@@ -16,6 +16,24 @@ export default {
     shortBio: `Hi 👋, I'm Didier Dafond and I'm a Full-Stack Developer`,
     longBio: (
         <React.Fragment>
+            <p>
+                This site was born in 2019 from my need to learn more deeply and practice with React Hooks and Material-UI, building something useful
+                and simple like a web CV. Any improvement is certainly welcome, bearing in mind that the main focus is to be able to make it as
+                generic as possible
+                {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+                to be used by other users. The project is public on{' '}
+                <Link
+                    color="inherit"
+                    underline="always"
+                    component="a"
+                    target="_blank"
+                    rel="noreferrer"
+                    href="https://github.com/dafo90/react-porfolio"
+                >
+                    GitHub
+                </Link>
+                .
+            </p>
             <p>
                 I&apos;m Didier Dafond and I&apos;m a Full-Stack Developer since 2014. I like to experiment and work in team to keep up to date with
                 new technologies. I have also a good electronic knowledge thanks to the high school&apos;s technical address. I have high expectations
