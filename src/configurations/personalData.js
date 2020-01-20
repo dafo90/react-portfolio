@@ -17,6 +17,12 @@ export default {
     longBio: (
         <React.Fragment>
             <p>
+                I&apos;m Didier Dafond and I&apos;m a Full-Stack Developer since 2014. I like to experiment and work in team to keep up to date with
+                new technologies. I have also a good electronic knowledge thanks to the high school&apos;s technical address. I have high expectations
+                for myself and a strong work ethics. I always do my best by striving for the finest result without forgetting to pay attention to
+                details.
+            </p>
+            <p>
                 This website was born in 2019 from my need to learn more deeply and practice with React Hooks and Material-UI, building something
                 useful and simple like a web CV. Any improvement is certainly welcome, bearing in mind that the main focus is to be able to make it as
                 generic as possible
@@ -33,12 +39,6 @@ export default {
                     GitHub
                 </Link>
                 .
-            </p>
-            <p>
-                I&apos;m Didier Dafond and I&apos;m a Full-Stack Developer since 2014. I like to experiment and work in team to keep up to date with
-                new technologies. I have also a good electronic knowledge thanks to the high school&apos;s technical address. I have high expectations
-                for myself and a strong work ethics. I always do my best by striving for the finest result without forgetting to pay attention to
-                details.
             </p>
             <Typography variant="body2" align="center" color="textSecondary">
                 {/* eslint-disable-next-line react/jsx-one-expression-per-line */}

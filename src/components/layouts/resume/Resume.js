@@ -62,7 +62,7 @@ const Resume = ({ pageConf }) => {
     return (
         <React.Fragment>
             <LayoutHeader>
-                <HeaderTitle title="Resume" icon={<FolderShared className={classes.icon} />} />
+                <HeaderTitle title="Resume" subtitle="Full-Stack Developer - Software Engineer" icon={<FolderShared className={classes.icon} />} />
             </LayoutHeader>
             <LayoutBody>
                 <Paper className={classes.paper}>
