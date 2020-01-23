@@ -22,7 +22,7 @@ export default [
         url: 'https://www.npmjs.com',
         name: 'npm',
         tooltip: 'Knowledge level',
-        description: 'Before you can even use Node.js or React, getting in touch with npm is mandatory.'
+        description: 'It is mandatory to be able to use npm before starting to work with Node.js or React, getting in touch with npm is mandatory.'
     },
     {
         id: uuid(),
@@ -33,7 +33,7 @@ export default [
         url: 'https://eslint.org',
         name: 'ESLint',
         tooltip: 'Knowledge level',
-        description: 'Once tried it is impossible to do without it. Since I use JavaScript ESLint is my inseparable tool.'
+        description: 'It is impossible to develop without it. Since I started using JavaScript ESLint is my inseparable tool.'
     },
     {
         id: uuid(),
@@ -56,7 +56,7 @@ export default [
         name: 'Feathers',
         tooltip: 'Knowledge level',
         description:
-            'I always used Node.js with Feathers. Like Spring for Java, Feathers is a framework to simplify the development of REST APIs in Node.js.'
+            'I always use Node.js with Feathers. Like Spring for Java, Feathers is a framework to simplify the development of REST APIs in Node.js.'
     },
     {
         id: uuid(),
@@ -67,7 +67,7 @@ export default [
         url: 'https://reactjs.org',
         name: 'React (Hooks)',
         tooltip: 'Knowledge level',
-        description: 'I started using React around the same time as Node.js. To better understand this technology I created this webpage.'
+        description: 'I started using React around the same time as Node.js. I created this webpage to improve my knowledge of this technology.'
     },
     {
         id: uuid(),
@@ -78,7 +78,7 @@ export default [
         url: 'https://redux-saga.js.org',
         name: 'Redux and Saga',
         tooltip: 'Knowledge level',
-        description: 'To build complex Apps with react this two libraries are indispensable.'
+        description: 'These two libraries are indispensable to build complex apps with React.'
     },
     {
         id: uuid(),
@@ -101,7 +101,7 @@ export default [
         name: 'MongoDB',
         tooltip: 'Knowledge level',
         description:
-            'To complete the transition to current technologies, MongoDB is absolutly the DB that best fits a server Node.js (for flexibility and method of use).'
+            'In order to complete the transition to current technologies, MongoDB is absolutely the DB that best fits a Node.js server (for flexibility and usage methodology).'
     },
     {
         id: uuid(),
@@ -112,7 +112,7 @@ export default [
         url: 'https://www.java.com',
         name: 'Java EE',
         tooltip: 'Knowledge level',
-        description: 'Java is the language I use mainly since 2014, notwithstanding JavaScript in the last few years is taking over.'
+        description: 'Java is the language I mainly use since 2014, notwithstanding JavaScript in the last few years is taking over.'
     },
     {
         id: uuid(),
@@ -123,7 +123,7 @@ export default [
         url: 'https://spring.io',
         name: 'Spring Boot',
         tooltip: 'Knowledge level',
-        description: 'Spring Boot (and Spring) is the framework for Java I use since 2014 to create web services.'
+        description: 'Spring Boot (and Spring) is the framework for Java I have been using since 2014 to create web services.'
     },
     {
         id: uuid(),
@@ -134,7 +134,7 @@ export default [
         url: 'https://maven.apache.org',
         name: 'Maven',
         tooltip: 'Knowledge level',
-        description: 'Since I started developing in Java Maven has accompanied and helped me manage the various projects.'
+        description: 'Since I started developing in Java Maven, has accompanied and helped me to manage the various projects.'
     },
     {
         id: uuid(),
@@ -146,7 +146,7 @@ export default [
         name: 'Hibernate',
         tooltip: 'Knowledge level',
         description:
-            'Hibernate I assume it is the most complete library to access the database in Java, certainly the most complete that I have used.'
+            'In my opinion Hibernate is the most complete library to access the database in Java, certainly the most complete that I have used.'
     },
     {
         id: uuid(),
@@ -157,7 +157,7 @@ export default [
         url: 'https://www.oracle.com',
         name: 'Oracle DB (SQL)',
         tooltip: 'Knowledge level',
-        description: 'Before using MongoDB the main database that I used was Oracle Database.'
+        description: 'Oracle Database is the main database I have been using before MongoDB.'
     },
     {
         id: uuid(),
@@ -179,7 +179,7 @@ export default [
         url: 'https://rancher.com',
         name: 'Rancher',
         tooltip: 'Knowledge level',
-        description: 'I use Rancher (litterally as user) to manage the deployed Apps.'
+        description: 'I use Rancher (literally as user) to manage the deployed Apps.'
     },
     {
         id: uuid(),
@@ -190,7 +190,7 @@ export default [
         url: 'https://www.docker.com',
         name: 'Docker',
         tooltip: 'Knowledge level',
-        description: 'Quite the same of Rancher, but in this case I use Docker a little bit deeper with my home server.'
+        description: 'Quite the same of Rancher, In this case I work with Docker mostly with my home server.'
     },
     {
         id: uuid(),
@@ -202,7 +202,7 @@ export default [
         name: 'Raspberry Pi',
         tooltip: 'Knowledge level',
         description:
-            'I started using the Raspberry Pi to build my personal server, after this extremely positive first approach I used it for other projects (one of all is the Arcade Cabinet).'
+            'I started using the Raspberry Pi to build my personal server, after establishing that the first approach was extremely positive, I have used it for other projects (the main one was the Arcade Cabinet).'
     },
     {
         id: uuid(),

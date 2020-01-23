@@ -117,7 +117,7 @@ export default [
                 { id: uuid(), title: "80's Arcade Cabinet Machine enthusiast; built five entirely by myself", image: '/icons/gamecontroller.png' },
                 {
                     id: uuid(),
-                    title: 'Active in the carnival group of Castione (Sciatt) as a committee mebmer since 2014 and accountant since 2018',
+                    title: 'Active in the carnival group of Castione (Sciatt) as a committee member since 2014 and accountant since 2018',
                     image: '/icons/trends.png'
                 }
             ],
@@ -145,7 +145,7 @@ export default [
                     ),
                     subtitle: 'Ente Ospedaliero Cantonale, CH-6500 Bellinzona',
                     description:
-                        "Full-Stack developer mainly in Java (Spring & Spring Boot) and Oracle Database as back-end and React Hooks as front-end. Since the end of 2017 the back-end's development moved gradually on NodeJS (with framework FeathersJS) and MongoDB as database. Using Jenkins as a build & deploy system, Docker (with Rancher) as a service manager and Kibana as a log aggregator."
+                        "Full-Stack developer mainly in Java (Spring & Spring Boot) and Oracle Database as back-end and React Hooks as front-end. Since the end of 2017 the back-end's development moved gradually on NodeJS (with framework FeathersJS) and MongoDB as database. We also use Jenkins as a build & deploy system, Docker (with Rancher) as a service manager and Kibana as a log aggregator."
                 },
                 {
                     id: uuid(),

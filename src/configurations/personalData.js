@@ -23,11 +23,11 @@ export default {
                 details.
             </p>
             <p>
-                This website was born in 2019 from my need to learn more deeply and practice with React Hooks and Material-UI, building something
-                useful and simple like a web CV. Any improvement is certainly welcome, bearing in mind that the main focus is to be able to make it as
-                generic as possible
+                This website was born in 2019 from my need to learn more deeply and practice with React Hooks and Material-UI, with which I decided to
+                build something useful but simple as a web CV. Any improvements is regarding this project is more than welcome, bearing in mind that
+                the main focus is to be able to make it as generic as possible so that any other user could benefit as much as possible from its use.
                 {' ' /* eslint-disable-next-line react/jsx-one-expression-per-line */}
-                to be used by other users. The project is public on{' '}
+                The project is public on{' '}
                 <Link
                     color="inherit"
                     underline="always"
