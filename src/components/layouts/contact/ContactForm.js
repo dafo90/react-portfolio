@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Snackbar, Slide, FormControlLabel, FormControl, Checkbox, Link, Box } from '@material-ui/core';
 import { Send } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
@@ -30,7 +30,6 @@ const TransitionDown = props => <Slide {...props} direction="down" />;
 
 const ContactForm = ({ formSubmitUrl }) => {
     const classes = useStyles();
-    const recaptchaRef = useRef({});
     const { executeRecaptcha } = useGoogleReCaptcha();
     const [form, setForm] = useState({});
     const [error, setError] = useState({});
@@ -51,7 +50,7 @@ const ContactForm = ({ formSubmitUrl }) => {
 
     const isValid = (errorFields, formFields) =>
         !Object.keys(errorFields).find(errorField => errorFields[errorField]) &&
-        Object.keys(formFields).filter(field => formFields[field]).length === 5;
+        Object.keys(formFields).filter(field => formFields[field]).length === 4;
 
     const handleOnSubmit = event => {
         event.preventDefault();
@@ -70,7 +69,6 @@ const ContactForm = ({ formSubmitUrl }) => {
         axios
             .post(formSubmitUrl, bodyFormData)
             .then(() => {
-                recaptchaRef.current.reset(recaptchaRef.current.getWidgetId());
                 setSnackbarData({ open: true, variant: 'success', message: 'Thanks for contacting me, I will reply to you as soon as possible!' });
                 setForm({});
                 setError({});
@@ -107,7 +105,7 @@ const ContactForm = ({ formSubmitUrl }) => {
 
     const handleCloseSnackbar = (event, reason) => {
         if (reason === 'clickaway') return;
-        setSnackbarData({ open: false, variant: 'success', message: '' });
+        setSnackbarData({ ...snackbarData, open: false });
     };
 
     return (
