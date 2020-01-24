@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "author": "dafo90",
   "license": "MIT",
-  "homepage": "https://dafo90.github.io/react-portfolio",
+  "homepage": "https://dafo90.github.io",
   "dependencies": {
     "@material-ui/core": "^4.9.0",
     "@material-ui/icons": "^4.5.1",
@@ -51,7 +51,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -b master -d build --remote prod"
   },
   "eslintConfig": {
     "extends": "react-app"
