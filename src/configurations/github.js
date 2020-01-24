@@ -7,11 +7,25 @@ export default {
     dateFormat: 'YYYY-MM-DDTHH:mm:ssZ',
     repos: [
         {
+            id: 209611683,
+            name: 'React Portfolio',
+            enabled: false,
+            main: true,
+            description: 'React Portfolio built with React, Material-UI, Redux and Saga'
+        },
+        {
             id: 215624053,
             name: 'Tic-Tac-Toe',
             enabled: true,
             main: true,
             description: 'Tic-Tac-Toe game built with React, Material-UI, Redux and Saga'
+        },
+        {
+            id: 228206818,
+            name: 'DIT Arcade Cabinet',
+            enabled: false,
+            main: true,
+            description: 'Instruction to build your own customized Arcade Cabinet'
         },
         {
             id: 182591319,

@@ -1,5 +1,5 @@
 import { SET_LAYOUT, OPEN_MOBILE_DRAWER, CLOSE_MOBILE_DRAWER, GITHUB_RECEIVE_REPOS, SET_SELECTED_INDEX_MENU } from '../actions/actions';
-import layouts from '../configurations/layouts';
+import layouts from '../../configurations/layouts';
 
 const findLayoutByPath = urlToFind => layouts.find(({ enabled, urls }) => enabled && urls && urls.includes(urlToFind));
 const findLayoutIndex = urlToFind => {

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { requestGithubRepos } from '../actions/actions';
+import { requestGithubRepos } from '../redux/actions/actions';
 
 export default () => {
     const dispatch = useDispatch();

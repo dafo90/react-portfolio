@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import layouts from '../../../configurations/layouts';
 import DrawerHeader from './DrawerHeader';
-import { setLayout, setSelectedIndexMenu } from '../../../actions/actions';
+import { setLayout, setSelectedIndexMenu } from '../../../redux/actions/actions';
 
 const useStyles = makeStyles(theme => ({
     header: {

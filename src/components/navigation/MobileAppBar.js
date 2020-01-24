@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography, AppBar, Toolbar, IconButton } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons/';
-import { openMobileDrawer } from '../../actions/actions';
+import { openMobileDrawer } from '../../redux/actions/actions';
 
 const useStyles = makeStyles(theme => ({
     root: {

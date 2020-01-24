@@ -2,7 +2,7 @@ import React from 'react';
 import { Paper, Typography, Button, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { useDispatch } from 'react-redux';
-import { setLayout } from '../actions/actions';
+import { setLayout } from '../redux/actions/actions';
 import layouts from '../configurations/layouts';
 
 const useStyles = makeStyles(theme => ({

@@ -1,4 +1,5 @@
 import React from 'react';
+import { LinearProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
 import { DeveloperMode } from '@material-ui/icons';
@@ -23,9 +24,7 @@ const Projects = ({ pageConf }) => {
             <LayoutHeader>
                 <HeaderTitle title={title} subtitle={subtitle} icon={<DeveloperMode className={classes.icon} />} />
             </LayoutHeader>
-            <LayoutBody>
-                <TilesSection tiles={githubRepos} />
-            </LayoutBody>
+            <LayoutBody>{githubRepos.length ? <TilesSection tiles={githubRepos} /> : <LinearProgress />}</LayoutBody>
         </React.Fragment>
     );
 };

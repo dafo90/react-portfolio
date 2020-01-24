@@ -4,7 +4,7 @@ import { Grid, Button, Box } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import personalData from '../../../configurations/personalData';
-import { setLayout } from '../../../actions/actions';
+import { setLayout } from '../../../redux/actions/actions';
 import HeaderTitle from '../../common/HeaderTitle';
 
 const useStyles = makeStyles(theme => ({
