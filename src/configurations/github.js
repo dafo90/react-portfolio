@@ -9,7 +9,7 @@ export default {
         {
             id: 209611683,
             name: 'React Portfolio',
-            enabled: false,
+            enabled: true,
             main: true,
             description: 'React Portfolio built with React, Material-UI, Redux and Saga'
         },
