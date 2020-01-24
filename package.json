@@ -1,10 +1,9 @@
 {
   "name": "react-portfolio",
   "version": "0.1.0",
-  "private": true,
   "author": "dafo90",
   "license": "MIT",
-  "homepage": "https://dafo90.github.io",
+  "homepage": "https://dafo90.github.io/react-portfolio",
   "dependencies": {
     "@material-ui/core": "^4.9.0",
     "@material-ui/icons": "^4.5.1",
@@ -42,16 +41,17 @@
     "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "^2.3.0",
-    "husky": "^4.2.0",
+    "gh-pages": "^2.2.0",
+    "husky": "^4.2.1",
     "prettier": "^1.19.1",
     "redux-devtools-extension": "^2.13.8"
   },
   "scripts": {
-    "start": "PORT=3006 react-scripts start",
+    "start": "PORT=3000 react-scripts start",
     "build": "react-scripts build",
-    "test": "npx cypress run",
     "eject": "react-scripts eject",
-    "cypress": "npx cypress open"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
