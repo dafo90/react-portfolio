@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { TextField, Button, Typography, Snackbar, Slide, FormControlLabel, FormControl, Checkbox, Link } from '@material-ui/core';
+import { TextField, Button, Typography, Snackbar, Slide, FormControlLabel, FormControl, Checkbox, Link, Box } from '@material-ui/core';
 import { Send } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -206,10 +206,12 @@ const ContactForm = ({ formSubmitUrl }) => {
                         {error.captcha}
                     </Typography>
                 )}
-                <Button className={classes.button} type="submit" variant="contained" size="large">
-                    <Send className={classes.buttonIcon} />
-                    Submit
-                </Button>
+                <Box>
+                    <Button className={classes.button} type="submit" variant="contained" size="large">
+                        <Send className={classes.buttonIcon} />
+                        Submit
+                    </Button>
+                </Box>
             </form>
             <Snackbar
                 TransitionComponent={TransitionDown}
