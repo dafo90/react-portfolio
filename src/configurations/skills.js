@@ -22,7 +22,7 @@ export default [
         url: 'https://www.npmjs.com',
         name: 'npm',
         tooltip: 'Knowledge level',
-        description: 'It is mandatory to be able to use npm before starting to work with Node.js or React, getting in touch with npm is mandatory.'
+        description: 'It is mandatory to be able to use npm before starting to work with Node.js or React.'
     },
     {
         id: uuid(),
@@ -202,7 +202,7 @@ export default [
         name: 'Raspberry Pi',
         tooltip: 'Knowledge level',
         description:
-            'I started using the Raspberry Pi to build my personal server, after establishing that the first approach was extremely positive, I have used it for other projects (the main one was the Arcade Cabinet).'
+            'I started using the Raspberry Pi to build my personal server. After establishing that the first approach was extremely positive, I have used it for other projects (the main one was the Arcade Cabinet).'
     },
     {
         id: uuid(),

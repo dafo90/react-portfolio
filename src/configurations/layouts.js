@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-curly-brace-presence */
-import React from 'react';
-import { Person, FolderShared, Email, DeveloperMode, Extension } from '@material-ui/icons';
 import { Link } from '@material-ui/core';
+import { DeveloperMode, Email, Extension, FolderShared, Person } from '@material-ui/icons';
+import React from 'react';
 import uuid from 'uuid/v4';
 import AboutMe from '../components/layouts/aboutme/AboutMe';
 import Contact from '../components/layouts/contact/Contact';
-import Skills from '../components/layouts/skills/Skills';
 import Projects from '../components/layouts/projects/Projects';
 import Resume from '../components/layouts/resume/Resume';
+import Skills from '../components/layouts/skills/Skills';
 import github from './github';
 
 export default [
@@ -161,7 +161,7 @@ export default [
                             </Link>
                         </React.Fragment>
                     ),
-                    subtitle: 'Scuola Universitaria della Svizzera Italiana, CH-6928 Manno',
+                    subtitle: 'Scuola Universitaria Professionale della Svizzera Italiana, CH-6928 Manno',
                     description:
                         "Diploma's project: P2P photo sharing via gesture recognition. Experience with basic AI in gesture recognition and the (old) Android framework."
                 },
