@@ -89,7 +89,7 @@ export default [
         url: 'https://material-ui.com',
         name: 'Material-UI',
         tooltip: 'Knowledge level',
-        description: 'After a few months with Semantic UI, the power and cleanliness of Material-UI "imposed" its introduction.'
+        description: 'After a few months with Semantic UI, the extremely wide and cleanliness of Material-UI "imposed" its introduction.'
     },
     {
         id: uuid(),
@@ -190,7 +190,7 @@ export default [
         url: 'https://www.docker.com',
         name: 'Docker',
         tooltip: 'Knowledge level',
-        description: 'Quite the same of Rancher, In this case I work with Docker mostly with my home server.'
+        description: 'I use Docker as user but I also work with it with my home server.'
     },
     {
         id: uuid(),
