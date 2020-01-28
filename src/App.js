@@ -10,7 +10,7 @@ import useFetchBaseData from './hooks/useFetchBaseData';
 const App = () => {
     useFetchBaseData();
     return (
-        <Router history={history}>
+        <Router basename="/" history={history}>
             <ScrollToTop>
                 <Switch>
                     <Route exact path={layouts.filter(({ urls }) => urls).flatMap(({ urls }) => urls)} component={ReactPortfolio} />

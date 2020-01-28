@@ -6,7 +6,7 @@ import layouts from '../configurations/layouts';
 
 const MainLayout = () => {
     return (
-        <Router history={history}>
+        <Router basename="/" history={history}>
             <ScrollToTop>
                 <Switch>
                     {layouts

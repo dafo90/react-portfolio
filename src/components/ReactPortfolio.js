@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Hidden } from '@material-ui/core';
+import { Hidden, Box } from '@material-ui/core';
 import CookieConsent from 'react-cookie-consent';
 import Footer from './footer/Footer';
 import MainLayout from './MainLayout';
@@ -39,7 +39,7 @@ const ReactPortfolio = () => {
             <CookieConsent style={{ zIndex: 100000, backgroundColor: 'black' }} cookieName={cookieName}>
                 This website uses cookies to enhance the user experience.
             </CookieConsent>
-            <div className={classes.root}>
+            <Box className={classes.root}>
                 {/* Mobile App bar */}
                 <MobileAppBar />
                 {/* Drawer Menu */}
@@ -59,7 +59,7 @@ const ReactPortfolio = () => {
                     <MainLayout />
                     <Footer />
                 </main>
-            </div>
+            </Box>
         </React.Fragment>
     );
 };
