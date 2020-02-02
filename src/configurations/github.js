@@ -22,10 +22,11 @@ export default {
         },
         {
             id: 228206818,
-            name: 'DIT Arcade Cabinet',
-            enabled: false,
+            name: 'DIY Arcade Cabinet',
+            enabled: true,
             main: true,
-            description: 'Instruction to build your own customized Arcade Cabinet'
+            description: 'Instruction to build your own customized Arcade Cabinet',
+            imageUrl: '/images/arcade-cabinet.JPG'
         },
         {
             id: 182591319,
