@@ -1,9 +1,10 @@
+import { CardContent, CardMedia, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { CardContent, CardMedia, Typography, Grid } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+
+import BootstrapTooltip from '../BootstrapTooltip';
 import BulletsBar from '../bullet/BulletsBar';
-import ArrowTooltip from '../ArrowTooltip';
 
 const maxLevel = 6;
 
@@ -63,7 +64,9 @@ const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, t
                     </Grid>
                     {level && (
                         <Grid xs="auto" item onMouseEnter={() => setBulletsColorOffset(200)} onMouseLeave={() => setBulletsColorOffset(0)}>
-                            <ArrowTooltip
+                            <BootstrapTooltip
+                                className={classes.tooltip}
+                                arrow
                                 title={`${tooltip} (${level}/${maxLevel})`}
                                 placement="top"
                                 disableFocusListener={!tooltip}
@@ -77,7 +80,7 @@ const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, t
                                     max={maxLevel}
                                     colorOffset={bulletsColorOffset}
                                 />
-                            </ArrowTooltip>
+                            </BootstrapTooltip>
                         </Grid>
                     )}
                 </Grid>

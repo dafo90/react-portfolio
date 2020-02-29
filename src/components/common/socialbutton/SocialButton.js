@@ -1,8 +1,9 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import { Avatar } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import ArrowTooltip from '../ArrowTooltip';
+import React from 'react';
+
+import BootstrapTooltip from '../BootstrapTooltip';
 
 const useStyles = makeStyles(theme => ({
     socialCircle: ({ iconSize }) => ({
@@ -21,7 +22,8 @@ const useStyles = makeStyles(theme => ({
 const SocialButton = ({ tooltip, socialName, url, icon: Icon, iconSize }) => {
     const classes = useStyles({ iconSize });
     return (
-        <ArrowTooltip
+        <BootstrapTooltip
+            arrow
             title={tooltip}
             placement="bottom"
             disableFocusListener={!tooltip}
@@ -31,7 +33,7 @@ const SocialButton = ({ tooltip, socialName, url, icon: Icon, iconSize }) => {
             <Avatar className={classes.socialCircle} component="a" alt={socialName} href={url} target="_blank" rel="noreferrer">
                 <Icon />
             </Avatar>
-        </ArrowTooltip>
+        </BootstrapTooltip>
     );
 };
 

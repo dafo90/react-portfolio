@@ -1,8 +1,9 @@
 import React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
-import history from '../utils/history';
+
 import layouts from '../configurations/layouts';
+import history from '../routings/history';
 
 const MainLayout = () => {
     return (

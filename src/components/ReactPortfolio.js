@@ -1,12 +1,13 @@
-import React from 'react';
+import { Box, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Hidden, Box } from '@material-ui/core';
+import React from 'react';
 import CookieConsent from 'react-cookie-consent';
-import Footer from './footer/Footer';
+
+import Footer from './Footer';
 import MainLayout from './MainLayout';
-import MobileAppBar from './navigation/MobileAppBar';
-import MobileDrawer from './navigation/drawer/MobileDrawer';
 import DesktopDrawer from './navigation/drawer/DesktopDrawer';
+import MobileDrawer from './navigation/drawer/MobileDrawer';
+import MobileAppBar from './navigation/MobileAppBar';
 
 const cookieName = 'ReactPortfolio';
 const drawerWidth = '280px';
@@ -40,20 +41,19 @@ const ReactPortfolio = () => {
                 This website uses cookies to enhance the user experience.
             </CookieConsent>
             <Box className={classes.root}>
-                {/* Mobile App bar */}
-                <MobileAppBar />
-                {/* Drawer Menu */}
+                <Hidden mdUp implementation="js">
+                    <MobileAppBar />
+                </Hidden>
+
                 <nav className={classes.drawer}>
-                    {/* Drawer Mobile View */}
-                    <Hidden mdUp implementation="css">
+                    <Hidden mdUp implementation="js">
                         <MobileDrawer maxWidth={drawerWidth} />
                     </Hidden>
-                    {/* Drawer Desktop View */}
-                    <Hidden smDown implementation="css">
+                    <Hidden smDown implementation="js">
                         <DesktopDrawer width={drawerWidth} />
                     </Hidden>
                 </nav>
-                {/* Main Layout */}
+
                 <main className={classes.content}>
                     <div className={classes.toolbar} />
                     <MainLayout />

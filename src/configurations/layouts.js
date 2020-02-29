@@ -2,7 +2,8 @@
 import { Link } from '@material-ui/core';
 import { DeveloperMode, Email, Extension, FolderShared, Person } from '@material-ui/icons';
 import React from 'react';
-import uuid from 'uuid/v4';
+import { v4 as uuid } from 'uuid';
+
 import AboutMe from '../components/layouts/aboutme/AboutMe';
 import Contact from '../components/layouts/contact/Contact';
 import Projects from '../components/layouts/projects/Projects';

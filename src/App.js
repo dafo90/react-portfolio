@@ -1,11 +1,12 @@
 import React from 'react';
 import { Route, Router, Switch } from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
-import layouts from './configurations/layouts';
-import history from './utils/history';
-import ReactPortfolio from './components/ReactPortfolio';
+
 import NotFound from './components/NotFound';
+import ReactPortfolio from './components/ReactPortfolio';
+import layouts from './configurations/layouts';
 import useFetchBaseData from './hooks/useFetchBaseData';
+import history from './routings/history';
 
 const App = () => {
     useFetchBaseData();

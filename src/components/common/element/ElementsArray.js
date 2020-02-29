@@ -1,6 +1,7 @@
-import React from 'react';
 import { List } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import Element from './Element';
 
 const ElementsArray = ({ className, elements }) => {

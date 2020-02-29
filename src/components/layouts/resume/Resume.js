@@ -1,17 +1,18 @@
-import React from 'react';
-import { Paper, Grid, Divider, Typography } from '@material-ui/core';
+import { Divider, Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { FolderShared } from '@material-ui/icons';
-import PropTypes from 'prop-types';
 import BubbleChart from '@weknow/react-bubble-chart-d3';
+import PropTypes from 'prop-types';
+import React from 'react';
 import useDimensions from 'react-use-dimensions';
-import LayoutHeader from '../LayoutHeader';
-import LayoutBody from '../LayoutBody';
-import HeaderTitle from '../../common/HeaderTitle';
-import ResumeHeader from './ResumeHeader';
-import TimelineTiles from '../../common/TimelineTiles';
-import Section from '../../common/Section';
+
 import ElementsArray from '../../common/element/ElementsArray';
+import HeaderTitle from '../../common/HeaderTitle';
+import Section from '../../common/Section';
+import TimelineTiles from '../../common/TimelineTiles';
+import LayoutBody from '../LayoutBody';
+import LayoutHeader from '../LayoutHeader';
+import ResumeHeader from './ResumeHeader';
 
 const leftColumnMinWidth = '150px';
 const rightColumnWidth = { xs: '150px', md: '300px', lg: '450px' };

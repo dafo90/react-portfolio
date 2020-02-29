@@ -1,11 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Avatar, ListItem, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { ListItem, Typography, Avatar } from '@material-ui/core';
-import SocialButtonsBar from '../../common/socialbutton/SocialButtonsBar';
-import Address from '../../common/Address';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import personalData from '../../../configurations/personalData';
 import socials from '../../../configurations/socials';
+import Address from '../../common/Address';
+import SocialButtonsBar from '../../common/socialbutton/SocialButtonsBar';
 
 const useStyles = makeStyles(theme => ({
     name: {

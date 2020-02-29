@@ -1,10 +1,12 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Drawer } from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { closeMobileDrawer } from '../../../redux/actions/navigationAction';
+import { mobileDrawerOpen } from '../../../redux/selectors/selectors';
 import DrawerMenu from './DrawerMenu';
-import { closeMobileDrawer } from '../../../redux/actions/actions';
 
 const useStyles = makeStyles(() => ({
     mobileDrawer: ({ width, maxWidth }) => ({
@@ -17,7 +19,7 @@ const MobileDrawer = ({ width, maxWidth }) => {
     const dispatch = useDispatch();
     const classes = useStyles({ width, maxWidth });
     const theme = useTheme();
-    const open = useSelector(state => state.mobileDrawerOpen);
+    const open = useSelector(mobileDrawerOpen);
     return (
         <Drawer
             variant="temporary"

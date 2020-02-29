@@ -1,12 +1,13 @@
 import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
 import { Extension } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import LayoutHeader from '../LayoutHeader';
-import LayoutBody from '../LayoutBody';
-import TilesSection from '../../common/tile/TilesSection';
-import HeaderTitle from '../../common/HeaderTitle';
+import React from 'react';
+
 import skills from '../../../configurations/skills';
+import HeaderTitle from '../../common/HeaderTitle';
+import TilesSection from '../../common/tile/TilesSection';
+import LayoutBody from '../LayoutBody';
+import LayoutHeader from '../LayoutHeader';
 
 const useStyles = makeStyles(() => ({
     icon: {

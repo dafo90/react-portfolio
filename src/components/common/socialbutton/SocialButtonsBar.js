@@ -1,6 +1,7 @@
-import React from 'react';
 import { Grid } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
+
 import SocialButton from './SocialButton';
 
 const SocialButtonsBar = ({ className, socials, iconSize }) => {

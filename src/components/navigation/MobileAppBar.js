@@ -1,16 +1,13 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { AppBar, IconButton, Toolbar, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, AppBar, Toolbar, IconButton } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons/';
-import { openMobileDrawer } from '../../redux/actions/actions';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { openMobileDrawer } from '../../redux/actions/navigationAction';
+import { selectedLayout } from '../../redux/selectors/selectors';
 
 const useStyles = makeStyles(theme => ({
-    root: {
-        [theme.breakpoints.up('md')]: {
-            display: 'none'
-        }
-    },
     title: {
         paddingLeft: theme.spacing(1)
     }
@@ -19,11 +16,11 @@ const useStyles = makeStyles(theme => ({
 const MobileAppBar = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const { title } = useSelector(state => state.layout);
+    const { title } = useSelector(selectedLayout);
     return (
-        <AppBar position="fixed" className={classes.root} color="inherit">
+        <AppBar position="fixed" color="inherit">
             <Toolbar>
-                <IconButton color="inherit" aria-label="open drawer" edge="start" onClick={() => dispatch(openMobileDrawer())}>
+                <IconButton color="inherit" edge="start" onClick={() => dispatch(openMobileDrawer())}>
                     <MenuIcon />
                 </IconButton>
                 {title && (

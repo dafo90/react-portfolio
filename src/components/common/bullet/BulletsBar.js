@@ -1,7 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Grid, Fade } from '@material-ui/core';
+import { Fade, Grid } from '@material-ui/core';
 import { deepOrange, grey } from '@material-ui/core/colors';
+import PropTypes from 'prop-types';
+import React from 'react';
+
 import Bullet from './Bullet';
 
 const BulletsBar = React.forwardRef(({ className, bulletSize, level, startBulletsTransition, max, colorOffset, ...props }, ref) => {

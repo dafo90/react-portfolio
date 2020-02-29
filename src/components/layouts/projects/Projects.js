@@ -1,13 +1,15 @@
-import React from 'react';
 import { LinearProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { useSelector } from 'react-redux';
 import { DeveloperMode } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import LayoutHeader from '../LayoutHeader';
-import LayoutBody from '../LayoutBody';
-import TilesSection from '../../common/tile/TilesSection';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { githubRepos } from '../../../redux/selectors/selectors';
 import HeaderTitle from '../../common/HeaderTitle';
+import TilesSection from '../../common/tile/TilesSection';
+import LayoutBody from '../LayoutBody';
+import LayoutHeader from '../LayoutHeader';
 
 const useStyles = makeStyles(() => ({
     icon: {
@@ -17,14 +19,14 @@ const useStyles = makeStyles(() => ({
 
 const Projects = ({ pageConf }) => {
     const classes = useStyles();
-    const githubRepos = useSelector(state => state.githubRepos);
+    const repos = useSelector(githubRepos);
     const { title, subtitle } = pageConf;
     return (
         <React.Fragment>
             <LayoutHeader>
                 <HeaderTitle title={title} subtitle={subtitle} icon={<DeveloperMode className={classes.icon} />} />
             </LayoutHeader>
-            <LayoutBody>{githubRepos.length ? <TilesSection tiles={githubRepos} /> : <LinearProgress />}</LayoutBody>
+            <LayoutBody>{repos.length ? <TilesSection tiles={repos} /> : <LinearProgress />}</LayoutBody>
         </React.Fragment>
     );
 };

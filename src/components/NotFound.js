@@ -1,8 +1,7 @@
-import React from 'react';
-import { Paper, Typography, Button, useMediaQuery } from '@material-ui/core';
+import { Button, Paper, Typography, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
-import { useDispatch } from 'react-redux';
-import { setLayout } from '../redux/actions/actions';
+import React from 'react';
+
 import layouts from '../configurations/layouts';
 
 const useStyles = makeStyles(theme => ({
@@ -49,7 +48,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const NotFound = () => {
-    const dispatch = useDispatch();
     const classes = useStyles();
     const theme = useTheme();
     const matchesXs = useMediaQuery(theme.breakpoints.only('xs'));
@@ -68,7 +66,7 @@ const NotFound = () => {
                 <Typography variant="body1" color="textSecondary" align="center" className={classes.errorMessage}>
                     404 - Page not found
                 </Typography>
-                <Button variant="contained" to={homepageUrl} size="large" onClick={() => dispatch(setLayout(homepageUrl))}>
+                <Button variant="contained" href={homepageUrl} size="large">
                     Go to homepage
                 </Button>
             </Paper>

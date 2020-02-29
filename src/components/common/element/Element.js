@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { Avatar, ListItem, ListItemAvatar, ListItemSecondaryAction, ListItemText, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { ListItem, ListItemText, ListItemAvatar, ListItemSecondaryAction, Avatar, Typography } from '@material-ui/core';
-import useIsInViewport from 'use-is-in-viewport';
 import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
+import useIsInViewport from 'use-is-in-viewport';
+
 import BulletsBar from '../bullet/BulletsBar';
 
 const useStyles = makeStyles(() => ({

@@ -1,5 +1,5 @@
-import uuid from 'uuid/v4';
-import { TiSocialFacebook, TiSocialInstagram, TiSocialGithub, TiSocialLinkedin, TiSocialFlickr } from 'react-icons/ti';
+import { TiSocialFacebook, TiSocialFlickr, TiSocialGithub, TiSocialInstagram, TiSocialLinkedin } from 'react-icons/ti';
+import { v4 as uuid } from 'uuid';
 
 export default [
     {

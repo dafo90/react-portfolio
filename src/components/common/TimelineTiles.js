@@ -1,12 +1,14 @@
-import React from 'react';
+import 'react-vertical-timeline-component/style.min.css';
+
+import { Avatar, Box, Typography } from '@material-ui/core';
+import { blueGrey } from '@material-ui/core/colors';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Box, Avatar, Typography } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { blueGrey } from '@material-ui/core/colors';
+import React from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
-import 'react-vertical-timeline-component/style.min.css';
+
 import Section from './Section';
 
 const useStyles = makeStyles(theme => ({

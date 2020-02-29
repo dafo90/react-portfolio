@@ -1,9 +1,10 @@
+import { Box, Button, Card, CardActionArea, CardActions, CardContent, Chip, Grid, Link, Zoom } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Card, CardContent, CardActionArea, Link, Grid, Zoom, Chip, CardActions, Button } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import useIsInViewport from 'use-is-in-viewport';
-import ArrowTooltip from '../ArrowTooltip';
+
+import BootstrapTooltip from '../BootstrapTooltip';
 import TileMainContent from './TileMainContent';
 
 const transitionDelay = 500;
@@ -81,7 +82,8 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, tags, tran
                                 <Grid container variant="body2" alignItems="center" spacing={1}>
                                     {tags.map(({ id, text, icon: Icon, variant, color, url: tagUrl, tooltip: tagTooltip }) => (
                                         <Grid key={id} item>
-                                            <ArrowTooltip
+                                            <BootstrapTooltip
+                                                arrow
                                                 title={tagTooltip || '-'}
                                                 placement="bottom"
                                                 disableFocusListener={!tagTooltip}
@@ -100,7 +102,7 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, tags, tran
                                                     variant={variant}
                                                     color={color}
                                                 />
-                                            </ArrowTooltip>
+                                            </BootstrapTooltip>
                                         </Grid>
                                     ))}
                                 </Grid>

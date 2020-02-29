@@ -1,6 +1,6 @@
 import { Typography } from '@material-ui/core';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 
 const Address = ({ className, address }) => {
     return (

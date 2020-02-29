@@ -1,14 +1,16 @@
+import { Button, Grid, LinearProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import React from 'react';
-import { Grid, Button, LinearProgress } from '@material-ui/core';
-import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import LayoutHeader from '../LayoutHeader';
-import LayoutBody from '../LayoutBody';
-import AboutMeHeader from './AboutMeHeader';
-import TilesSection from '../../common/tile/TilesSection';
-import { setLayout } from '../../../redux/actions/actions';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import skills from '../../../configurations/skills';
+import { setSelectedLayout } from '../../../redux/actions/navigationAction';
+import { githubRepos } from '../../../redux/selectors/selectors';
+import TilesSection from '../../common/tile/TilesSection';
+import LayoutBody from '../LayoutBody';
+import LayoutHeader from '../LayoutHeader';
+import AboutMeHeader from './AboutMeHeader';
 
 const useStyles = makeStyles(theme => ({
     buttonGrid: {
@@ -17,32 +19,32 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-const findLayoutByCode = (layouts, codeToFind) => layouts.find(({ code, enabled }) => enabled && code === codeToFind) || {};
+const findLayoutByCode = (layouts, codeToFind) => layouts.find(({ code, enabled }) => enabled && code === codeToFind);
 
 const AboutMe = ({ layouts }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const githubRepos = useSelector(state => state.githubRepos);
+    const repos = useSelector(githubRepos);
 
-    const { urls: skillsUrls } = findLayoutByCode(layouts, 'skills');
-    const { urls: projectsUrls } = findLayoutByCode(layouts, 'projects');
+    const skillsLayout = findLayoutByCode(layouts, 'skills');
+    const projectsLayout = findLayoutByCode(layouts, 'projects');
     return (
         <React.Fragment>
             <LayoutHeader>
                 <AboutMeHeader layouts={layouts} />
             </LayoutHeader>
             <LayoutBody>
-                {githubRepos.length ? (
+                {repos.length ? (
                     <React.Fragment>
                         <TilesSection
                             sectionTitle="GitHub Repositories"
                             sectionSubtitle="Some of my open source Projects"
-                            tiles={githubRepos}
+                            tiles={repos}
                             onlyMainTiles
                         >
-                            {projectsUrls && (
+                            {projectsLayout && (
                                 <Grid className={classes.buttonGrid} container justify="center">
-                                    <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(projectsUrls[0]))}>
+                                    <Button variant="outlined" size="medium" onClick={() => dispatch(setSelectedLayout(projectsLayout))}>
                                         View all Projects
                                     </Button>
                                 </Grid>
@@ -55,9 +57,9 @@ const AboutMe = ({ layouts }) => {
                             onlyMainTiles
                         >
                             <React.Fragment>
-                                {skillsUrls && (
+                                {skillsLayout && (
                                     <Grid className={classes.buttonGrid} container justify="center">
-                                        <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(skillsUrls[0]))}>
+                                        <Button variant="outlined" size="medium" onClick={() => dispatch(setSelectedLayout(skillsLayout))}>
                                             View all Skills
                                         </Button>
                                     </Grid>

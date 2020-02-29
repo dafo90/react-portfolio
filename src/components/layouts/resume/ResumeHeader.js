@@ -1,15 +1,16 @@
-import React from 'react';
-import { Link, Grid, Typography, Divider, Avatar, Box, Hidden, List, ListItem, ListItemIcon, ListItemText, Button } from '@material-ui/core';
+import { Avatar, Box, Button, Divider, Grid, Hidden, Link, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import {
-    LocationOn as LocationIcon,
     Cake as CakeIcon,
     Email as EmailIcon,
+    InsertDriveFile as InsertDriveFileIcon,
     Language as LanguageIcon,
-    InsertDriveFile as InsertDriveFileIcon
+    LocationOn as LocationIcon
 } from '@material-ui/icons';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+
 import personalData from '../../../configurations/personalData';
 import packageJson from '../../../package.alias.json';
 

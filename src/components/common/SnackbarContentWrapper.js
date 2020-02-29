@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { CheckCircle as CheckCircleIcon, Error as ErrorIcon, Info as InfoIcon, Close as CloseIcon, Warning as WarningIcon } from '@material-ui/icons';
-import { amber, green } from '@material-ui/core/colors';
 import { IconButton, SnackbarContent } from '@material-ui/core';
+import { amber, green } from '@material-ui/core/colors';
 import { makeStyles } from '@material-ui/core/styles';
+import { CheckCircle as CheckCircleIcon, Close as CloseIcon, Error as ErrorIcon, Info as InfoIcon, Warning as WarningIcon } from '@material-ui/icons';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 const variantIcon = {
     success: CheckCircleIcon,

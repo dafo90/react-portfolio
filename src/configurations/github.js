@@ -1,5 +1,5 @@
-import uuid from 'uuid/v4';
-import { Gavel, Code, CallSplit, Visibility, Star, BusinessCenter } from '@material-ui/icons';
+import { BusinessCenter, CallSplit, Code, Gavel, Star, Visibility } from '@material-ui/icons';
+import { v4 as uuid } from 'uuid';
 
 export default {
     username: 'dafo90',
