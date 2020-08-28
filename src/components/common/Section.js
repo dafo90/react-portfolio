@@ -4,16 +4,16 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {
-        paddingTop: theme.spacing(2)
+        paddingTop: theme.spacing(2),
     },
     bar: {
-        borderLeft: `7px solid ${theme.palette.primary.light}`
+        borderLeft: `7px solid ${theme.palette.primary.light}`,
     },
     title: {
-        paddingLeft: theme.spacing(1)
-    }
+        paddingLeft: theme.spacing(1),
+    },
 }));
 
 const Section = ({ className, title, subtitle }) => {
@@ -38,12 +38,12 @@ const Section = ({ className, title, subtitle }) => {
 Section.propTypes = {
     className: PropTypes.string,
     title: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-    subtitle: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    subtitle: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
 
 Section.defaultProps = {
     className: undefined,
-    subtitle: undefined
+    subtitle: undefined,
 };
 
 export default Section;

@@ -10,13 +10,13 @@ import LayoutBody from '../LayoutBody';
 import LayoutHeader from '../LayoutHeader';
 import ContactForm from './ContactForm';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     form: {
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
     },
     icon: {
-        fontSize: '150px'
-    }
+        fontSize: '150px',
+    },
 }));
 
 const Contact = ({ pageConf }) => {
@@ -41,7 +41,7 @@ const Contact = ({ pageConf }) => {
 };
 
 Contact.propTypes = {
-    pageConf: PropTypes.object.isRequired
+    pageConf: PropTypes.object.isRequired,
 };
 
 export default Contact;

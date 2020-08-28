@@ -6,7 +6,7 @@ import React from 'react';
 
 const useStyles = makeStyles(() => ({
     imgBox: {
-        overflow: 'hidden'
+        overflow: 'hidden',
     },
     img: ({ scale, transparentImage }) => ({
         objectPosition: 'center',
@@ -15,9 +15,9 @@ const useStyles = makeStyles(() => ({
         verticalAlign: 'middle',
         transition: 'transform .5s ease',
         '&:hover': {
-            transform: `scale(${scale})`
-        }
-    })
+            transform: `scale(${scale})`,
+        },
+    }),
 }));
 
 const LinkImg = ({ src, alt, href, imgClassName: rootImgClassName, imgBoxClassName: rootImgBoxClassName, scale, transparentImage }) => {
@@ -40,14 +40,14 @@ LinkImg.propTypes = {
     imgClassName: PropTypes.string,
     imgBoxClassName: PropTypes.string,
     scale: PropTypes.number,
-    transparentImage: PropTypes.bool
+    transparentImage: PropTypes.bool,
 };
 
 LinkImg.defaultProps = {
     imgClassName: undefined,
     imgBoxClassName: undefined,
     scale: 1.3,
-    transparentImage: false
+    transparentImage: false,
 };
 
 export default LinkImg;

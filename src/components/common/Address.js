@@ -26,11 +26,11 @@ const Address = ({ className, address }) => {
 
 Address.propTypes = {
     className: PropTypes.string,
-    address: PropTypes.object.isRequired
+    address: PropTypes.object.isRequired,
 };
 
 Address.defaultProps = {
-    className: undefined
+    className: undefined,
 };
 
 export default Address;

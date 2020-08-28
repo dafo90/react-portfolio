@@ -8,8 +8,8 @@ const useStyles = makeStyles(() => ({
         width: size,
         height: size,
         borderRadius: '50%',
-        background: color
-    })
+        background: color,
+    }),
 }));
 
 const Bullet = React.forwardRef(({ size, color, ...props }, ref) => {
@@ -20,11 +20,11 @@ const Bullet = React.forwardRef(({ size, color, ...props }, ref) => {
 
 Bullet.propTypes = {
     color: PropTypes.string.isRequired,
-    size: PropTypes.string
+    size: PropTypes.string,
 };
 
 Bullet.defaultProps = {
-    size: '10px'
+    size: '10px',
 };
 
 export default Bullet;

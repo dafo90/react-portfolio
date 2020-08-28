@@ -8,8 +8,8 @@ import BulletsBar from '../bullet/BulletsBar';
 
 const useStyles = makeStyles(() => ({
     description: {
-        display: 'block'
-    }
+        display: 'block',
+    },
 }));
 
 const Element = ({ className, title, description, others, image, level }) => {
@@ -80,7 +80,7 @@ Element.propTypes = {
     description: PropTypes.string,
     others: PropTypes.string,
     image: PropTypes.string,
-    level: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    level: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 Element.defaultProps = {
@@ -88,7 +88,7 @@ Element.defaultProps = {
     description: undefined,
     others: undefined,
     image: undefined,
-    level: undefined
+    level: undefined,
 };
 
 export default Element;

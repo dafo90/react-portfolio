@@ -20,12 +20,12 @@ const SocialButtonsBar = ({ className, socials, iconSize }) => {
 SocialButtonsBar.propTypes = {
     className: PropTypes.string,
     socials: PropTypes.array.isRequired,
-    iconSize: PropTypes.string
+    iconSize: PropTypes.string,
 };
 
 SocialButtonsBar.defaultProps = {
     className: undefined,
-    iconSize: '32px'
+    iconSize: '32px',
 };
 
 export default SocialButtonsBar;

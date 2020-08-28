@@ -23,12 +23,12 @@ function* buildRepoParams(configRepo, repos) {
             forks_count: forks,
             watchers_count: watchers,
             stargazers_count: stars,
-            contributors_url: contributorsUrl
+            contributors_url: contributorsUrl,
         } = (repos && repos.find(({ id: repoId }) => repoId === configRepo.id)) || {
             id: configRepo.id,
             enabled: false,
             main: false,
-            imageUrl: undefined
+            imageUrl: undefined,
         };
         const completeLicense = license && license.url && (yield call(getGithubData, { url: license.url })).data;
         const tags = github.buildTags(archived, completeLicense, language, forks, watchers, stars);
@@ -47,7 +47,7 @@ function* buildRepoParams(configRepo, repos) {
             disabled,
             contributorsUrl,
             tags,
-            ...configRepo
+            ...configRepo,
         };
     } catch (err) {
         return { enabled: false };
@@ -66,7 +66,7 @@ function* requestGithubRepos() {
         page += 1;
     } while (data && data.length);
     repos = repos.filter(({ private: privateRepo }) => !privateRepo);
-    repos = yield all(github.repos && github.repos.map(configRepo => buildRepoParams(configRepo, repos)));
+    repos = yield all(github.repos && github.repos.map((configRepo) => buildRepoParams(configRepo, repos)));
     yield put(receiveGithubRepos(repos));
 }
 

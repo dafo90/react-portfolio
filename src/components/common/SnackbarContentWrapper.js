@@ -10,33 +10,33 @@ const variantIcon = {
     success: CheckCircleIcon,
     warning: WarningIcon,
     error: ErrorIcon,
-    info: InfoIcon
+    info: InfoIcon,
 };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     success: {
-        backgroundColor: green[600]
+        backgroundColor: green[600],
     },
     error: {
-        backgroundColor: theme.palette.error.dark
+        backgroundColor: theme.palette.error.dark,
     },
     info: {
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.primary.main,
     },
     warning: {
-        backgroundColor: amber[700]
+        backgroundColor: amber[700],
     },
     icon: {
-        fontSize: 20
+        fontSize: 20,
     },
     iconVariant: {
         opacity: 0.9,
-        marginRight: theme.spacing(1)
+        marginRight: theme.spacing(1),
     },
     message: {
         display: 'flex',
-        alignItems: 'center'
-    }
+        alignItems: 'center',
+    },
 }));
 
 const SnackbarContentWrapper = React.forwardRef(({ className, message, onClose, variant, ...props }, ref) => {
@@ -58,7 +58,7 @@ const SnackbarContentWrapper = React.forwardRef(({ className, message, onClose, 
             action={[
                 <IconButton key="close" aria-label="close" color="inherit" onClick={onClose}>
                     <CloseIcon className={classes.icon} />
-                </IconButton>
+                </IconButton>,
             ]}
         />
     );
@@ -68,13 +68,13 @@ SnackbarContentWrapper.propTypes = {
     variant: PropTypes.oneOf(['success', 'warning', 'error', 'info']).isRequired,
     message: PropTypes.string,
     className: PropTypes.string,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
 };
 
 SnackbarContentWrapper.defaultProps = {
     message: undefined,
     className: undefined,
-    onClose: () => {}
+    onClose: () => {},
 };
 
 export default SnackbarContentWrapper;

@@ -1,7 +1,7 @@
 import { RECEIVE_GITHUB_REPOS } from '../actions/githubActions';
 
 const initialState = {
-    repos: []
+    repos: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const rootReducer = (state = initialState, action) => {
         case RECEIVE_GITHUB_REPOS:
             return {
                 ...state,
-                repos: action.repos
+                repos: action.repos,
             };
         default:
             return state;

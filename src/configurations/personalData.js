@@ -11,7 +11,7 @@ export default {
     location: 'Switzerland',
     birthdate: {
         date: '09.10.1990',
-        format: 'DD.MM.YYYY'
+        format: 'DD.MM.YYYY',
     },
     shortBio: `Hi 👋, I'm Didier Dafond and I'm a Full-Stack Developer`,
     longBio: (
@@ -45,5 +45,5 @@ export default {
                 <i>&ldquo;Simplify, then add lightness&rdquo;</i> &mdash; Colin Chapman
             </Typography>
         </React.Fragment>
-    )
+    ),
 };

@@ -4,7 +4,7 @@ import React from 'react';
 
 import layouts from '../configurations/layouts';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         height: '100vh',
         width: '100vw',
@@ -12,7 +12,7 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
         alignItems: 'center',
         minWidth: '250px',
-        minHeight: '250px'
+        minHeight: '250px',
     },
     paper: {
         width: '80vw',
@@ -26,25 +26,25 @@ const useStyles = makeStyles(theme => ({
         maxHeight: '400px',
         minHeight: '200px',
         [theme.breakpoints.up('xs')]: {
-            height: '60vh'
+            height: '60vh',
         },
         [theme.breakpoints.up('sm')]: {
-            height: '70vh'
-        }
+            height: '70vh',
+        },
     },
     title: {
         fontWeight: 500,
         [theme.breakpoints.up('xs')]: {
-            fontWeight: 300
+            fontWeight: 300,
         },
         [theme.breakpoints.up('sm')]: {
-            fontWeight: 400
+            fontWeight: 400,
         },
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
     },
     errorMessage: {
-        paddingBottom: theme.spacing(3)
-    }
+        paddingBottom: theme.spacing(3),
+    },
 }));
 
 const NotFound = () => {

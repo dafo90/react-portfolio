@@ -10,24 +10,24 @@ import SnackbarContentWrapper from '../../common/SnackbarContentWrapper';
 
 const captchaError = 'Sorry, robots cannot contact me.';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     privacyPolicyError: {
-        marginLeft: theme.spacing(2)
+        marginLeft: theme.spacing(2),
     },
     captchaError: {
         marginTop: theme.spacing(2),
-        marginLeft: theme.spacing(2)
+        marginLeft: theme.spacing(2),
     },
     button: {
-        marginTop: theme.spacing(4)
+        marginTop: theme.spacing(4),
     },
     buttonIcon: {
-        paddingRight: theme.spacing(1)
-    }
+        paddingRight: theme.spacing(1),
+    },
 }));
 
 // eslint-disable-next-line react/jsx-props-no-spreading
-const TransitionDown = props => <Slide {...props} direction="down" />;
+const TransitionDown = (props) => <Slide {...props} direction="down" />;
 
 const ContactForm = ({ formSubmitUrl }) => {
     const classes = useStyles();
@@ -50,15 +50,15 @@ const ContactForm = ({ formSubmitUrl }) => {
     }, [executeRecaptcha]);
 
     const isValid = (errorFields, formFields) =>
-        !Object.keys(errorFields).find(errorField => errorFields[errorField]) &&
-        Object.keys(formFields).filter(field => formFields[field]).length === 4;
+        !Object.keys(errorFields).find((errorField) => errorFields[errorField]) &&
+        Object.keys(formFields).filter((field) => formFields[field]).length === 4;
 
-    const handleOnSubmit = event => {
+    const handleOnSubmit = (event) => {
         event.preventDefault();
         if (!token) {
             setError({
                 ...error,
-                captcha: captchaError
+                captcha: captchaError,
             });
             return;
         }
@@ -79,7 +79,7 @@ const ContactForm = ({ formSubmitUrl }) => {
             });
     };
 
-    const handlePrivacyPolicyCheckbox = event => {
+    const handlePrivacyPolicyCheckbox = (event) => {
         const newError = { ...error, privacyPolicyCheckbox: event.target.checked ? undefined : 'Please check this box if you want to proceed.' };
         const newForm = { ...form, privacyPolicyCheckbox: event.target.checked };
         setForm(newForm);
@@ -92,7 +92,7 @@ const ContactForm = ({ formSubmitUrl }) => {
             setError({
                 ...error,
                 [field]: event.target.validity.valid ? undefined : event.target.validationMessage,
-                captcha: captchaError
+                captcha: captchaError,
             });
         } else {
             setError({ ...error, [field]: event.target.validity.valid ? undefined : event.target.validationMessage });
@@ -115,7 +115,7 @@ const ContactForm = ({ formSubmitUrl }) => {
                 <TextField
                     error={!!error.name}
                     helperText={error.name}
-                    onInvalid={event => handleInvalid(event, 'name')}
+                    onInvalid={(event) => handleInvalid(event, 'name')}
                     required
                     label="Name"
                     className={classes.textField}
@@ -127,12 +127,12 @@ const ContactForm = ({ formSubmitUrl }) => {
                     autoComplete="cc-name"
                     type="text"
                     value={form.name || ''}
-                    onChange={event => handleChange(event, 'name')}
+                    onChange={(event) => handleChange(event, 'name')}
                 />
                 <TextField
                     error={!!error.email}
                     helperText={error.email}
-                    onInvalid={event => handleInvalid(event, 'email')}
+                    onInvalid={(event) => handleInvalid(event, 'email')}
                     required
                     label="Email"
                     className={classes.textField}
@@ -144,12 +144,12 @@ const ContactForm = ({ formSubmitUrl }) => {
                     autoComplete="email"
                     type="email"
                     value={form.email || ''}
-                    onChange={event => handleChange(event, 'email')}
+                    onChange={(event) => handleChange(event, 'email')}
                 />
                 <TextField
                     error={!!error.message}
                     helperText={error.message}
-                    onInvalid={event => handleInvalid(event, 'message')}
+                    onInvalid={(event) => handleInvalid(event, 'message')}
                     required
                     label="Message"
                     className={classes.textField}
@@ -163,13 +163,13 @@ const ContactForm = ({ formSubmitUrl }) => {
                     autoComplete="off"
                     type="text"
                     value={form.message || ''}
-                    onChange={event => handleChange(event, 'message')}
+                    onChange={(event) => handleChange(event, 'message')}
                 />
                 <FormControl error={!!error.privacyPolicyCheckbox} component="fieldset">
                     <FormControlLabel
                         control={
                             <Checkbox
-                                onInvalid={event => handleInvalid(event, 'privacyPolicyCheckbox')}
+                                onInvalid={(event) => handleInvalid(event, 'privacyPolicyCheckbox')}
                                 required
                                 checked={!!form.privacyPolicyCheckbox}
                                 onChange={handlePrivacyPolicyCheckbox}
@@ -216,7 +216,7 @@ const ContactForm = ({ formSubmitUrl }) => {
                 TransitionComponent={TransitionDown}
                 anchorOrigin={{
                     vertical: 'top',
-                    horizontal: 'center'
+                    horizontal: 'center',
                 }}
                 open={snackbarData.open}
                 autoHideDuration={4000}
@@ -229,7 +229,7 @@ const ContactForm = ({ formSubmitUrl }) => {
 };
 
 ContactForm.propTypes = {
-    formSubmitUrl: PropTypes.string.isRequired
+    formSubmitUrl: PropTypes.string.isRequired,
 };
 
 export default ContactForm;

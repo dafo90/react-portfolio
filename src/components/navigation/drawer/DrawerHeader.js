@@ -8,29 +8,29 @@ import socials from '../../../configurations/socials';
 import Address from '../../common/Address';
 import SocialButtonsBar from '../../common/socialbutton/SocialButtonsBar';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     name: {
         paddingTop: theme.spacing(2),
-        fontWeight: 450
+        fontWeight: 450,
     },
     avatarBox: {
         margin: 'auto',
         maxWidth: '200px',
         maxHeight: '200px',
         marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(2)
+        marginBottom: theme.spacing(2),
     },
     avatar: {
         width: '100%',
-        height: '100%'
+        height: '100%',
     },
     shortBio: {
         paddingTop: theme.spacing(1),
-        fontSize: 15
+        fontSize: 15,
     },
     socials: {
-        paddingTop: theme.spacing(2)
-    }
+        paddingTop: theme.spacing(2),
+    },
 }));
 
 const DrawerHeader = ({ className }) => {
@@ -57,11 +57,11 @@ const DrawerHeader = ({ className }) => {
 };
 
 DrawerHeader.propTypes = {
-    className: PropTypes.string
+    className: PropTypes.string,
 };
 
 DrawerHeader.defaultProps = {
-    className: undefined
+    className: undefined,
 };
 
 export default DrawerHeader;

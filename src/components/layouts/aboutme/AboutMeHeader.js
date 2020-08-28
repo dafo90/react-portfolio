@@ -8,46 +8,46 @@ import personalData from '../../../configurations/personalData';
 import { setSelectedLayout } from '../../../redux/actions/navigationAction';
 import HeaderTitle from '../../common/HeaderTitle';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     longBio: {
         paddingTop: theme.spacing(2),
         textAlign: 'justify',
-        textJustify: 'inter-word'
+        textJustify: 'inter-word',
     },
     bioImageBox: {
         float: 'left',
         [theme.breakpoints.up('md')]: {
-            float: 'right'
-        }
+            float: 'right',
+        },
     },
     bioImage: {
         borderRadius: '4px',
         [theme.breakpoints.only('xs')]: {
-            width: '100%'
+            width: '100%',
         },
         [theme.breakpoints.only('sm')]: {
-            maxWidth: '500px'
+            maxWidth: '500px',
         },
         [theme.breakpoints.only('md')]: {
             objectFit: 'cover',
             objectPosition: 'center',
-            maxWidth: '250px'
+            maxWidth: '250px',
         },
         [theme.breakpoints.up('lg')]: {
             objectFit: 'cover',
             objectPosition: 'center',
-            maxWidth: '400px'
-        }
+            maxWidth: '400px',
+        },
     },
     buttonsBar: {
-        paddingTop: theme.spacing(3)
+        paddingTop: theme.spacing(3),
     },
     button: {
-        margin: theme.spacing(1)
+        margin: theme.spacing(1),
     },
     buttonIcon: {
-        paddingRight: theme.spacing(1)
-    }
+        paddingRight: theme.spacing(1),
+    },
 }));
 
 const AboutMeHeader = ({ layouts }) => {
@@ -62,7 +62,7 @@ const AboutMeHeader = ({ layouts }) => {
                 {longBio && <Box className={classes.longBio}>{longBio}</Box>}
                 {linkLayouts.length && (
                     <Grid container className={classes.buttonsBar} justify="center" alignItems="center">
-                        {linkLayouts.map(linkLayout => {
+                        {linkLayouts.map((linkLayout) => {
                             const { id, buttonLabel, icon: Icon } = linkLayout;
                             return (
                                 <Button
@@ -90,7 +90,7 @@ const AboutMeHeader = ({ layouts }) => {
 };
 
 AboutMeHeader.propTypes = {
-    layouts: PropTypes.array.isRequired
+    layouts: PropTypes.array.isRequired,
 };
 
 export default AboutMeHeader;

@@ -5,19 +5,19 @@ import React from 'react';
 
 import Layout from './Layout';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         // background: theme.palette.secondary[50]
-        background: theme.palette.background.paper
+        background: theme.palette.background.paper,
     },
     header: {
         paddingTop: theme.spacing(6),
         paddingBottom: theme.spacing(6),
         [theme.breakpoints.down('sm')]: {
             paddingTop: theme.spacing(3),
-            paddingBottom: theme.spacing(3)
-        }
-    }
+            paddingBottom: theme.spacing(3),
+        },
+    },
 }));
 
 const LayoutHeader = ({ children }) => {
@@ -33,11 +33,11 @@ const LayoutHeader = ({ children }) => {
 };
 
 LayoutHeader.propTypes = {
-    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
 
 LayoutHeader.defaultProps = {
-    children: undefined
+    children: undefined,
 };
 
 export default LayoutHeader;

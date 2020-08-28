@@ -4,21 +4,21 @@ import React from 'react';
 
 import packageJson from '../package.alias.json';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         paddingTop: theme.spacing(5),
         paddingLeft: theme.spacing(2),
-        paddingRight: theme.spacing(2)
+        paddingRight: theme.spacing(2),
     },
     divider: {
         borderTop: `1px solid ${theme.palette.divider}`,
         margin: 'auto',
         width: '60%',
-        minWidth: '250px'
+        minWidth: '250px',
     },
     footer: {
-        paddingBottom: theme.spacing(1)
-    }
+        paddingBottom: theme.spacing(1),
+    },
 }));
 
 const PortfolioFooter = () => {

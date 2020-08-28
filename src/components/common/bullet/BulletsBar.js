@@ -21,9 +21,7 @@ const BulletsBar = React.forwardRef(({ className, bulletSize, level, startBullet
                 </Grid>
             ))}
         </Grid>
-    ) : (
-        undefined
-    );
+    ) : undefined;
 });
 
 BulletsBar.propTypes = {
@@ -32,14 +30,14 @@ BulletsBar.propTypes = {
     bulletSize: PropTypes.string,
     startBulletsTransition: PropTypes.bool,
     max: PropTypes.number.isRequired,
-    colorOffset: PropTypes.number
+    colorOffset: PropTypes.number,
 };
 
 BulletsBar.defaultProps = {
     className: undefined,
     bulletSize: '10px',
     startBulletsTransition: false,
-    colorOffset: 0
+    colorOffset: 0,
 };
 
 export default BulletsBar;

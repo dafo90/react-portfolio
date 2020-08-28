@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {
         paddingLeft: theme.spacing(6),
         paddingRight: theme.spacing(6),
@@ -11,21 +11,21 @@ const useStyles = makeStyles(theme => ({
         [theme.breakpoints.only('xs')]: {
             paddingLeft: theme.spacing(3),
             paddingRight: theme.spacing(3),
-            width: '100%'
+            width: '100%',
         },
         [theme.breakpoints.only('sm')]: {
-            maxWidth: '760px'
+            maxWidth: '760px',
         },
         [theme.breakpoints.only('md')]: {
-            maxWidth: '900px'
+            maxWidth: '900px',
         },
         [theme.breakpoints.only('lg')]: {
-            maxWidth: '1250px'
+            maxWidth: '1250px',
         },
         [theme.breakpoints.only('xl')]: {
-            maxWidth: '1700px'
-        }
-    }
+            maxWidth: '1700px',
+        },
+    },
 }));
 
 const Layout = ({ children, className }) => {
@@ -36,12 +36,12 @@ const Layout = ({ children, className }) => {
 
 Layout.propTypes = {
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-    className: PropTypes.string
+    className: PropTypes.string,
 };
 
 Layout.defaultProps = {
     children: undefined,
-    className: undefined
+    className: undefined,
 };
 
 export default Layout;

@@ -25,13 +25,13 @@ ElementsArray.propTypes = {
             description: PropTypes.string,
             others: PropTypes.string,
             image: PropTypes.string,
-            level: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+            level: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
         })
-    ).isRequired
+    ).isRequired,
 };
 
 ElementsArray.defaultProps = {
-    className: undefined
+    className: undefined,
 };
 
 export default ElementsArray;

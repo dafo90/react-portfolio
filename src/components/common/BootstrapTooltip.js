@@ -2,13 +2,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import React from 'react';
 
-const useStylesBootstrap = makeStyles(theme => ({
+const useStylesBootstrap = makeStyles((theme) => ({
     arrow: {
-        color: theme.palette.common.black
+        color: theme.palette.common.black,
     },
     tooltip: {
-        backgroundColor: theme.palette.common.black
-    }
+        backgroundColor: theme.palette.common.black,
+    },
 }));
 
 const BootstrapTooltip = ({ ...props }) => {

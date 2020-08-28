@@ -13,8 +13,8 @@ import LayoutHeader from '../LayoutHeader';
 
 const useStyles = makeStyles(() => ({
     icon: {
-        fontSize: '150px'
-    }
+        fontSize: '150px',
+    },
 }));
 
 const Projects = ({ pageConf }) => {
@@ -32,7 +32,7 @@ const Projects = ({ pageConf }) => {
 };
 
 Projects.propTypes = {
-    pageConf: PropTypes.object.isRequired
+    pageConf: PropTypes.object.isRequired,
 };
 
 export default Projects;

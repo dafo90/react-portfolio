@@ -11,8 +11,8 @@ import DrawerMenu from './DrawerMenu';
 const useStyles = makeStyles(() => ({
     mobileDrawer: ({ width, maxWidth }) => ({
         width,
-        maxWidth
-    })
+        maxWidth,
+    }),
 }));
 
 const MobileDrawer = ({ width, maxWidth }) => {
@@ -28,10 +28,10 @@ const MobileDrawer = ({ width, maxWidth }) => {
             onClick={() => dispatch(closeMobileDrawer())}
             onClose={() => dispatch(closeMobileDrawer())}
             classes={{
-                paper: classes.mobileDrawer
+                paper: classes.mobileDrawer,
             }}
             ModalProps={{
-                keepMounted: true
+                keepMounted: true,
             }}
         >
             <DrawerMenu />
@@ -41,11 +41,11 @@ const MobileDrawer = ({ width, maxWidth }) => {
 
 MobileDrawer.propTypes = {
     width: PropTypes.string,
-    maxWidth: PropTypes.string.isRequired
+    maxWidth: PropTypes.string.isRequired,
 };
 
 MobileDrawer.defaultProps = {
-    width: '90vw'
+    width: '90vw',
 };
 
 export default MobileDrawer;

@@ -5,7 +5,7 @@ import {
     Email as EmailIcon,
     InsertDriveFile as InsertDriveFileIcon,
     Language as LanguageIcon,
-    LocationOn as LocationIcon
+    LocationOn as LocationIcon,
 } from '@material-ui/icons';
 import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -16,43 +16,43 @@ import packageJson from '../../../package.alias.json';
 
 const height = '120px';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     avatarBox: {
         margin: 'auto',
         maxWidth: height,
         maxHeight: height,
         marginTop: theme.spacing(1),
-        marginBottom: theme.spacing(1)
+        marginBottom: theme.spacing(1),
     },
     avatar: {
         width: '100%',
-        height: '100%'
+        height: '100%',
     },
     divider: {
         height,
         marginTop: 0,
-        marginBottom: 0
+        marginBottom: 0,
     },
     button: {
-        marginTop: theme.spacing(2)
+        marginTop: theme.spacing(2),
     },
     buttonIcon: {
-        paddingRight: theme.spacing(1)
+        paddingRight: theme.spacing(1),
     },
     leftColumn: ({ leftColumnMinWidth }) => ({
-        width: leftColumnMinWidth
+        width: leftColumnMinWidth,
     }),
     rightColumn: ({ rightColumnWidth }) => ({
         [theme.breakpoints.up('xs')]: {
-            width: rightColumnWidth.xs
+            width: rightColumnWidth.xs,
         },
         [theme.breakpoints.up('md')]: {
-            width: rightColumnWidth.md
+            width: rightColumnWidth.md,
         },
         [theme.breakpoints.up('lg')]: {
-            width: rightColumnWidth.lg
-        }
-    })
+            width: rightColumnWidth.lg,
+        },
+    }),
 }));
 
 const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
@@ -141,11 +141,11 @@ const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
 
 ResumeHeader.propTypes = {
     leftColumnMinWidth: PropTypes.string,
-    rightColumnWidth: PropTypes.object
+    rightColumnWidth: PropTypes.object,
 };
 ResumeHeader.defaultProps = {
     leftColumnMinWidth: undefined,
-    rightColumnWidth: undefined
+    rightColumnWidth: undefined,
 };
 
 export default ResumeHeader;

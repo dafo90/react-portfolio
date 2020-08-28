@@ -17,41 +17,41 @@ import ResumeHeader from './ResumeHeader';
 const leftColumnMinWidth = '150px';
 const rightColumnWidth = { xs: '150px', md: '300px', lg: '450px' };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     paper: {
-        padding: theme.spacing(2)
+        padding: theme.spacing(2),
     },
     icon: {
-        fontSize: '150px'
+        fontSize: '150px',
     },
     grid: {
-        paddingTop: theme.spacing(2)
+        paddingTop: theme.spacing(2),
     },
     leftColumn: {
-        minWidth: leftColumnMinWidth
+        minWidth: leftColumnMinWidth,
     },
     rightColumn: {
         [theme.breakpoints.up('xs')]: {
-            minWidth: rightColumnWidth.xs
+            minWidth: rightColumnWidth.xs,
         },
         [theme.breakpoints.up('md')]: {
-            width: rightColumnWidth.md
+            width: rightColumnWidth.md,
         },
         [theme.breakpoints.up('lg')]: {
-            width: rightColumnWidth.lg
-        }
+            width: rightColumnWidth.lg,
+        },
     },
     divider: {
-        marginBottom: theme.spacing(2)
+        marginBottom: theme.spacing(2),
     },
     timeline: {
         paddingTop: theme.spacing(3),
-        paddingBottom: theme.spacing(3)
+        paddingBottom: theme.spacing(3),
     },
     section: {
         paddingTop: theme.spacing(3),
-        paddingBottom: theme.spacing(1)
-    }
+        paddingBottom: theme.spacing(1),
+    },
 }));
 
 const Resume = ({ pageConf }) => {
@@ -83,7 +83,7 @@ const Resume = ({ pageConf }) => {
                                 graph={{
                                     zoom: 0.95,
                                     offsetX: 0.0,
-                                    offsetY: 0.0
+                                    offsetY: 0.0,
                                 }}
                                 width={bubbleChartWidth ? bubbleChartWidth - 10 : 0}
                                 height={bubbleChartHeight ? bubbleChartHeight - 10 : 0}
@@ -92,12 +92,12 @@ const Resume = ({ pageConf }) => {
                                     family: 'Arial',
                                     size: 0,
                                     color: '#fff',
-                                    weight: 'bold'
+                                    weight: 'bold',
                                 }}
                                 labelFont={{
                                     size: bubbleChartWidth ? bubbleChartWidth * 0.03 : 0,
                                     color: '#fff',
-                                    weight: 'bold'
+                                    weight: 'bold',
                                 }}
                                 data={interests}
                             />
@@ -123,7 +123,7 @@ const Resume = ({ pageConf }) => {
 };
 
 Resume.propTypes = {
-    pageConf: PropTypes.object.isRequired
+    pageConf: PropTypes.object.isRequired,
 };
 
 export default Resume;

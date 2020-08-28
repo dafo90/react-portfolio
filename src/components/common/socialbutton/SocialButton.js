@@ -5,7 +5,7 @@ import React from 'react';
 
 import BootstrapTooltip from '../BootstrapTooltip';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     socialCircle: ({ iconSize }) => ({
         width: iconSize,
         height: iconSize,
@@ -14,9 +14,9 @@ const useStyles = makeStyles(theme => ({
         transition: '.2s ease',
         '&:hover': {
             background: theme.palette.primary.main,
-            fontSize: `${Number(iconSize.replace(/\D+/g, '')) / 1.4}px`
-        }
-    })
+            fontSize: `${Number(iconSize.replace(/\D+/g, '')) / 1.4}px`,
+        },
+    }),
 }));
 
 const SocialButton = ({ tooltip, socialName, url, icon: Icon, iconSize }) => {
@@ -42,12 +42,12 @@ SocialButton.propTypes = {
     socialName: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     icon: PropTypes.func.isRequired,
-    iconSize: PropTypes.string
+    iconSize: PropTypes.string,
 };
 
 SocialButton.defaultProps = {
     tooltip: undefined,
-    iconSize: '32px'
+    iconSize: '32px',
 };
 
 export default SocialButton;

@@ -11,8 +11,8 @@ import LayoutHeader from '../LayoutHeader';
 
 const useStyles = makeStyles(() => ({
     icon: {
-        fontSize: '150px'
-    }
+        fontSize: '150px',
+    },
 }));
 
 const Skills = ({ pageConf }) => {
@@ -31,7 +31,7 @@ const Skills = ({ pageConf }) => {
 };
 
 Skills.propTypes = {
-    pageConf: PropTypes.object.isRequired
+    pageConf: PropTypes.object.isRequired,
 };
 
 export default Skills;

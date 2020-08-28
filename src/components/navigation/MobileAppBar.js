@@ -7,10 +7,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openMobileDrawer } from '../../redux/actions/navigationAction';
 import { selectedLayout } from '../../redux/selectors/selectors';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     title: {
-        paddingLeft: theme.spacing(1)
-    }
+        paddingLeft: theme.spacing(1),
+    },
 }));
 
 const MobileAppBar = () => {

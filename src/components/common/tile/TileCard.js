@@ -9,30 +9,30 @@ import TileMainContent from './TileMainContent';
 
 const transitionDelay = 500;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     box: {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     },
     card: {
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
         [theme.breakpoints.only('xs')]: {
-            maxWidth: '250px'
+            maxWidth: '250px',
         },
         [theme.breakpoints.only('sm')]: {
-            width: '300px'
+            width: '300px',
         },
         [theme.breakpoints.up('md')]: {
-            width: '350px'
-        }
+            width: '350px',
+        },
     },
     footer: {
-        marginTop: 'auto'
-    }
+        marginTop: 'auto',
+    },
 }));
 
 const TileCard = ({ imageUrl, name, description, tooltip, level, url, tags, transparentImage, share, demo }) => {
@@ -141,7 +141,7 @@ TileCard.propTypes = {
     tags: PropTypes.array,
     transparentImage: PropTypes.bool,
     share: PropTypes.array,
-    demo: PropTypes.string
+    demo: PropTypes.string,
 };
 
 TileCard.defaultProps = {
@@ -152,7 +152,7 @@ TileCard.defaultProps = {
     tags: undefined,
     transparentImage: false,
     share: undefined,
-    demo: undefined
+    demo: undefined,
 };
 
 export default TileCard;

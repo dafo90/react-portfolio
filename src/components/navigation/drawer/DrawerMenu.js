@@ -8,12 +8,12 @@ import { setSelectedLayout } from '../../../redux/actions/navigationAction';
 import { selectedLayout } from '../../../redux/selectors/selectors';
 import DrawerHeader from './DrawerHeader';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     header: {
         paddingLeft: theme.spacing(2),
         paddingRight: theme.spacing(2),
-        paddingBottom: theme.spacing(5)
-    }
+        paddingBottom: theme.spacing(5),
+    },
 }));
 
 const DrawerMenu = () => {
@@ -27,7 +27,7 @@ const DrawerMenu = () => {
             <List>
                 {layouts
                     .filter(({ urls, enabled }) => urls && enabled)
-                    .map(layout => {
+                    .map((layout) => {
                         const { id, buttonLabel, urls, icon: Icon } = layout;
                         return (
                             <ListItem

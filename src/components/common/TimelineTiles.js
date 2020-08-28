@@ -11,17 +11,17 @@ import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeli
 
 import Section from './Section';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     title: {
-        paddingBottom: theme.spacing(1)
+        paddingBottom: theme.spacing(1),
     },
     subtitle: {
-        paddingBottom: theme.spacing(2)
+        paddingBottom: theme.spacing(2),
     },
     logo: {
         width: '100%',
-        height: '100%'
-    }
+        height: '100%',
+    },
 }));
 
 const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtitle, tiles }, ref) => {
@@ -66,13 +66,13 @@ TimelineTiles.propTypes = {
     className: PropTypes.string,
     sectionTitle: PropTypes.string,
     sectionSubtitle: PropTypes.string,
-    tiles: PropTypes.array.isRequired
+    tiles: PropTypes.array.isRequired,
 };
 
 TimelineTiles.defaultProps = {
     className: undefined,
     sectionTitle: undefined,
-    sectionSubtitle: undefined
+    sectionSubtitle: undefined,
 };
 
 export default TimelineTiles;

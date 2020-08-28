@@ -8,31 +8,31 @@ import BulletsBar from '../bullet/BulletsBar';
 
 const maxLevel = 6;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     cardMedia: ({ scale, transparentImage, zoomImage }) => ({
         opacity: transparentImage ? 0.2 : 1,
         transition: 'transform .5s ease',
         transform: zoomImage ? `scale(${scale})` : undefined,
         [theme.breakpoints.only('xs')]: {
-            height: '160px'
+            height: '160px',
         },
         [theme.breakpoints.only('sm')]: {
-            height: '190px'
+            height: '190px',
         },
         [theme.breakpoints.up('md')]: {
-            height: '230px'
-        }
+            height: '230px',
+        },
     }),
     imgBox: {
-        overflow: 'hidden'
+        overflow: 'hidden',
     },
     levelBar: {
-        paddingBottom: theme.spacing(1)
+        paddingBottom: theme.spacing(1),
     },
     description: {
         overflow: 'auto',
-        height: '100%'
-    }
+        height: '100%',
+    },
 }));
 
 const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, transparentImage, zoomImage, transitionIn, transitionDelay }) => {
@@ -102,7 +102,7 @@ TileMainContent.propTypes = {
     transparentImage: PropTypes.bool,
     zoomImage: PropTypes.bool,
     transitionIn: PropTypes.bool,
-    transitionDelay: PropTypes.number
+    transitionDelay: PropTypes.number,
 };
 
 TileMainContent.defaultProps = {
@@ -113,7 +113,7 @@ TileMainContent.defaultProps = {
     transparentImage: false,
     zoomImage: false,
     transitionIn: false,
-    transitionDelay: 0
+    transitionDelay: 0,
 };
 
 export default TileMainContent;

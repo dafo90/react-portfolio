@@ -12,11 +12,11 @@ import LayoutBody from '../LayoutBody';
 import LayoutHeader from '../LayoutHeader';
 import AboutMeHeader from './AboutMeHeader';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     buttonGrid: {
         paddingTop: theme.spacing(2),
-        paddingBottom: theme.spacing(2)
-    }
+        paddingBottom: theme.spacing(2),
+    },
 }));
 
 const findLayoutByCode = (layouts, codeToFind) => layouts.find(({ code, enabled }) => enabled && code === codeToFind);
@@ -76,7 +76,7 @@ const AboutMe = ({ layouts }) => {
 };
 
 AboutMe.propTypes = {
-    layouts: PropTypes.array.isRequired
+    layouts: PropTypes.array.isRequired,
 };
 
 export default AboutMe;

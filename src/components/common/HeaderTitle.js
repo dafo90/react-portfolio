@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     title: {
-        paddingBottom: theme.spacing(2)
-    }
+        paddingBottom: theme.spacing(2),
+    },
 }));
 
 const Section = ({ className, title, subtitle, icon }) => {
@@ -38,13 +38,13 @@ Section.propTypes = {
     className: PropTypes.string,
     title: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
     subtitle: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-    icon: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+    icon: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
 };
 
 Section.defaultProps = {
     className: undefined,
     subtitle: undefined,
-    icon: undefined
+    icon: undefined,
 };
 
 export default Section;

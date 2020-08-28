@@ -7,8 +7,8 @@ import DrawerMenu from './DrawerMenu';
 
 const useStyles = makeStyles(() => ({
     desktopDrawer: ({ width }) => ({
-        width
-    })
+        width,
+    }),
 }));
 
 const DesktopDrawer = ({ width }) => {
@@ -16,7 +16,7 @@ const DesktopDrawer = ({ width }) => {
     return (
         <Drawer
             classes={{
-                paper: classes.desktopDrawer
+                paper: classes.desktopDrawer,
             }}
             variant="permanent"
             open
@@ -27,7 +27,7 @@ const DesktopDrawer = ({ width }) => {
 };
 
 DesktopDrawer.propTypes = {
-    width: PropTypes.string.isRequired
+    width: PropTypes.string.isRequired,
 };
 
 export default DesktopDrawer;

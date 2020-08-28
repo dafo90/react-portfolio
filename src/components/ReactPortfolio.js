@@ -12,25 +12,25 @@ import MobileAppBar from './navigation/MobileAppBar';
 const cookieName = 'ReactPortfolio';
 const drawerWidth = '280px';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     root: {
-        display: 'flex'
+        display: 'flex',
     },
     drawer: {
         [theme.breakpoints.up('md')]: {
             width: drawerWidth,
-            flexShrink: 0
-        }
+            flexShrink: 0,
+        },
     },
     toolbar: {
         ...theme.mixins.toolbar,
         [theme.breakpoints.up('md')]: {
-            display: 'none'
-        }
+            display: 'none',
+        },
     },
     content: {
-        flexGrow: 1
-    }
+        flexGrow: 1,
+    },
 }));
 
 const ReactPortfolio = () => {

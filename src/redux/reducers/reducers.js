@@ -5,7 +5,7 @@ import navigationReducer from './navigationReducer';
 
 const rootReducer = combineReducers({
     navigation: navigationReducer,
-    github: githubReducer
+    github: githubReducer,
 });
 
 export default rootReducer;

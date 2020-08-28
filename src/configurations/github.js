@@ -11,14 +11,14 @@ export default {
             name: 'React Portfolio',
             enabled: true,
             main: true,
-            description: 'React Portfolio built with React, Material-UI, Redux and Saga'
+            description: 'React Portfolio built with React, Material-UI, Redux and Saga',
         },
         {
             id: 215624053,
             name: 'Tic-Tac-Toe',
             enabled: true,
             main: true,
-            description: 'Tic-Tac-Toe game built with React, Material-UI, Redux and Saga'
+            description: 'Tic-Tac-Toe game built with React, Material-UI, Redux and Saga',
         },
         {
             id: 228206818,
@@ -26,39 +26,39 @@ export default {
             enabled: true,
             main: true,
             description: 'Instruction to build your own customized Arcade Cabinet',
-            imageUrl: '/images/arcade-cabinet.JPG'
+            imageUrl: '/images/arcade-cabinet.JPG',
         },
         {
             id: 182591319,
             name: 'Node Password Generator',
             enabled: true,
-            main: true
+            main: true,
         },
         {
             id: 186187657,
             name: 'Telegram Bot Docker Manager',
             enabled: true,
-            main: true
+            main: true,
         },
         {
             id: 218816700,
             name: 'Docker - vsftpd',
             enabled: true,
-            main: false
+            main: false,
         },
         {
             id: 230647506,
             name: 'Raspberry Pi Scripts',
             enabled: true,
             main: false,
-            description: 'Raspberry Pi Scripts to manage power on/off button and one fan in PWM mode'
+            description: 'Raspberry Pi Scripts to manage power on/off button and one fan in PWM mode',
         },
         {
             id: 142853515,
             name: 'Caldera Forms Anti Spam',
             enabled: true,
-            main: false
-        }
+            main: false,
+        },
     ],
     buildTags: (archived, completeLicense, language, forks, watchers, stars) => {
         const tags = [];
@@ -71,7 +71,7 @@ export default {
                 icon: Gavel,
                 color: 'secondary',
                 variant: 'default',
-                url: completeLicense.html_url
+                url: completeLicense.html_url,
             });
         }
 
@@ -81,7 +81,7 @@ export default {
             tooltip: 'Language',
             icon: Code,
             color: 'secondary',
-            variant: 'default'
+            variant: 'default',
         });
 
         if (archived) {
@@ -90,7 +90,7 @@ export default {
                 text: 'Archived',
                 icon: BusinessCenter,
                 color: 'default',
-                variant: 'outlined'
+                variant: 'outlined',
             });
         } else {
             tags.push({
@@ -99,7 +99,7 @@ export default {
                 tooltip: 'Watchers',
                 icon: Visibility,
                 color: 'secondary',
-                variant: 'outlined'
+                variant: 'outlined',
             });
 
             tags.push({
@@ -108,7 +108,7 @@ export default {
                 tooltip: 'Stars',
                 icon: Star,
                 color: 'secondary',
-                variant: 'outlined'
+                variant: 'outlined',
             });
 
             tags.push({
@@ -117,10 +117,10 @@ export default {
                 tooltip: 'Forks',
                 icon: CallSplit,
                 color: 'secondary',
-                variant: 'outlined'
+                variant: 'outlined',
             });
         }
 
         return tags;
-    }
+    },
 };

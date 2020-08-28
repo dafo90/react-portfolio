@@ -6,10 +6,10 @@ import React from 'react';
 import Section from '../Section';
 import TileCard from './TileCard';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     tiles: {
-        paddingTop: theme.spacing(2)
-    }
+        paddingTop: theme.spacing(2),
+    },
 }));
 
 const TilesSection = ({ children, className, sectionTitle, sectionSubtitle, tiles, onlyMainTiles }) => {
@@ -47,7 +47,7 @@ TilesSection.propTypes = {
     sectionTitle: PropTypes.string,
     sectionSubtitle: PropTypes.string,
     tiles: PropTypes.array.isRequired,
-    onlyMainTiles: PropTypes.bool
+    onlyMainTiles: PropTypes.bool,
 };
 
 TilesSection.defaultProps = {
@@ -55,7 +55,7 @@ TilesSection.defaultProps = {
     className: undefined,
     sectionTitle: undefined,
     sectionSubtitle: undefined,
-    onlyMainTiles: false
+    onlyMainTiles: false,
 };
 
 export default TilesSection;
