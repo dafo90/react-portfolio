@@ -111,11 +111,20 @@ export default [
             knowMeMore: [
                 {
                     id: uuid(),
+                    title: 'Management of my personal home server with Unraid OS',
+                    image: '/icons/gear.png',
+                },
+                {
+                    id: uuid(),
                     title: 'Good knowledge of electronics in general',
                     image: '/icons/bolt.png',
                 },
                 { id: uuid(), title: 'Passionate about combustion engines (ICE) and the automotive world in general', image: '/icons/car.png' },
-                { id: uuid(), title: "80's Arcade Cabinet Machine enthusiast; built five entirely by myself", image: '/icons/gamecontroller.png' },
+                {
+                    id: uuid(),
+                    title: "80's Arcade Cabinet Machine enthusiast; designed and built five",
+                    image: '/icons/gamecontroller.png',
+                },
                 {
                     id: uuid(),
                     title: 'Active in the carnival group of Castione (Sciatt) as a committee member since 2014 and accountant since 2018',
