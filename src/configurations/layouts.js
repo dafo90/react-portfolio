@@ -111,7 +111,7 @@ export default [
             knowMeMore: [
                 {
                     id: uuid(),
-                    title: 'Management of my personal home server with Unraid OS',
+                    title: 'I manage of my personal home server with Unraid OS',
                     image: '/icons/gear.png',
                 },
                 {
