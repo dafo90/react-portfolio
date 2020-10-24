@@ -74,8 +74,8 @@ export default [
                     description: 'Technical - Good technical notions, basic spoken and writing',
                     image: '/flags/unitedkingdom.png',
                 },
-                { id: uuid(), title: 'German', level: 2, description: 'Intermediate - Good spoken and written notions', image: '/flags/germany.png' },
-                { id: uuid(), title: 'French', level: 1, description: 'Basic - Basic spoken and written notions', image: '/flags/france.png' },
+                { id: uuid(), title: 'German', level: 3, description: 'Intermediate - Good spoken and written notions', image: '/flags/germany.png' },
+                { id: uuid(), title: 'French', level: 2, description: 'Basic - Basic spoken and written notions', image: '/flags/france.png' },
             ],
             courses: [
                 {
