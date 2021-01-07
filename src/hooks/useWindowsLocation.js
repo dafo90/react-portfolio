@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 import layouts from '../configurations/layouts';
-import { setLayout } from '../store/slices/navigation';
 import { selectedLayout } from '../store/selectors';
+import { setLayout } from '../store/slices/navigation';
 
 const findLayoutByPath = (urlToFind) => layouts.find(({ enabled, urls }) => enabled && urls && urls.includes(urlToFind));
 

@@ -4,8 +4,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import layouts from '../../../configurations/layouts';
-import { setLayout } from '../../../store/slices/navigation';
 import { selectedLayout } from '../../../store/selectors';
+import { setLayout } from '../../../store/slices/navigation';
 import DrawerHeader from './DrawerHeader';
 
 const useStyles = makeStyles((theme) => ({
