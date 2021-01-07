@@ -5,7 +5,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 
 import personalData from '../../../configurations/personalData';
-import { setSelectedLayout } from '../../../redux/actions/navigationAction';
+import { setLayout } from '../../../store/slices/navigation';
 import HeaderTitle from '../../common/HeaderTitle';
 
 const useStyles = makeStyles((theme) => ({
@@ -70,7 +70,7 @@ const AboutMeHeader = ({ layouts }) => {
                                     className={classes.button}
                                     variant="outlined"
                                     size="medium"
-                                    onClick={() => dispatch(setSelectedLayout(linkLayout))}
+                                    onClick={() => dispatch(setLayout(linkLayout))}
                                 >
                                     <Icon className={classes.buttonIcon} />
                                     {buttonLabel}

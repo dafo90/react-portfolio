@@ -4,8 +4,8 @@ import { Menu as MenuIcon } from '@material-ui/icons/';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { openMobileDrawer } from '../../redux/actions/navigationAction';
-import { selectedLayout } from '../../redux/selectors/selectors';
+import { selectedLayout } from '../../store/selectors';
+import { openMobileDrawer } from '../../store/slices/navigation';
 
 const useStyles = makeStyles((theme) => ({
     title: {

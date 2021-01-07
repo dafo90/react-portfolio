@@ -3,9 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { DeveloperMode } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { githubRepos } from '../../../redux/selectors/selectors';
+import useGithubRepos from '../../../hooks/useGithubRepos';
 import HeaderTitle from '../../common/HeaderTitle';
 import TilesSection from '../../common/tile/TilesSection';
 import LayoutBody from '../LayoutBody';
@@ -19,14 +18,14 @@ const useStyles = makeStyles(() => ({
 
 const Projects = ({ pageConf }) => {
     const classes = useStyles();
-    const repos = useSelector(githubRepos);
+    const { repos, isLoading } = useGithubRepos();
     const { title, subtitle } = pageConf;
     return (
         <React.Fragment>
             <LayoutHeader>
                 <HeaderTitle title={title} subtitle={subtitle} icon={<DeveloperMode className={classes.icon} />} />
             </LayoutHeader>
-            <LayoutBody>{repos.length ? <TilesSection tiles={repos} /> : <LinearProgress />}</LayoutBody>
+            <LayoutBody>{isLoading ? <LinearProgress /> : <TilesSection tiles={repos} />}</LayoutBody>
         </React.Fragment>
     );
 };

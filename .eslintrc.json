@@ -15,7 +15,9 @@
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
         "react/jsx-fragments": 0,
-        "simple-import-sort/sort": "error"
+        "simple-import-sort/sort": "error",
+        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "no-param-reassign": ["error", { "props": false }]
     },
     "globals": {
         "document": true,

@@ -1,9 +1,8 @@
 import axios from 'axios';
 
-export const getGithubData = ({ url }) => {
-    const params = {};
-    return axios.get(url, params);
-};
+export const getRepo = (username, page = 1, params = {}) => axios.get(`https://api.github.com/users/${username}/repos?page=${page}`, params);
+
+export const getLicense = (key, params = {}) => axios.get(`https://api.github.com/licenses/${key}`, params);
 
 export const getGithubResource = ({ githubUsername, repoName, branch, githubConfigFile }) => {
     const url = `https://raw.githubusercontent.com/${githubUsername}/${repoName}/${branch}/${githubConfigFile}`;

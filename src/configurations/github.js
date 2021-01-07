@@ -1,10 +1,6 @@
-import { BusinessCenter, CallSplit, Code, Gavel, Star, Visibility } from '@material-ui/icons';
-import { v4 as uuid } from 'uuid';
-
 export default {
     username: 'dafo90',
     url: 'https://github.com/dafo90',
-    dateFormat: 'YYYY-MM-DDTHH:mm:ssZ',
     repos: [
         {
             id: 209611683,
@@ -60,67 +56,67 @@ export default {
             main: false,
         },
     ],
-    buildTags: (archived, completeLicense, language, forks, watchers, stars) => {
-        const tags = [];
-
-        if (completeLicense) {
-            tags.push({
-                id: uuid(),
-                text: completeLicense.spdx_id,
-                tooltip: 'License',
-                icon: Gavel,
-                color: 'secondary',
-                variant: 'default',
-                url: completeLicense.html_url,
-            });
-        }
-
-        tags.push({
-            id: uuid(),
-            text: language || 'Unknown',
-            tooltip: 'Language',
-            icon: Code,
-            color: 'secondary',
-            variant: 'default',
-        });
-
-        if (archived) {
-            tags.push({
-                id: uuid(),
-                text: 'Archived',
-                icon: BusinessCenter,
-                color: 'default',
-                variant: 'outlined',
-            });
-        } else {
-            tags.push({
-                id: uuid(),
-                text: watchers,
-                tooltip: 'Watchers',
-                icon: Visibility,
-                color: 'secondary',
-                variant: 'outlined',
-            });
-
-            tags.push({
-                id: uuid(),
-                text: stars,
-                tooltip: 'Stars',
-                icon: Star,
-                color: 'secondary',
-                variant: 'outlined',
-            });
-
-            tags.push({
-                id: uuid(),
-                text: forks,
-                tooltip: 'Forks',
-                icon: CallSplit,
-                color: 'secondary',
-                variant: 'outlined',
-            });
-        }
-
-        return tags;
-    },
+    tags: [
+        {
+            fieldName: 'license',
+            params: [
+                { fieldName: 'text', type: 'field', value: 'spdx_id' },
+                { fieldName: 'tooltip', type: 'text', value: 'License' },
+                { fieldName: 'icon', type: 'icon', value: 'gavel' },
+                { fieldName: 'url', type: 'field', value: 'html_url' },
+                { fieldName: 'color', type: 'text', value: 'secondary' },
+                { fieldName: 'variant', type: 'text', value: 'default' },
+            ],
+        },
+        {
+            fieldName: 'language',
+            params: [
+                { fieldName: 'text', type: 'this' },
+                { fieldName: 'tooltip', type: 'text', value: 'Language' },
+                { fieldName: 'icon', type: 'icon', value: 'code' },
+                { fieldName: 'color', type: 'text', value: 'secondary' },
+                { fieldName: 'variant', type: 'text', value: 'default' },
+            ],
+        },
+        {
+            fieldName: 'archived',
+            onlyIf: true,
+            params: [
+                { fieldName: 'text', type: 'text', value: 'Archived' },
+                { fieldName: 'icon', type: 'icon', value: 'business_center' },
+                { fieldName: 'color', type: 'text', value: 'default' },
+                { fieldName: 'variant', type: 'text', value: 'outlined' },
+            ],
+        },
+        {
+            fieldName: 'watchers_count',
+            params: [
+                { fieldName: 'text', type: 'this' },
+                { fieldName: 'tooltip', type: 'text', value: 'Watchers' },
+                { fieldName: 'icon', type: 'icon', value: 'visibility' },
+                { fieldName: 'color', type: 'text', value: 'secondary' },
+                { fieldName: 'variant', type: 'text', value: 'outlined' },
+            ],
+        },
+        {
+            fieldName: 'stargazers_count',
+            params: [
+                { fieldName: 'text', type: 'this' },
+                { fieldName: 'tooltip', type: 'text', value: 'Stars' },
+                { fieldName: 'icon', type: 'icon', value: 'star' },
+                { fieldName: 'color', type: 'text', value: 'secondary' },
+                { fieldName: 'variant', type: 'text', value: 'outlined' },
+            ],
+        },
+        {
+            fieldName: 'forks_count',
+            params: [
+                { fieldName: 'text', type: 'this' },
+                { fieldName: 'tooltip', type: 'text', value: 'Forks' },
+                { fieldName: 'icon', type: 'icon', value: 'call_split' },
+                { fieldName: 'color', type: 'text', value: 'secondary' },
+                { fieldName: 'variant', type: 'text', value: 'outlined' },
+            ],
+        },
+    ],
 };

@@ -4,8 +4,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import layouts from '../../../configurations/layouts';
-import { setSelectedLayout } from '../../../redux/actions/navigationAction';
-import { selectedLayout } from '../../../redux/selectors/selectors';
+import { setLayout } from '../../../store/slices/navigation';
+import { selectedLayout } from '../../../store/selectors';
 import DrawerHeader from './DrawerHeader';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
 const DrawerMenu = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const currentLayout = useSelector(selectedLayout);
+    const { id: currentLayoutId } = useSelector(selectedLayout);
     return (
         <React.Fragment>
             <DrawerHeader className={classes.header} />
@@ -35,9 +35,9 @@ const DrawerMenu = () => {
                                 key={id}
                                 to={urls[0]}
                                 onClick={() => {
-                                    dispatch(setSelectedLayout(layout));
+                                    dispatch(setLayout(layout));
                                 }}
-                                selected={id === currentLayout.id}
+                                selected={id === currentLayoutId}
                             >
                                 <ListItemIcon>
                                     <Icon />

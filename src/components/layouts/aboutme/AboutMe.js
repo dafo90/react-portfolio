@@ -2,11 +2,11 @@ import { Button, Grid, LinearProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import skills from '../../../configurations/skills';
-import { setSelectedLayout } from '../../../redux/actions/navigationAction';
-import { githubRepos } from '../../../redux/selectors/selectors';
+import useGithubRepos from '../../../hooks/useGithubRepos';
+import { setLayout } from '../../../store/slices/navigation';
 import TilesSection from '../../common/tile/TilesSection';
 import LayoutBody from '../LayoutBody';
 import LayoutHeader from '../LayoutHeader';
@@ -24,7 +24,7 @@ const findLayoutByCode = (layouts, codeToFind) => layouts.find(({ code, enabled 
 const AboutMe = ({ layouts }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const repos = useSelector(githubRepos);
+    const { repos, isLoading } = useGithubRepos();
 
     const skillsLayout = findLayoutByCode(layouts, 'skills');
     const projectsLayout = findLayoutByCode(layouts, 'projects');
@@ -34,7 +34,9 @@ const AboutMe = ({ layouts }) => {
                 <AboutMeHeader layouts={layouts} />
             </LayoutHeader>
             <LayoutBody>
-                {repos.length ? (
+                {isLoading ? (
+                    <LinearProgress />
+                ) : (
                     <React.Fragment>
                         <TilesSection
                             sectionTitle="GitHub Repositories"
@@ -44,7 +46,7 @@ const AboutMe = ({ layouts }) => {
                         >
                             {projectsLayout && (
                                 <Grid className={classes.buttonGrid} container justify="center">
-                                    <Button variant="outlined" size="medium" onClick={() => dispatch(setSelectedLayout(projectsLayout))}>
+                                    <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(projectsLayout))}>
                                         View all Projects
                                     </Button>
                                 </Grid>
@@ -59,7 +61,7 @@ const AboutMe = ({ layouts }) => {
                             <React.Fragment>
                                 {skillsLayout && (
                                     <Grid className={classes.buttonGrid} container justify="center">
-                                        <Button variant="outlined" size="medium" onClick={() => dispatch(setSelectedLayout(skillsLayout))}>
+                                        <Button variant="outlined" size="medium" onClick={() => dispatch(setLayout(skillsLayout))}>
                                             View all Skills
                                         </Button>
                                     </Grid>
@@ -67,8 +69,6 @@ const AboutMe = ({ layouts }) => {
                             </React.Fragment>
                         </TilesSection>
                     </React.Fragment>
-                ) : (
-                    <LinearProgress />
                 )}
             </LayoutBody>
         </React.Fragment>

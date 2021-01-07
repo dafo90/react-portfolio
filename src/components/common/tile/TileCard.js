@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardActionArea, CardActions, CardContent, Chip, Grid, Link, Zoom } from '@material-ui/core';
+import { Box, Button, Card, CardActionArea, CardActions, CardContent, Chip, Grid, Icon, Link, Zoom } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -80,7 +80,7 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, tags, tran
                         {tags && tags.length && (
                             <CardContent>
                                 <Grid container variant="body2" alignItems="center" spacing={1}>
-                                    {tags.map(({ id, text, icon: Icon, variant, color, url: tagUrl, tooltip: tagTooltip }) => (
+                                    {tags.map(({ id, text, icon, variant, color, url: tagUrl, tooltip: tagTooltip }) => (
                                         <Grid key={id} item>
                                             <BootstrapTooltip
                                                 arrow
@@ -92,7 +92,7 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, tags, tran
                                             >
                                                 <Chip
                                                     label={text}
-                                                    icon={<Icon />}
+                                                    icon={<Icon style={{ fontSize: 18 }}>{icon}</Icon>}
                                                     size="small"
                                                     component={tagUrl && 'a'}
                                                     target={tagUrl && '_blank'}
@@ -112,9 +112,9 @@ const TileCard = ({ imageUrl, name, description, tooltip, level, url, tags, tran
                             <CardActions className={classes.actions}>
                                 {share &&
                                     share.length &&
-                                    share.map(({ socialButton: SocialButton, key, icon: Icon }) => (
+                                    share.map(({ socialButton: SocialButton, key, icon: CardIcon }) => (
                                         <SocialButton key={key} url={url}>
-                                            <Icon />
+                                            <CardIcon />
                                         </SocialButton>
                                     ))}
                                 {demo && (

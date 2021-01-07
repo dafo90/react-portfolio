@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { closeMobileDrawer } from '../../../redux/actions/navigationAction';
-import { mobileDrawerOpen } from '../../../redux/selectors/selectors';
+import { closeMobileDrawer } from '../../../store/slices/navigation';
+import { mobileDrawerOpen } from '../../../store/selectors';
 import DrawerMenu from './DrawerMenu';
 
 const useStyles = makeStyles(() => ({

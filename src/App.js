@@ -1,24 +1,21 @@
 import React from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
 
 import NotFound from './components/NotFound';
 import ReactPortfolio from './components/ReactPortfolio';
 import layouts from './configurations/layouts';
-import useFetchBaseData from './hooks/useFetchBaseData';
-import history from './routings/history';
+import useWindowsLocation from './hooks/useWindowsLocation';
 
 const App = () => {
-    useFetchBaseData();
+    useWindowsLocation();
     return (
-        <Router basename="/" history={history}>
-            <ScrollToTop>
-                <Switch>
-                    <Route exact path={layouts.filter(({ urls }) => urls).flatMap(({ urls }) => urls)} component={ReactPortfolio} />
-                    <Route component={NotFound} />
-                </Switch>
-            </ScrollToTop>
-        </Router>
+        <ScrollToTop>
+            <Switch>
+                <Route exact path={layouts.filter(({ urls }) => urls).flatMap(({ urls }) => urls)} component={ReactPortfolio} />
+                <Route component={NotFound} />
+            </Switch>
+        </ScrollToTop>
     );
 };
 
