@@ -13,6 +13,7 @@ import React from 'react';
 
 import personalData from '../../../configurations/personalData';
 import packageJson from '../../../package.alias.json';
+import Interpreter from '../../common/Interpreter';
 
 const height = '120px';
 
@@ -72,7 +73,7 @@ const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
                 </Typography>
                 {title && (
                     <Typography variant="subtitle1" color="textSecondary" align="left">
-                        {title}
+                        <Interpreter conf={title} />
                     </Typography>
                 )}
                 {cvPdf && (

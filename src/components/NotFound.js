@@ -52,11 +52,14 @@ const NotFound = () => {
     const theme = useTheme();
     const matchesXs = useMediaQuery(theme.breakpoints.only('xs'));
     const matchesSm = useMediaQuery(theme.breakpoints.only('sm'));
+
     const homepageUrl = layouts.find(({ homepage }) => homepage).urls[0];
+
     let titleVariant;
     if (matchesXs) titleVariant = 'h3';
     else if (matchesSm) titleVariant = 'h2';
     else titleVariant = 'h1';
+
     return (
         <div className={classes.root}>
             <Paper classes={{ root: classes.paper }}>

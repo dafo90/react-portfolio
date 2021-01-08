@@ -2,6 +2,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Interpreter from './Interpreter';
 
 const useStyles = makeStyles((theme) => ({
     title: {
@@ -16,11 +17,11 @@ const Section = ({ className, title, subtitle, icon }) => {
             <Grid container spacing={4} variant="body2" justify="center" alignItems="center">
                 <Grid item xs>
                     <Typography className={classes.title} variant="h3" align="center">
-                        {title}
+                        <Interpreter conf={title} />
                     </Typography>
                     {subtitle && (
                         <Typography variant="h6" color="textSecondary" align="center">
-                            {subtitle}
+                            <Interpreter conf={subtitle} />
                         </Typography>
                     )}
                 </Grid>

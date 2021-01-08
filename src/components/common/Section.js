@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
+import Interpreter from './Interpreter';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,12 +24,12 @@ const Section = ({ className, title, subtitle }) => {
         <div className={rootClassName}>
             <div className={classes.bar}>
                 <Typography className={classes.title} variant="h4">
-                    {title}
+                    <Interpreter conf={title} />
                 </Typography>
             </div>
             {subtitle && (
                 <Typography variant="subtitle1" color="textSecondary">
-                    {subtitle}
+                    <Interpreter conf={subtitle} />
                 </Typography>
             )}
         </div>

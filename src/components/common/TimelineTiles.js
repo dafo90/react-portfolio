@@ -10,6 +10,7 @@ import React from 'react';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 
 import Section from './Section';
+import Interpreter from './Interpreter';
 
 const useStyles = makeStyles((theme) => ({
     title: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtitle, tiles, animate }, ref) => {
+const TimelineTiles = ({ className, sectionTitle, sectionSubtitle, tiles }) => {
     const classes = useStyles();
     const theme = useTheme();
     const matchesUpXl = useMediaQuery(theme.breakpoints.up('xl'));
@@ -35,10 +36,10 @@ const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtit
     return (
         <Box className={className}>
             {sectionTitle && <Section title={sectionTitle} subtitle={sectionSubtitle} />}
-            <VerticalTimeline animate={animate} layout={matchesUpXl ? '2-columns' : '1-column'}>
-                {tiles.map(({ id, title, subtitle, date, imageUrl, imageAlt, description }) => (
+            <VerticalTimeline layout={matchesUpXl ? '2-columns' : '1-column'}>
+                {tiles.map(({ code, title, subtitle, date, imageUrl, imageAlt, description }) => (
                     <VerticalTimelineElement
-                        key={id}
+                        key={code}
                         className="vertical-timeline-element--work"
                         contentStyle={{ background: blueGrey[500], color: theme.palette.primary, textAlign: 'justify' }}
                         contentArrowStyle={{ borderRight: `7px solid  ${blueGrey[500]}` }}
@@ -47,37 +48,34 @@ const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtit
                         icon={<Avatar src={imageUrl} alt={imageAlt} className={classes.logo} />}
                     >
                         <Box>
-                            <Typography className={elemTitleClassName} variant="h5" component="h5">
-                                {title}
+                            <Typography align="left" className={elemTitleClassName} variant="h5" component="h5">
+                                <Interpreter conf={title} />
                             </Typography>
                             <Typography className={elemSubtitleClassName} variant="subtitle2" color="textSecondary">
-                                {subtitle}
+                                <Interpreter conf={subtitle} />
                             </Typography>
                             <Typography variant="inherit" align="justify">
-                                {description}
+                                <Interpreter conf={description} />
                             </Typography>
                         </Box>
                     </VerticalTimelineElement>
                 ))}
             </VerticalTimeline>
-            <Box ref={ref} />
         </Box>
     );
-});
+};
 
 TimelineTiles.propTypes = {
     className: PropTypes.string,
     sectionTitle: PropTypes.string,
     sectionSubtitle: PropTypes.string,
     tiles: PropTypes.array.isRequired,
-    animate: PropTypes.bool,
 };
 
 TimelineTiles.defaultProps = {
     className: undefined,
     sectionTitle: undefined,
     sectionSubtitle: undefined,
-    animate: true,
 };
 
 export default TimelineTiles;

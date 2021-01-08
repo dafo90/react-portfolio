@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import personalData from '../../../configurations/personalData';
 import { setLayout } from '../../../store/slices/navigation';
 import HeaderTitle from '../../common/HeaderTitle';
+import Interpreter from '../../common/Interpreter';
 
 const useStyles = makeStyles((theme) => ({
     longBio: {
@@ -46,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
     },
     buttonIcon: {
+        paddingBottom: 1,
         paddingRight: theme.spacing(1),
     },
 }));
@@ -59,20 +61,26 @@ const AboutMeHeader = ({ layouts }) => {
         <Grid container spacing={4} justify="center">
             <Grid item xs>
                 <HeaderTitle title={name} subtitle={title} />
-                {longBio && <Box className={classes.longBio}>{longBio}</Box>}
+                {longBio && (
+                    <Box className={classes.longBio}>
+                        <Interpreter conf={longBio} />
+                    </Box>
+                )}
                 {linkLayouts.length && (
                     <Grid container className={classes.buttonsBar} justify="center" alignItems="center">
                         {linkLayouts.map((linkLayout) => {
-                            const { id, buttonLabel, icon: Icon } = linkLayout;
+                            const { code, buttonLabel, icon } = linkLayout;
                             return (
                                 <Button
-                                    key={id}
+                                    key={code}
                                     className={classes.button}
                                     variant="outlined"
                                     size="medium"
                                     onClick={() => dispatch(setLayout(linkLayout))}
                                 >
-                                    <Icon className={classes.buttonIcon} />
+                                    <Box className={classes.buttonIcon}>
+                                        <Interpreter conf={{ ...icon, fontsizenumber: icon.fontsizenumber || 16, verticalalign: 'middle' }} />
+                                    </Box>
                                     {buttonLabel}
                                 </Button>
                             );

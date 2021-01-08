@@ -8,13 +8,13 @@ import Bullet from './Bullet';
 const BulletsBar = React.forwardRef(({ className, bulletSize, level, startBulletsTransition, max, colorOffset, ...props }, ref) => {
     const bullets = [];
     for (let i = 0; i < max; i += 1) {
-        bullets.push({ id: i, color: i < level ? deepOrange[500 + colorOffset] : grey[400] });
+        bullets.push({ code: i, color: i < level ? deepOrange[500 + colorOffset] : grey[400] });
     }
     return startBulletsTransition ? (
         // eslint-disable-next-line react/jsx-props-no-spreading
         <Grid container variant="body2" justify="center" className={className} spacing={1} {...props} ref={ref}>
-            {bullets.map(({ id, color }, index) => (
-                <Grid key={id} item>
+            {bullets.map(({ code, color }, index) => (
+                <Grid key={code} item>
                     <Fade in={startBulletsTransition} timeout={index * index * index * 9}>
                         <Bullet color={color} size={bulletSize} />
                     </Fade>

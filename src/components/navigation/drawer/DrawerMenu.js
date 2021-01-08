@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import layouts from '../../../configurations/layouts';
 import { selectedLayout } from '../../../store/selectors';
 import { setLayout } from '../../../store/slices/navigation';
+import Interpreter from '../../common/Interpreter';
 import DrawerHeader from './DrawerHeader';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const DrawerMenu = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const { id: currentLayoutId } = useSelector(selectedLayout);
+    const { code: currentLayoutCode } = useSelector(selectedLayout);
     return (
         <React.Fragment>
             <DrawerHeader className={classes.header} />
@@ -28,19 +29,19 @@ const DrawerMenu = () => {
                 {layouts
                     .filter(({ urls, enabled }) => urls && enabled)
                     .map((layout) => {
-                        const { id, buttonLabel, urls, icon: Icon } = layout;
+                        const { code, buttonLabel, urls, icon } = layout;
                         return (
                             <ListItem
                                 button
-                                key={id}
+                                key={code}
                                 to={urls[0]}
                                 onClick={() => {
                                     dispatch(setLayout(layout));
                                 }}
-                                selected={id === currentLayoutId}
+                                selected={code === currentLayoutCode}
                             >
                                 <ListItemIcon>
-                                    <Icon />
+                                    <Interpreter conf={{ ...icon, fontsizenumber: icon.fontsizenumber || 24 }} />
                                 </ListItemIcon>
                                 <ListItemText primary={buttonLabel} />
                             </ListItem>

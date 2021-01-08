@@ -7,8 +7,8 @@ import Element from './Element';
 const ElementsArray = ({ className, elements }) =>
     elements.length ? (
         <List className={className} dense disablePadding>
-            {elements.map(({ id, title, description, others, image, level }) => (
-                <Element key={id} id={id} title={title} description={description} others={others} image={image} level={level} />
+            {elements.map(({ code, title, description, others, image, level }) => (
+                <Element key={code} title={title} description={description} others={others} image={image} level={level} />
             ))}
         </List>
     ) : null;
@@ -17,7 +17,7 @@ ElementsArray.propTypes = {
     className: PropTypes.string,
     elements: PropTypes.arrayOf(
         PropTypes.shape({
-            id: PropTypes.string.isRequired,
+            code: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             description: PropTypes.string,
             others: PropTypes.string,

@@ -2,9 +2,8 @@ import { Divider, Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { FolderShared } from '@material-ui/icons';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import useIsInViewport from 'use-is-in-viewport';
 import ElementsArray from '../../common/element/ElementsArray';
 import HeaderTitle from '../../common/HeaderTitle';
 import TimelineTiles from '../../common/TimelineTiles';
@@ -55,20 +54,7 @@ const useStyles = makeStyles((theme) => ({
 const Resume = ({ pageConf }) => {
     const classes = useStyles();
     const { content } = pageConf;
-    const [isElementInViewport, elementVerticalTimeline] = useIsInViewport();
     const { worksAndSchools, skills, languages, courses, awards, knowMeMore } = content;
-
-    const [animate, setAnimate] = useState(true);
-
-    useEffect(() => {
-        let timeout;
-        if (isElementInViewport && animate) {
-            timeout = setTimeout(() => {
-                setAnimate(false);
-            }, 2000);
-        }
-        return () => !!timeout && clearTimeout(timeout);
-    }, [isElementInViewport, animate]);
 
     return (
         <React.Fragment>
@@ -81,12 +67,7 @@ const Resume = ({ pageConf }) => {
                     <Divider variant="fullWidth" />
                     <Grid className={classes.grid} container spacing={4} variant="body2" justify="flex-start" alignItems="flex-start">
                         <Grid className={classes.leftColumn} item xs>
-                            <TimelineTiles
-                                ref={elementVerticalTimeline}
-                                className={classes.timeline}
-                                animate={animate}
-                                tiles={worksAndSchools.filter(({ enabled = false }) => enabled)}
-                            />
+                            <TimelineTiles className={classes.timeline} tiles={worksAndSchools.filter(({ enabled = false }) => enabled)} />
                         </Grid>
                         <Grid className={classes.rightColumn} item xs={12} md="auto">
                             <Typography variant="h5">Skills</Typography>

@@ -2,6 +2,7 @@ import { Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
+import * as Typicons from 'react-icons/ti';
 
 import BootstrapTooltip from '../BootstrapTooltip';
 
@@ -19,8 +20,11 @@ const useStyles = makeStyles((theme) => ({
     }),
 }));
 
-const SocialButton = ({ tooltip, socialName, url, icon: Icon, iconSize }) => {
+const SocialButton = ({ tooltip, socialName, url, icon, iconSize }) => {
     const classes = useStyles({ iconSize });
+
+    const Icon = Typicons[icon];
+
     return (
         <BootstrapTooltip
             arrow
@@ -41,7 +45,7 @@ SocialButton.propTypes = {
     tooltip: PropTypes.string,
     socialName: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
-    icon: PropTypes.func.isRequired,
+    icon: PropTypes.string.isRequired,
     iconSize: PropTypes.string,
 };
 

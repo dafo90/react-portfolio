@@ -19,8 +19,8 @@ const TilesSection = ({ children, className, sectionTitle, sectionSubtitle, tile
         <div className={className}>
             {sectionTitle && <Section title={sectionTitle} subtitle={sectionSubtitle} />}
             <Grid className={classes.tiles} container justify="center" spacing={3} alignItems="stretch" direction="row">
-                {visibleTiles.map(({ id, imageUrl, tooltip, name, description, url, level, tags, transparentImage, share, demo }) => (
-                    <Grid key={id} item>
+                {visibleTiles.map(({ code, imageUrl, tooltip, name, description, url, level, tags, transparentImage, share, demo }) => (
+                    <Grid key={code} item>
                         <TileCard
                             tooltip={tooltip}
                             imageUrl={imageUrl}

@@ -51,8 +51,6 @@ const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, t
         return null;
     }, [transitionDelay, transitionIn]);
 
-    // console.log(tooltip);
-
     return (
         <React.Fragment>
             {imageUrl && (

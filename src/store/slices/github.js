@@ -1,11 +1,10 @@
 /* eslint-disable camelcase */
 import { createSlice } from '@reduxjs/toolkit';
-import { v4 as uuid } from 'uuid';
 
 import github from '../../configurations/github';
 import { getLicense, getRepo } from '../../proxies/githubProxies';
 
-const initialState = { repos: [], isLoading: true };
+const initialState = { repos: [], isLoading: true, alreadyLoaded: false };
 
 const slice = createSlice({
     name: 'github',
@@ -17,13 +16,16 @@ const slice = createSlice({
         setLoading(state, { payload }) {
             state.isLoading = payload;
         },
+        setAlreadyLoaded(state, { payload }) {
+            state.alreadyLoaded = payload;
+        },
     },
 });
 
 export default slice.reducer;
 
 // Actions
-const { setRepos, setLoading } = slice.actions;
+const { setRepos, setLoading, setAlreadyLoaded } = slice.actions;
 
 const defaultDisabledRepo = (id) => ({
     id,
@@ -53,7 +55,9 @@ const buildTag = (field, repo) => {
     const baseObj = repo[field.fieldName];
     if (!isDef(baseObj)) return [];
     if (isDef(field.onlyIf) && baseObj !== field.onlyIf) return [];
-    return [field.params.reduce((acc, { fieldName, type, value }) => ({ ...acc, [fieldName]: getValue(baseObj, type, value) }), { id: uuid() })];
+    return [
+        field.params.reduce((acc, { fieldName, type, value }) => ({ ...acc, [fieldName]: getValue(baseObj, type, value) }), { id: field.fieldName }),
+    ];
 };
 
 const buildTags = async (repo) => {
@@ -73,7 +77,7 @@ const buildRepoParams = async (configRepo, repos) => {
 
     const tags = await buildTags(repo);
     return {
-        id,
+        code: id,
         name,
         description,
         url,
@@ -108,6 +112,7 @@ export const loadRepos = () => async (dispatch) => {
 
         dispatch(setLoading(false));
         dispatch(setRepos(userRepos));
+        dispatch(setAlreadyLoaded(true));
     } catch (err) {
         console.error(err);
         dispatch(setLoading(false));

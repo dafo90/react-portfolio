@@ -1,99 +1,97 @@
-/* eslint-disable react/jsx-curly-brace-presence */
-import { Link } from '@material-ui/core';
-import { DeveloperMode, Email, Extension, FolderShared, Person } from '@material-ui/icons';
-import React from 'react';
-import { v4 as uuid } from 'uuid';
-
-import AboutMe from '../components/layouts/aboutme/AboutMe';
-import Contact from '../components/layouts/contact/Contact';
-import Projects from '../components/layouts/projects/Projects';
-import Resume from '../components/layouts/resume/Resume';
-import Skills from '../components/layouts/skills/Skills';
 import github from './github';
 
 export default [
     {
-        id: uuid(),
         code: 'aboutme',
         title: 'About Me',
-        component: AboutMe,
+        componentName: 'AboutMe',
         urls: ['/', '/aboutme'],
         buttonLabel: 'About Me',
-        icon: Person,
+        icon: { type: 'icon', name: 'person' },
         homepage: true,
         enabled: true,
         content: {},
     },
     {
-        id: uuid(),
         code: 'resume',
         title: 'Resume',
-        component: Resume,
+        componentName: 'Resume',
         urls: ['/resume'],
         buttonLabel: 'Resume',
-        icon: FolderShared,
+        icon: { type: 'icon', name: 'folder_shared' },
         homepage: false,
         enabled: true,
         content: {
             skills: [
                 {
-                    id: uuid(),
+                    code: 'programming',
                     title: 'Programming',
                     description: 'Java · JavaScript · ActionScript · LaTeX · Bash · C/C++',
                     image: '/icons/dev.png',
                 },
-                { id: uuid(), title: 'Back-end', description: 'Spring & Spring Boot · NodeJS (FeathersJS & Express)', image: '/icons/gear.png' },
                 {
-                    id: uuid(),
+                    code: 'back-end',
+                    title: 'Back-end',
+                    description: 'Spring & Spring Boot · NodeJS (FeathersJS & Express)',
+                    image: '/icons/gear.png',
+                },
+                {
+                    code: 'front-end',
                     title: 'Front-end',
                     description: 'React · Redux & Saga · Material-UI · HTML5 · CSS · Flex · JSP',
                     image: '/icons/frames.png',
                 },
-                { id: uuid(), title: 'Database', description: 'Oracle Database · MySQL · MongoDB', image: '/icons/bookshelf.png' },
+                { code: 'database', title: 'Database', description: 'Oracle Database · MySQL · MongoDB', image: '/icons/bookshelf.png' },
                 {
-                    id: uuid(),
+                    code: 'devops',
                     title: 'DevOps',
                     description: 'Docker · Rancher · Jenkins · Kibana · Atlassian Suite · Nexus',
                     image: '/icons/speedometer.png',
                 },
                 {
-                    id: uuid(),
+                    code: 'tools',
                     title: 'Tools',
                     description: 'Npm · Maven · Git · Tomcat & JBoss · Postman · IntelliJ IDEA · Visual Studio Code · NetBeans',
                     image: '/icons/tools.png',
                 },
-                { id: uuid(), title: 'CMS', description: 'WordPress', image: '/icons/browser.png' },
-                { id: uuid(), title: 'Hardware', description: 'Arduino · Raspberry', image: '/icons/computer.png' },
+                { code: 'cms', title: 'CMS', description: 'WordPress', image: '/icons/browser.png' },
+                { code: 'hardware', title: 'Hardware', description: 'Arduino · Raspberry', image: '/icons/computer.png' },
             ],
             languages: [
-                { id: uuid(), title: 'Italian', level: 'native speaker', image: '/flags/italy.png' },
+                { code: 'italian', title: 'Italian', level: 'native speaker', image: '/flags/italy.png' },
                 {
-                    id: uuid(),
+                    code: 'english',
                     title: 'English',
                     level: 3,
                     description: 'Technical - Good technical notions, basic spoken and writing',
                     image: '/flags/unitedkingdom.png',
                 },
-                { id: uuid(), title: 'German', level: 3, description: 'Intermediate - Good spoken and written notions', image: '/flags/germany.png' },
-                { id: uuid(), title: 'French', level: 2, description: 'Basic - Basic spoken and written notions', image: '/flags/france.png' },
+                {
+                    code: 'german',
+                    title: 'German',
+                    level: 3,
+                    description: 'Intermediate - Good spoken and written notions',
+                    image: '/flags/germany.png',
+                },
+                { code: 'french', title: 'French', level: 2, description: 'Basic - Basic spoken and written notions', image: '/flags/france.png' },
             ],
             courses: [
                 {
-                    id: uuid(),
+                    code: 'm001-mongodb-basics',
                     title: '2019',
                     description: 'M001: MongoDB Basics',
                     others: 'MongoDB University',
                     image: '/logos/mongodbuniversity.png',
                 },
                 {
-                    id: uuid(),
+                    code: 'itil-foundation-certificate-in-it-service-management',
                     title: '2016',
                     description: 'ITIL Foundation certificate in IT Service Management',
                     others: 'AXELOS',
                     image: '/logos/itil.jpeg',
                 },
                 {
-                    id: uuid(),
+                    code: 'zertifikat-deutsch-telc-b1',
                     title: '2012',
                     description: 'Zertifikat Deutsch TELC B1',
                     others: 'Carl Duisberg, D-78315 Radolfzell (Germany)',
@@ -102,7 +100,7 @@ export default [
             ],
             awards: [
                 {
-                    id: uuid(),
+                    code: 'third-best-grade-of-technical-professional-maturity-scuola-arti-e-mestieri-di-bellinzona-samb',
                     title: '2010',
                     description: 'Third best grade of Technical Professional Maturity, Scuola Arti e Mestieri di Bellinzona (SAMB)',
                     image: '/icons/trophy.png',
@@ -110,97 +108,113 @@ export default [
             ],
             knowMeMore: [
                 {
-                    id: uuid(),
+                    code: 'unraid-os',
                     title: 'I manage of my personal home server with Unraid OS',
                     image: '/icons/gear.png',
                 },
                 {
-                    id: uuid(),
+                    code: 'electronics',
                     title: 'Good knowledge of electronics in general',
                     image: '/icons/bolt.png',
                 },
-                { id: uuid(), title: 'Passionate about combustion engines (ICE) and the automotive world in general', image: '/icons/car.png' },
+                { code: 'cars', title: 'Passionate about combustion engines (ICE) and the automotive world in general', image: '/icons/car.png' },
                 {
-                    id: uuid(),
+                    code: 'arcade-cabinet',
                     title: "80's Arcade Cabinet Machine enthusiast; designed and built five",
                     image: '/icons/gamecontroller.png',
                 },
                 {
-                    id: uuid(),
+                    code: 'carnival',
                     title: 'Active in the carnival group of Castione (Sciatt) as a committee member since 2014 and accountant since 2018',
                     image: '/icons/trends.png',
                 },
             ],
             worksAndSchools: [
                 {
-                    id: uuid(),
+                    code: '2014-eoc',
                     enabled: true,
                     imageUrl: '/logos/eoc.svg',
                     imageAlt: 'EOC',
                     date: '2014 - Present',
-                    title: (
-                        <React.Fragment>
-                            {'Full-Stack Developer '}
-                            <Link color="inherit" underline="always" href="https://www.eoc.ch" target="_blank" rel="noreferrer">
-                                @EOC
-                            </Link>
-                        </React.Fragment>
-                    ),
+                    title: [
+                        'Full-Stack Developer ',
+                        {
+                            type: 'link',
+                            color: 'inherit',
+                            underline: 'always',
+                            href: 'https://www.eoc.ch',
+                            target: '_blank',
+                            rel: 'noreferrer',
+                            text: '@EOC',
+                        },
+                    ],
                     subtitle: 'Ente Ospedaliero Cantonale, CH-6500 Bellinzona',
                     description:
                         "Full-Stack developer mainly in Java (Spring & Spring Boot) and Oracle Database as back-end and React Hooks as front-end. Since the end of 2017 the back-end's development moved gradually on NodeJS (with framework FeathersJS) and MongoDB as database. We also use Jenkins as a build & deploy system, Docker (with Rancher) as a service manager and Kibana as a log aggregator.",
                 },
                 {
-                    id: uuid(),
+                    code: '2011-supsi',
                     enabled: true,
                     imageUrl: '/logos/supsi.png',
                     imageAlt: 'SUPSI',
                     date: '2011 - 2014',
-                    title: (
-                        <React.Fragment>
-                            {"Bachelor's in Computer Science "}
-                            <Link color="inherit" underline="always" href="http://www.supsi.ch" target="_blank" rel="noreferrer">
-                                @SUPSI
-                            </Link>
-                        </React.Fragment>
-                    ),
+                    title: [
+                        "Bachelor's in Computer Science ",
+                        {
+                            type: 'link',
+                            color: 'inherit',
+                            underline: 'always',
+                            href: 'https://www.supsi.ch',
+                            target: '_blank',
+                            rel: 'noreferrer',
+                            text: '@SUPSI',
+                        },
+                    ],
                     subtitle: 'Scuola Universitaria Professionale della Svizzera Italiana, CH-6928 Manno',
                     description:
                         "Diploma's project: P2P photo sharing via gesture recognition. Experience with basic AI in gesture recognition and the (old) Android framework.",
                 },
                 {
-                    id: uuid(),
+                    code: '2010-arbedo-castione',
                     enabled: true,
                     imageUrl: '/logos/arbedo-castione.svg',
                     imageAlt: 'Arbedo-Castione',
                     date: '2010 - 2011',
                     url: 'https://www.arbedocastione.ch',
-                    title: (
-                        <React.Fragment>
-                            {'Civil Service '}
-                            <Link color="inherit" underline="always" href="https://www.arbedocastione.ch" target="_blank" rel="noreferrer">
-                                @Municipality of Arbedo-Castione
-                            </Link>
-                        </React.Fragment>
-                    ),
+                    title: [
+                        'Civil Service ',
+                        {
+                            type: 'link',
+                            color: 'inherit',
+                            underline: 'always',
+                            href: 'https://www.arbedocastione.ch',
+                            target: '_blank',
+                            rel: 'noreferrer',
+                            text: '@Municipality of Arbedo-Castione',
+                        },
+                    ],
                     subtitle: 'Municipio di Arbedo-Castione, CH-6517 Arbedo',
                     description:
                         'Mainly administrative work with Microsoft Office suite, cadastral map updating and two months (one in 2016 and one in 2017) of landscaping and gardening work. Ended in 2017.',
                 },
                 {
-                    id: uuid(),
+                    code: '2006-samb',
                     enabled: true,
                     imageUrl: '/logos/samb.png',
                     imageAlt: 'SAMB',
                     date: '2006 - 2010',
-                    title: (
-                        <React.Fragment>
-                            {'Federal Proficiency Certificate and Certificate of Technical Professional Maturity '}
-                            <Link color="inherit" underline="always" href="http://www.samb.ti.ch" target="_blank" rel="noreferrer">
-                                @SAMB
-                            </Link>
-                        </React.Fragment>
-                    ),
+                    title: [
+                        'Federal Proficiency Certificate and Certificate of Technical Professional Maturity ',
+                        {
+                            type: 'link',
+                            color: 'inherit',
+                            underline: 'always',
+                            href: 'http://www.samb.ti.ch',
+                            target: '_blank',
+                            rel: 'noreferrer',
+                            text: '@SAMB',
+                        },
+                    ],
                     subtitle: 'Scuola Arti e Mestieri Bellinzona, CH-6500 Bellinzona',
                     description: "Electronics' notions and development of simple software for microprocessors.",
                 },
@@ -208,48 +222,40 @@ export default [
         },
     },
     {
-        id: uuid(),
         code: 'projects',
         title: 'Projects',
-        subtitle: (
-            <React.Fragment>
-                {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-                All my personal Project Sources are published on{' '}
-                <Link color="inherit" underline="always" href={github.url} target="_blank" rel="noreferrer">
-                    GitHub
-                </Link>
-            </React.Fragment>
-        ),
-        component: Projects,
+        subtitle: [
+            'All my personal Project Sources are published on ',
+            { type: 'link', color: 'inherit', underline: 'always', href: github.url, target: '_blank', rel: 'noreferrer', text: 'GitHub' },
+        ],
+        componentName: 'Projects',
         urls: ['/projects'],
         buttonLabel: 'Projects',
-        icon: DeveloperMode,
+        icon: { type: 'icon', name: 'developer_mode' },
         homepage: false,
         enabled: true,
         content: {},
     },
     {
-        id: uuid(),
         code: 'skills',
         title: 'Technical Skills',
         subtitle: 'A short list of my major Skills',
-        component: Skills,
+        componentName: 'Skills',
         urls: ['/skills'],
         buttonLabel: 'Skills',
-        icon: Extension,
+        icon: { type: 'icon', name: 'extension' },
         homepage: false,
         enabled: true,
         content: {},
     },
     {
-        id: uuid(),
         code: 'contact',
         title: 'Contact',
         subtitle: 'Get in touch',
-        component: Contact,
+        componentName: 'Contact',
         urls: ['/contact'],
         buttonLabel: 'Contact',
-        icon: Email,
+        icon: { type: 'icon', name: 'email' },
         homepage: false,
         enabled: true,
         content: {

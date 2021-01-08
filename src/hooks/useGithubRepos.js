@@ -6,11 +6,11 @@ import { loadRepos } from '../store/slices/github';
 
 export default () => {
     const dispatch = useDispatch();
-    const { repos, isLoading } = useSelector(github);
+    const { repos, isLoading, alreadyLoaded } = useSelector(github);
 
     useEffect(() => {
-        dispatch(loadRepos());
-    }, [dispatch]);
+        if (!alreadyLoaded) dispatch(loadRepos());
+    }, [alreadyLoaded, dispatch]);
 
     return { repos, isLoading };
 };

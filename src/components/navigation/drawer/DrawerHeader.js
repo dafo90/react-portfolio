@@ -6,6 +6,7 @@ import React from 'react';
 import personalData from '../../../configurations/personalData';
 import socials from '../../../configurations/socials';
 import Address from '../../common/Address';
+import Interpreter from '../../common/Interpreter';
 import SocialButtonsBar from '../../common/socialbutton/SocialButtonsBar';
 
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +48,7 @@ const DrawerHeader = ({ className }) => {
             </div>
             {shortBio && (
                 <Typography className={classes.shortBio} align="center">
-                    {shortBio}
+                    <Interpreter conf={shortBio} />
                 </Typography>
             )}
             {socials && <SocialButtonsBar className={classes.socials} socials={socials} />}

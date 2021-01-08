@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { DeveloperMode } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import useGithubRepos from '../../../hooks/useGithubRepos';
+
 import HeaderTitle from '../../common/HeaderTitle';
 import TilesSection from '../../common/tile/TilesSection';
 import LayoutBody from '../LayoutBody';
