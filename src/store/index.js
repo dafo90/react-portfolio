@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 
 import github from './slices/github';
 import navigation from './slices/navigation';

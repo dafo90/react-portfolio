@@ -4,17 +4,14 @@ import React from 'react';
 
 import Element from './Element';
 
-const ElementsArray = ({ className, elements }) => {
-    return (
-        elements.length && (
-            <List className={className} dense disablePadding>
-                {elements.map(({ id, title, description, others, image, level }) => (
-                    <Element key={id} id={id} title={title} description={description} others={others} image={image} level={level} />
-                ))}
-            </List>
-        )
-    );
-};
+const ElementsArray = ({ className, elements }) =>
+    elements.length ? (
+        <List className={className} dense disablePadding>
+            {elements.map(({ id, title, description, others, image, level }) => (
+                <Element key={id} id={id} title={title} description={description} others={others} image={image} level={level} />
+            ))}
+        </List>
+    ) : null;
 
 ElementsArray.propTypes = {
     className: PropTypes.string,

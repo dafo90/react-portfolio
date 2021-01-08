@@ -89,7 +89,7 @@ const buildRepoParams = async (configRepo, repos) => {
 };
 
 export const loadRepos = () => async (dispatch) => {
-    dispatch(setLoading({ loading: true }));
+    dispatch(setLoading(true));
 
     let userRepos = [];
     let page = 1;

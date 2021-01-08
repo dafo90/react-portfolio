@@ -37,8 +37,10 @@ const useStyles = makeStyles((theme) => ({
 
 const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, transparentImage, zoomImage, transitionIn, transitionDelay }) => {
     const classes = useStyles({ scale, transparentImage, zoomImage });
+
     const [bulletsColorOffset, setBulletsColorOffset] = useState(0);
     const [startBulletsTransition, setStartBulletsTransition] = useState(false);
+
     useEffect(() => {
         if (transitionIn) {
             const timeout = setTimeout(() => {
@@ -46,8 +48,11 @@ const TileMainContent = ({ imageUrl, name, description, tooltip, level, scale, t
             }, transitionDelay + 750);
             return () => clearTimeout(timeout);
         }
-        return undefined;
+        return null;
     }, [transitionDelay, transitionIn]);
+
+    // console.log(tooltip);
+
     return (
         <React.Fragment>
             {imageUrl && (

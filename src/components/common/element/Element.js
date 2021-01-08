@@ -16,6 +16,7 @@ const Element = ({ className, title, description, others, image, level }) => {
     const classes = useStyles();
     const [isElementInViewport, elementPaper] = useIsInViewport();
     const [startBulletsTransition, setStartBulletsTransition] = useState(false);
+
     useEffect(() => {
         if (isElementInViewport) {
             const timeout = setTimeout(() => {
@@ -23,7 +24,7 @@ const Element = ({ className, title, description, others, image, level }) => {
             }, 750);
             return () => clearTimeout(timeout);
         }
-        return undefined;
+        return null;
     }, [isElementInViewport]);
 
     const content = () => {

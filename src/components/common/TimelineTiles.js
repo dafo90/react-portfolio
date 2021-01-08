@@ -24,16 +24,18 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtitle, tiles }, ref) => {
+const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtitle, tiles, animate }, ref) => {
     const classes = useStyles();
     const theme = useTheme();
     const matchesUpXl = useMediaQuery(theme.breakpoints.up('xl'));
+
     const elemTitleClassName = classNames('vertical-timeline-element-title', classes.title);
     const elemSubtitleClassName = classNames('vertical-timeline-element-subtitle', classes.subtitle);
+
     return (
-        <Box ref={ref} className={className}>
+        <Box className={className}>
             {sectionTitle && <Section title={sectionTitle} subtitle={sectionSubtitle} />}
-            <VerticalTimeline layout={matchesUpXl ? '2-columns' : '1-column'}>
+            <VerticalTimeline animate={animate} layout={matchesUpXl ? '2-columns' : '1-column'}>
                 {tiles.map(({ id, title, subtitle, date, imageUrl, imageAlt, description }) => (
                     <VerticalTimelineElement
                         key={id}
@@ -58,6 +60,7 @@ const TimelineTiles = React.forwardRef(({ className, sectionTitle, sectionSubtit
                     </VerticalTimelineElement>
                 ))}
             </VerticalTimeline>
+            <Box ref={ref} />
         </Box>
     );
 });
@@ -67,12 +70,14 @@ TimelineTiles.propTypes = {
     sectionTitle: PropTypes.string,
     sectionSubtitle: PropTypes.string,
     tiles: PropTypes.array.isRequired,
+    animate: PropTypes.bool,
 };
 
 TimelineTiles.defaultProps = {
     className: undefined,
     sectionTitle: undefined,
     sectionSubtitle: undefined,
+    animate: true,
 };
 
 export default TimelineTiles;

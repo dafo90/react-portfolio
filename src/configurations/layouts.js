@@ -131,13 +131,6 @@ export default [
                     image: '/icons/trends.png',
                 },
             ],
-            interests: [
-                { label: 'Ice Hockey', value: 4 },
-                { label: 'Cars (ICE)', value: 5 },
-                { label: 'Bike', value: 1 },
-                { label: 'Mountain', value: 2 },
-                { label: 'DIY Arcade Cabinet', value: 3 },
-            ],
             worksAndSchools: [
                 {
                     id: uuid(),

@@ -1,14 +1,12 @@
 import { Divider, Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { FolderShared } from '@material-ui/icons';
-import BubbleChart from '@weknow/react-bubble-chart-d3';
 import PropTypes from 'prop-types';
-import React from 'react';
-import useDimensions from 'react-use-dimensions';
+import React, { useEffect, useState } from 'react';
 
+import useIsInViewport from 'use-is-in-viewport';
 import ElementsArray from '../../common/element/ElementsArray';
 import HeaderTitle from '../../common/HeaderTitle';
-import Section from '../../common/Section';
 import TimelineTiles from '../../common/TimelineTiles';
 import LayoutBody from '../LayoutBody';
 import LayoutHeader from '../LayoutHeader';
@@ -57,9 +55,21 @@ const useStyles = makeStyles((theme) => ({
 const Resume = ({ pageConf }) => {
     const classes = useStyles();
     const { content } = pageConf;
-    const { worksAndSchools, skills, languages, courses, awards, knowMeMore, interests } = content;
-    const [refTimeline, { width: bubbleChartWidth }] = useDimensions();
-    const bubbleChartHeight = bubbleChartWidth;
+    const [isElementInViewport, elementVerticalTimeline] = useIsInViewport();
+    const { worksAndSchools, skills, languages, courses, awards, knowMeMore } = content;
+
+    const [animate, setAnimate] = useState(true);
+
+    useEffect(() => {
+        let timeout;
+        if (isElementInViewport && animate) {
+            timeout = setTimeout(() => {
+                setAnimate(false);
+            }, 2000);
+        }
+        return () => !!timeout && clearTimeout(timeout);
+    }, [isElementInViewport, animate]);
+
     return (
         <React.Fragment>
             <LayoutHeader>
@@ -72,48 +82,31 @@ const Resume = ({ pageConf }) => {
                     <Grid className={classes.grid} container spacing={4} variant="body2" justify="flex-start" alignItems="flex-start">
                         <Grid className={classes.leftColumn} item xs>
                             <TimelineTiles
-                                ref={refTimeline}
+                                ref={elementVerticalTimeline}
                                 className={classes.timeline}
+                                animate={animate}
                                 tiles={worksAndSchools.filter(({ enabled = false }) => enabled)}
-                            />
-                            <Section className={classes.section} title="Know me more&hellip;" />
-                            <ElementsArray elements={knowMeMore} />
-                            <Section className={classes.section} title="Interests" />
-                            <BubbleChart
-                                graph={{
-                                    zoom: 0.95,
-                                    offsetX: 0.0,
-                                    offsetY: 0.0,
-                                }}
-                                width={bubbleChartWidth ? bubbleChartWidth - 10 : 0}
-                                height={bubbleChartHeight ? bubbleChartHeight - 10 : 0}
-                                showLegend={false}
-                                valueFont={{
-                                    family: 'Arial',
-                                    size: 0,
-                                    color: '#fff',
-                                    weight: 'bold',
-                                }}
-                                labelFont={{
-                                    size: bubbleChartWidth ? bubbleChartWidth * 0.03 : 0,
-                                    color: '#fff',
-                                    weight: 'bold',
-                                }}
-                                data={interests}
                             />
                         </Grid>
                         <Grid className={classes.rightColumn} item xs={12} md="auto">
                             <Typography variant="h5">Skills</Typography>
                             <ElementsArray elements={skills} />
+
                             <Divider className={classes.divider} />
                             <Typography variant="h5">Courses</Typography>
                             <ElementsArray elements={courses} />
+
                             <Divider className={classes.divider} />
                             <Typography variant="h5">Awards</Typography>
                             <ElementsArray elements={awards} />
+
                             <Divider className={classes.divider} />
                             <Typography variant="h5">Languages</Typography>
                             <ElementsArray elements={languages} />
+
+                            <Divider className={classes.divider} />
+                            <Typography variant="h5">Know me more&hellip;</Typography>
+                            <ElementsArray elements={knowMeMore} />
                         </Grid>
                     </Grid>
                 </Paper>

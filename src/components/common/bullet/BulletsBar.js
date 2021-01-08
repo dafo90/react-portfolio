@@ -21,7 +21,7 @@ const BulletsBar = React.forwardRef(({ className, bulletSize, level, startBullet
                 </Grid>
             ))}
         </Grid>
-    ) : undefined;
+    ) : null;
 });
 
 BulletsBar.propTypes = {

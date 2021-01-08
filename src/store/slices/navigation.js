@@ -27,4 +27,4 @@ const setLayout = ({ id, title, code, urls, enabled, homepage }) => async (dispa
     dispatch(setSelectedLayout({ id, title, code, urls, enabled, homepage }));
 };
 
-export { openMobileDrawer, closeMobileDrawer, setLayout };
+export { closeMobileDrawer, openMobileDrawer, setLayout };
