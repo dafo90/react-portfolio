@@ -12,7 +12,7 @@ const slice = createSlice({
         closeMobileDrawer(state) {
             state.mobileDrawerOpen = false;
         },
-        setSelectedLayout(state, { payload }) {
+        setLayout(state, { payload }) {
             state.selectedLayout = payload;
         },
     },
@@ -21,10 +21,4 @@ const slice = createSlice({
 export default slice.reducer;
 
 // Actions
-const { openMobileDrawer, closeMobileDrawer, setSelectedLayout } = slice.actions;
-
-const setLayout = ({ id, title, code, urls, enabled, homepage }) => async (dispatch) => {
-    dispatch(setSelectedLayout({ id, title, code, urls, enabled, homepage }));
-};
-
-export { closeMobileDrawer, openMobileDrawer, setLayout };
+export const { closeMobileDrawer, openMobileDrawer, setLayout } = slice.actions;

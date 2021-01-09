@@ -10,9 +10,10 @@ import {
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import personalData from '../../../configurations/personalData';
 import packageJson from '../../../package.alias.json';
+import { personalInformationConfigSelector } from '../../../store/selectors';
 import Interpreter from '../../common/Interpreter';
 
 const height = '120px';
@@ -56,10 +57,11 @@ const useStyles = makeStyles((theme) => ({
     }),
 }));
 
-const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
+const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth, contactUrl }) => {
     const classes = useStyles({ leftColumnMinWidth, rightColumnWidth });
-    const { name, title, profileImage, birthdate, email, location, cvPdf } = personalData;
-    const momentBirthdate = birthdate && birthdate.date && birthdate.format ? moment(birthdate.date, birthdate.format) : undefined;
+    const { name, title, profileImage, birthdate, email, location, cvPdf } = useSelector(personalInformationConfigSelector);
+    const momentBirthdate = birthdate?.date && birthdate?.format ? moment(birthdate.date, birthdate.format) : undefined;
+
     return (
         <Grid container spacing={4} variant="body2" justify="flex-start" alignItems="center">
             <Grid item xs="auto">
@@ -77,9 +79,17 @@ const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
                     </Typography>
                 )}
                 {cvPdf && (
-                    <Button className={classes.button} component="a" target="_blank" rel="noreferrer" href={cvPdf} variant="outlined" size="medium">
+                    <Button
+                        className={classes.button}
+                        component="a"
+                        target="_blank"
+                        rel="noreferrer"
+                        href={cvPdf.href}
+                        variant="outlined"
+                        size="medium"
+                    >
                         <InsertDriveFileIcon className={classes.buttonIcon} />
-                        Download PDF
+                        {cvPdf.buttonLabel}
                     </Button>
                 )}
             </Grid>
@@ -97,9 +107,13 @@ const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
                             </ListItemIcon>
                             <ListItemText
                                 primary={
-                                    <Link color="inherit" underline="always" href={`mailto:${email}`} target="_top" rel="noreferrer">
-                                        {email}
-                                    </Link>
+                                    contactUrl ? (
+                                        <Link color="inherit" underline="always" href={contactUrl} target="_top" rel="noreferrer">
+                                            {email}
+                                        </Link>
+                                    ) : (
+                                        email
+                                    )
                                 }
                             />
                         </ListItem>
@@ -109,7 +123,11 @@ const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
                             <ListItemIcon>
                                 <CakeIcon />
                             </ListItemIcon>
-                            <ListItemText primary={momentBirthdate.format('Do MMMM YYYY')} />
+                            <ListItemText
+                                primary={`${momentBirthdate.format(birthdate.displayFormat || 'Do MMMM YYYY')}${
+                                    birthdate.showAge ? ` (${moment().diff(momentBirthdate, 'years', false)} years old)` : ''
+                                }`}
+                            />
                         </ListItem>
                     )}
                     {location && (
@@ -143,10 +161,12 @@ const ResumeHeader = ({ leftColumnMinWidth, rightColumnWidth }) => {
 ResumeHeader.propTypes = {
     leftColumnMinWidth: PropTypes.string,
     rightColumnWidth: PropTypes.object,
+    contactUrl: PropTypes.string,
 };
 ResumeHeader.defaultProps = {
     leftColumnMinWidth: undefined,
     rightColumnWidth: undefined,
+    contactUrl: undefined,
 };
 
 export default ResumeHeader;

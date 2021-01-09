@@ -4,7 +4,7 @@ import { Menu as MenuIcon } from '@material-ui/icons/';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectedLayout } from '../../store/selectors';
+import { selectedLayoutSelector } from '../../store/selectors';
 import { openMobileDrawer } from '../../store/slices/navigation';
 
 const useStyles = makeStyles((theme) => ({
@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 const MobileAppBar = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const { title } = useSelector(selectedLayout);
+    const { title } = useSelector(selectedLayoutSelector);
     return (
         <AppBar position="fixed" color="inherit">
             <Toolbar>

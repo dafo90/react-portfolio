@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { mobileDrawerOpen } from '../../../store/selectors';
+import { mobileDrawerOpenSelector } from '../../../store/selectors';
 import { closeMobileDrawer } from '../../../store/slices/navigation';
 import DrawerMenu from './DrawerMenu';
 
@@ -19,7 +19,7 @@ const MobileDrawer = ({ width, maxWidth }) => {
     const dispatch = useDispatch();
     const classes = useStyles({ width, maxWidth });
     const theme = useTheme();
-    const open = useSelector(mobileDrawerOpen);
+    const open = useSelector(mobileDrawerOpenSelector);
     return (
         <Drawer
             variant="temporary"

@@ -27,7 +27,7 @@ const Section = ({ className, title, subtitle, icon }) => {
                 </Grid>
                 {icon && (
                     <Grid item xs="auto">
-                        {icon}
+                        <Interpreter conf={icon} />
                     </Grid>
                 )}
             </Grid>
@@ -37,9 +37,9 @@ const Section = ({ className, title, subtitle, icon }) => {
 
 Section.propTypes = {
     className: PropTypes.string,
-    title: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-    subtitle: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
-    icon: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]),
+    title: PropTypes.any.isRequired,
+    subtitle: PropTypes.any,
+    icon: PropTypes.object,
 };
 
 Section.defaultProps = {

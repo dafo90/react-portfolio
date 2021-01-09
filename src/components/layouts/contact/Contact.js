@@ -1,9 +1,7 @@
 import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Email } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { GoogleReCaptchaProvider } from 'react-google-recaptcha-v3';
 
 import HeaderTitle from '../../common/HeaderTitle';
 import LayoutBody from '../LayoutBody';
@@ -14,26 +12,20 @@ const useStyles = makeStyles((theme) => ({
     form: {
         padding: theme.spacing(2),
     },
-    icon: {
-        fontSize: '150px',
-    },
 }));
 
 const Contact = ({ pageConf }) => {
     const classes = useStyles();
-    const { title, subtitle, content } = pageConf;
-    const { googleRecaptchaClientSiteKey, formSubmitUrl } = content;
+    const { title, subtitle, icon, form } = pageConf;
 
     return (
         <React.Fragment>
             <LayoutHeader>
-                <HeaderTitle title={title} subtitle={subtitle} icon={<Email className={classes.icon} />} />
+                <HeaderTitle title={title} subtitle={subtitle} icon={icon ? { ...icon, fontsizenumber: icon.fontsizenumber || 150 } : undefined} />
             </LayoutHeader>
             <LayoutBody>
                 <Paper className={classes.form}>
-                    <GoogleReCaptchaProvider reCaptchaKey={googleRecaptchaClientSiteKey}>
-                        <ContactForm formSubmitUrl={formSubmitUrl} />
-                    </GoogleReCaptchaProvider>
+                    <ContactForm formConfig={form} />
                 </Paper>
             </LayoutBody>
         </React.Fragment>

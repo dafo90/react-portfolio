@@ -1,8 +1,11 @@
 import { Box, Container, Link, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 import packageJson from '../package.alias.json';
+import { footerConfigSelector } from '../store/selectors';
+import Interpreter from './common/Interpreter';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -23,25 +26,25 @@ const useStyles = makeStyles((theme) => ({
 
 const PortfolioFooter = () => {
     const classes = useStyles();
+    const { copyrightName, text } = useSelector(footerConfigSelector);
+
     return (
-        <div className={classes.root}>
-            <div className={classes.divider} />
+        <Box className={classes.root}>
+            <Box className={classes.divider} />
             <Container maxWidth="sm" component="footer" className={classes.footer}>
                 <Box mt={3}>
                     <Typography variant="body2" color="textSecondary" align="center">
                         {/* eslint-disable-next-line react/jsx-curly-brace-presence */}
                         {'Copyright © '}
                         <Link color="inherit" href={packageJson.homepage} underline="always">
-                            {packageJson.author}
+                            {copyrightName || packageJson.author}
                         </Link>
                         {` ${new Date().getFullYear()}.`}
                     </Typography>
-                    <Typography variant="body2" color="textSecondary" align="center">
-                        Theme inspired by the Lotus Type 79.
-                    </Typography>
+                    <Interpreter conf={text} />
                 </Box>
             </Container>
-        </div>
+        </Box>
     );
 };
 

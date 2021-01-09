@@ -1,8 +1,8 @@
 import { Button, Paper, Typography, useMediaQuery } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import React from 'react';
-
-import layouts from '../configurations/layouts';
+import { useSelector } from 'react-redux';
+import { notFoundConfigSelector } from '../store/selectors';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -52,8 +52,7 @@ const NotFound = () => {
     const theme = useTheme();
     const matchesXs = useMediaQuery(theme.breakpoints.only('xs'));
     const matchesSm = useMediaQuery(theme.breakpoints.only('sm'));
-
-    const homepageUrl = layouts.find(({ homepage }) => homepage).urls[0];
+    const { title, subtitle, button } = useSelector(notFoundConfigSelector);
 
     let titleVariant;
     if (matchesXs) titleVariant = 'h3';
@@ -64,13 +63,13 @@ const NotFound = () => {
         <div className={classes.root}>
             <Paper classes={{ root: classes.paper }}>
                 <Typography variant={titleVariant} color="inherit" align="center" className={classes.title}>
-                    Oops!
+                    {title}
                 </Typography>
                 <Typography variant="body1" color="textSecondary" align="center" className={classes.errorMessage}>
-                    404 - Page not found
+                    {subtitle}
                 </Typography>
-                <Button variant="contained" href={homepageUrl} size="large">
-                    Go to homepage
+                <Button variant="contained" href={button.href} size="large">
+                    {button.label}
                 </Button>
             </Paper>
         </div>

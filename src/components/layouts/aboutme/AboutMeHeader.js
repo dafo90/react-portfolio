@@ -2,26 +2,26 @@ import { Box, Button, Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { personalInformationConfigSelector } from '../../../store/selectors';
 
-import personalData from '../../../configurations/personalData';
 import { setLayout } from '../../../store/slices/navigation';
 import HeaderTitle from '../../common/HeaderTitle';
 import Interpreter from '../../common/Interpreter';
 
 const useStyles = makeStyles((theme) => ({
-    longBio: {
+    biographyDescription: {
         paddingTop: theme.spacing(2),
         textAlign: 'justify',
         textJustify: 'inter-word',
     },
-    bioImageBox: {
+    biographyImageBox: {
         float: 'left',
         [theme.breakpoints.up('md')]: {
             float: 'right',
         },
     },
-    bioImage: {
+    biographyImage: {
         borderRadius: '4px',
         [theme.breakpoints.only('xs')]: {
             width: '100%',
@@ -55,21 +55,22 @@ const useStyles = makeStyles((theme) => ({
 const AboutMeHeader = ({ layouts }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const { bioImage, name, title, longBio } = personalData;
-    const linkLayouts = layouts.filter(({ homepage, enabled }) => enabled && !homepage);
+    const { biographyImage, name, title, biographyDescription, icon } = useSelector(personalInformationConfigSelector);
+    const linkLayouts = layouts.filter(({ homepage = false, enabled }) => enabled && !homepage);
+
     return (
         <Grid container spacing={4} justify="center">
             <Grid item xs>
-                <HeaderTitle title={name} subtitle={title} />
-                {longBio && (
-                    <Box className={classes.longBio}>
-                        <Interpreter conf={longBio} />
+                <HeaderTitle title={name} subtitle={title} icon={icon ? { ...icon, fontsizenumber: icon.fontsizenumber || 150 } : undefined} />
+                {biographyDescription && (
+                    <Box className={classes.biographyDescription}>
+                        <Interpreter conf={biographyDescription} />
                     </Box>
                 )}
                 {linkLayouts.length && (
                     <Grid container className={classes.buttonsBar} justify="center" alignItems="center">
                         {linkLayouts.map((linkLayout) => {
-                            const { code, buttonLabel, icon } = linkLayout;
+                            const { code, buttonLabel, icon: buttonIcon } = linkLayout;
                             return (
                                 <Button
                                     key={code}
@@ -79,7 +80,13 @@ const AboutMeHeader = ({ layouts }) => {
                                     onClick={() => dispatch(setLayout(linkLayout))}
                                 >
                                     <Box className={classes.buttonIcon}>
-                                        <Interpreter conf={{ ...icon, fontsizenumber: icon.fontsizenumber || 16, verticalalign: 'middle' }} />
+                                        <Interpreter
+                                            conf={
+                                                buttonIcon
+                                                    ? { ...buttonIcon, fontsizenumber: buttonIcon?.fontsizenumber || 16, verticalalign: 'middle' }
+                                                    : undefined
+                                            }
+                                        />
                                     </Box>
                                     {buttonLabel}
                                 </Button>
@@ -89,8 +96,8 @@ const AboutMeHeader = ({ layouts }) => {
                 )}
             </Grid>
             <Grid item xs="auto">
-                <div className={classes.bioImageBox}>
-                    <img alt={name} src={bioImage} className={classes.bioImage} />
+                <div className={classes.biographyImageBox}>
+                    <img alt={name} src={biographyImage} className={classes.biographyImage} />
                 </div>
             </Grid>
         </Grid>

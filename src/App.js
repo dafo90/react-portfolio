@@ -1,15 +1,20 @@
+import { LinearProgress } from '@material-ui/core';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import ScrollToTop from 'react-router-scroll-top';
 
 import NotFound from './components/NotFound';
 import ReactPortfolio from './components/ReactPortfolio';
-import layouts from './configurations/layouts';
+import useConfigurations from './hooks/useConfigurations';
 import useWindowsLocation from './hooks/useWindowsLocation';
 
 const App = () => {
     useWindowsLocation();
-    return (
+    const { isLoading, layouts } = useConfigurations();
+
+    return isLoading ? (
+        <LinearProgress />
+    ) : (
         <ScrollToTop>
             <Switch>
                 <Route exact path={layouts.filter(({ urls }) => urls).flatMap(({ urls }) => urls)} component={ReactPortfolio} />

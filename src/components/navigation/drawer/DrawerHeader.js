@@ -2,9 +2,9 @@ import { Avatar, ListItem, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import personalData from '../../../configurations/personalData';
-import socials from '../../../configurations/socials';
+import { personalInformationConfigSelector, socialsConfigSelector } from '../../../store/selectors';
 import Address from '../../common/Address';
 import Interpreter from '../../common/Interpreter';
 import SocialButtonsBar from '../../common/socialbutton/SocialButtonsBar';
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '100%',
     },
-    shortBio: {
+    biographyDescriptionShort: {
         paddingTop: theme.spacing(1),
         fontSize: 15,
     },
@@ -36,7 +36,9 @@ const useStyles = makeStyles((theme) => ({
 
 const DrawerHeader = ({ className }) => {
     const classes = useStyles();
-    const { name, profileImage, shortBio, address } = personalData;
+    const socials = useSelector(socialsConfigSelector);
+    const { name, profileImage, biographyDescriptionShort, address } = useSelector(personalInformationConfigSelector);
+
     return (
         <div className={className}>
             <ListItem button key="headerName" />
@@ -46,9 +48,9 @@ const DrawerHeader = ({ className }) => {
             <div className={classes.avatarBox}>
                 <Avatar alt={name} src={profileImage} className={classes.avatar} />
             </div>
-            {shortBio && (
-                <Typography className={classes.shortBio} align="center">
-                    <Interpreter conf={shortBio} />
+            {biographyDescriptionShort && (
+                <Typography className={classes.biographyDescriptionShort} align="center">
+                    <Interpreter conf={biographyDescriptionShort} />
                 </Typography>
             )}
             {socials && <SocialButtonsBar className={classes.socials} socials={socials} />}

@@ -2,10 +2,10 @@ import { Button, Grid, LinearProgress } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import skills from '../../../configurations/skills';
 import useGithubRepos from '../../../hooks/useGithubRepos';
+import { skillsConfigSelector } from '../../../store/selectors';
 import { setLayout } from '../../../store/slices/navigation';
 import TilesSection from '../../common/tile/TilesSection';
 import LayoutBody from '../LayoutBody';
@@ -25,6 +25,7 @@ const AboutMe = ({ layouts }) => {
     const dispatch = useDispatch();
     const classes = useStyles();
     const { repos, isLoading } = useGithubRepos();
+    const skills = useSelector(skillsConfigSelector);
 
     const skillsLayout = findLayoutByCode(layouts, 'skills');
     const projectsLayout = findLayoutByCode(layouts, 'projects');

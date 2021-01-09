@@ -1,11 +1,11 @@
 import { Divider, Grid, Paper, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { FolderShared } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 import ElementsArray from '../../common/element/ElementsArray';
 import HeaderTitle from '../../common/HeaderTitle';
+import Interpreter from '../../common/Interpreter';
 import TimelineTiles from '../../common/TimelineTiles';
 import LayoutBody from '../LayoutBody';
 import LayoutHeader from '../LayoutHeader';
@@ -17,9 +17,6 @@ const rightColumnWidth = { xs: '150px', md: '300px', lg: '450px' };
 const useStyles = makeStyles((theme) => ({
     paper: {
         padding: theme.spacing(2),
-    },
-    icon: {
-        fontSize: '150px',
     },
     grid: {
         paddingTop: theme.spacing(2),
@@ -51,43 +48,35 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Resume = ({ pageConf }) => {
+const Resume = ({ pageConf, layouts }) => {
     const classes = useStyles();
-    const { content } = pageConf;
-    const { worksAndSchools, skills, languages, courses, awards, knowMeMore } = content;
+    const { title, subtitle, icon, content = [], timeline } = pageConf;
+
+    const contactUrl = layouts.find(({ enabled, contact = false }) => contact && enabled)?.urls?.[0];
 
     return (
         <React.Fragment>
             <LayoutHeader>
-                <HeaderTitle title="Resume" subtitle="Full-Stack Developer - Software Engineer" icon={<FolderShared className={classes.icon} />} />
+                <HeaderTitle title={title} subtitle={subtitle} icon={icon ? { ...icon, fontsizenumber: icon.fontsizenumber || 150 } : undefined} />
             </LayoutHeader>
             <LayoutBody>
                 <Paper className={classes.paper}>
-                    <ResumeHeader leftColumnMinWidth={leftColumnMinWidth} rightColumnWidth={rightColumnWidth} />
+                    <ResumeHeader leftColumnMinWidth={leftColumnMinWidth} rightColumnWidth={rightColumnWidth} contactUrl={contactUrl} />
                     <Divider variant="fullWidth" />
                     <Grid className={classes.grid} container spacing={4} variant="body2" justify="flex-start" alignItems="flex-start">
                         <Grid className={classes.leftColumn} item xs>
-                            <TimelineTiles className={classes.timeline} tiles={worksAndSchools.filter(({ enabled = false }) => enabled)} />
+                            <TimelineTiles className={classes.timeline} tiles={timeline.filter(({ enabled = false }) => enabled)} />
                         </Grid>
                         <Grid className={classes.rightColumn} item xs={12} md="auto">
-                            <Typography variant="h5">Skills</Typography>
-                            <ElementsArray elements={skills} />
-
-                            <Divider className={classes.divider} />
-                            <Typography variant="h5">Courses</Typography>
-                            <ElementsArray elements={courses} />
-
-                            <Divider className={classes.divider} />
-                            <Typography variant="h5">Awards</Typography>
-                            <ElementsArray elements={awards} />
-
-                            <Divider className={classes.divider} />
-                            <Typography variant="h5">Languages</Typography>
-                            <ElementsArray elements={languages} />
-
-                            <Divider className={classes.divider} />
-                            <Typography variant="h5">Know me more&hellip;</Typography>
-                            <ElementsArray elements={knowMeMore} />
+                            {content.map(({ code, title: elementTitle, list }, index) => (
+                                <React.Fragment key={code}>
+                                    {index > 0 && <Divider className={classes.divider} />}
+                                    <Typography variant="h5">
+                                        <Interpreter conf={elementTitle} />
+                                    </Typography>
+                                    <ElementsArray elements={list} />
+                                </React.Fragment>
+                            ))}
                         </Grid>
                     </Grid>
                 </Paper>
@@ -98,6 +87,7 @@ const Resume = ({ pageConf }) => {
 
 Resume.propTypes = {
     pageConf: PropTypes.object.isRequired,
+    layouts: PropTypes.array.isRequired,
 };
 
 export default Resume;

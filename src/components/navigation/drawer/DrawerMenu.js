@@ -3,8 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import layouts from '../../../configurations/layouts';
-import { selectedLayout } from '../../../store/selectors';
+import { layoutsConfigSelector, selectedLayoutSelector } from '../../../store/selectors';
 import { setLayout } from '../../../store/slices/navigation';
 import Interpreter from '../../common/Interpreter';
 import DrawerHeader from './DrawerHeader';
@@ -20,7 +19,9 @@ const useStyles = makeStyles((theme) => ({
 const DrawerMenu = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
-    const { code: currentLayoutCode } = useSelector(selectedLayout);
+    const { code: currentLayoutCode } = useSelector(selectedLayoutSelector);
+    const layouts = useSelector(layoutsConfigSelector);
+
     return (
         <React.Fragment>
             <DrawerHeader className={classes.header} />
@@ -41,7 +42,7 @@ const DrawerMenu = () => {
                                 selected={code === currentLayoutCode}
                             >
                                 <ListItemIcon>
-                                    <Interpreter conf={{ ...icon, fontsizenumber: icon.fontsizenumber || 24 }} />
+                                    <Interpreter conf={icon ? { ...icon, fontsizenumber: icon.fontsizenumber || 24 } : undefined} />
                                 </ListItemIcon>
                                 <ListItemText primary={buttonLabel} />
                             </ListItem>
