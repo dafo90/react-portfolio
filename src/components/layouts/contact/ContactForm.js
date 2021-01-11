@@ -27,8 +27,7 @@ const TransitionDown = (props) => <Slide {...props} direction="down" />;
 
 const ContactForm = ({ formConfig }) => {
     const classes = useStyles();
-    const [googleCaptchaToken, setGoogleCaptchaToken] = useState();
-    const { register, control, errors, handleSubmit } = useForm();
+    const { control, errors, handleSubmit } = useForm();
     const [snackbarData, setSnackbarData] = useState({ open: false, variant: 'success', message: '' });
 
     const {
@@ -47,7 +46,7 @@ const ContactForm = ({ formConfig }) => {
         bodyFormData.append('_replyto', data.email);
         bodyFormData.append('message', data.message);
         bodyFormData.append('_subject', `My Portfolio - Message from ${data.name}`);
-        bodyFormData.append('g-recaptcha-response', googleCaptchaToken);
+        bodyFormData.append('g-recaptcha-response', data.privacyPolicyCheckboxController);
 
         axios
             .post(submitButton.url, bodyFormData)
@@ -152,10 +151,8 @@ const ContactForm = ({ formConfig }) => {
                 <Controller
                     name="privacyPolicyCheckbox"
                     control={control}
-                    defaultValue={false}
+                    defaultValue=""
                     rules={{ required: { value: true, message: privacyPolicyField.requiredMessage } }}
-                    autoComplete="off"
-                    type="text"
                     render={({ onChange, value }) => (
                         <FormControl error={!!errors.privacyPolicyCheckbox} component="fieldset">
                             <FormControlLabel
@@ -171,13 +168,19 @@ const ContactForm = ({ formConfig }) => {
                     )}
                 />
 
-                <GoogleReCaptcha
-                    name="googleReCaptcha"
-                    sitekey={googleReCaptchaClientSiteKey}
-                    ref={register({ required: true })}
-                    dataCallback={(e) => setGoogleCaptchaToken(e)}
-                    dataExpiredCallback={() => setGoogleCaptchaToken()}
-                    dataErrorCallback={() => setGoogleCaptchaToken()}
+                <Controller
+                    name="privacyPolicyCheckboxController"
+                    control={control}
+                    defaultValue=""
+                    render={({ onChange }) => (
+                        <GoogleReCaptcha
+                            name="googleReCaptcha"
+                            sitekey={googleReCaptchaClientSiteKey}
+                            dataCallback={onChange}
+                            dataExpiredCallback={onChange}
+                            dataErrorCallback={onChange}
+                        />
+                    )}
                 />
 
                 <Box>
