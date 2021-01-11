@@ -13,9 +13,13 @@ export default () => {
 
     useEffect(() => {
         const findLayoutByPath = (urlToFind) => layouts.find(({ enabled, urls }) => enabled && urls && urls.includes(urlToFind));
-        const currentHash = window.location.hash.replace('#', '');
-        if (layouts && !selectedLocation) dispatch(setLayout(findLayoutByPath(currentHash)));
-    }, [dispatch, layouts, selectedLocation]);
+        if (history && window.location.pathname !== '/') {
+            window.location.href = `/${window.location.hash}`;
+        } else {
+            const currentHash = window.location.hash.replace('#', '');
+            if (layouts && !selectedLocation) dispatch(setLayout(findLayoutByPath(currentHash)));
+        }
+    }, [dispatch, history, layouts, selectedLocation]);
 
     useEffect(() => {
         if (selectedLocation && history) history.push(selectedLocation.urls[0]);
