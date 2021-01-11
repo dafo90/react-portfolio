@@ -13,9 +13,9 @@ export default () => {
 
     useEffect(() => {
         const findLayoutByPath = (urlToFind) => layouts.find(({ enabled, urls }) => enabled && urls && urls.includes(urlToFind));
-
-        if (findLayoutByPath) dispatch(setLayout(findLayoutByPath(window.location.pathname)));
-    }, [dispatch, layouts]);
+        const currentHash = window.location.hash.replace('#', '');
+        if (layouts && !selectedLocation) dispatch(setLayout(findLayoutByPath(currentHash)));
+    }, [dispatch, layouts, selectedLocation]);
 
     useEffect(() => {
         if (selectedLocation && history) history.push(selectedLocation.urls[0]);
